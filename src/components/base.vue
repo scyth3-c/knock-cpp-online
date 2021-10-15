@@ -26,7 +26,7 @@
 
 
            </div>
-           <b-button @click="compile" variant="success" class="float-right mt-1">compilar</b-button>     
+           <b-button @click="compile" variant="success" class="float-right mt-1">compilar</b-button>    
           
       </b-card>
     </b-container>
@@ -49,9 +49,10 @@ export default {
       }
     },
     methods: {
-      async compile() {
-         const res =  this.GLOBAL.compilar('g++ main.cpp -o prueba && ./prueba.out');
-         this.output = res.stdout;
+       compile() {
+             this.GLOBAL.exec('ls',(err, stdout, stderr)=>{
+              console.log([err, stdout, stderr]);
+            });
       },
       write() {
 
