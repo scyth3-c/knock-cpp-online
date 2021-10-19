@@ -38,21 +38,20 @@
 
 <script>
 
-
+import api from '@/recursos/apis.js'
 export default {
-    name: 'base',
+    name: 'basecanvas',
     data() {
       return {
         standar: 'c++20',
         code: '',
         output: '',
-        url: this.GLOBAL.API
       }
     },
     methods: {
        async compile() {
-        const exs = await this.axios.get(`${this.url}cd=${this.code}`);
-         console.log("hecho ",exs);  
+        const exs = await api.get(`/test?cd=${this.code}`);
+         console.log(`codigo enviado: ${this.code}`,exs);  
       }
     }
     }
