@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 import global from './components/global.vue'
 import {BootstrapVue, IconsPlugin, BootstrapVueIcons} from 'bootstrap-vue'
+
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -11,6 +15,7 @@ Vue.prototype.GLOBAL = global;
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(BootstrapVueIcons)
+Vue.use(axios, VueAxios);
 
 new Vue({
   render: h => h(App),

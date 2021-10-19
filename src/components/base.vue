@@ -45,25 +45,20 @@ export default {
       return {
         standar: 'c++20',
         code: '',
-        output: ''
+        output: '',
+        url: this.GLOBAL.API
       }
     },
     methods: {
-       compile() {
-             this.GLOBAL.exec('ls',(err, stdout, stderr)=>{
-              console.log([err, stdout, stderr]);
-            });
-      },
-      write() {
-
+       async compile() {
+        const exs = await this.axios.get(`${this.url}cd=${this.code}`);
+         console.log("hecho ",exs);  
       }
     }
-    
     }
 </script>
 
   <style>
-
 
 ::-webkit-scrollbar {
   width: 10px;
