@@ -38,7 +38,6 @@
 
 <script>
 
-import api from '@/recursos/apis.js'
 export default {
     name: 'basecanvas',
     data() {
@@ -46,12 +45,22 @@ export default {
         standar: 'c++20',
         code: '',
         output: '',
+        time: {
+          hour: new Date().getHours(),
+          min: new Date().getMinutes(),
+          sec: new Date().getSeconds()
+        }
       }
     },
     methods: {
        async compile() {
-        const exs = await api.get(`/test?cd=${this.code}`);
-         console.log(`codigo enviado: ${this.code}`,exs);  
+        
+        const res = await this.axios.post(`${this.GLOBAL.API}addon/compile`, this.code, {
+        headers: { 'Content-Type': 'text/plain', 'title' : `temp_file_${this.time.hour, this.time.min, this.time.sec}` }
+        });
+        console.log(res);
+        this.output = '-> ' + res.data;
+
       }
     }
     }
