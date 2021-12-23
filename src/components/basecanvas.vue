@@ -87,13 +87,13 @@ export default {
   border: none;
 }
 ::-webkit-scrollbar-track {
-  background: #fefeff; 
+  background: rgb(13, 33, 51); 
 }
 ::-webkit-scrollbar-thumb {
-  background: #484f58; 
+  background: rgb(13, 33, 51); 
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(27, 53, 77); 
+  background: rgb(13, 33, 51); 
 }
  </style>
