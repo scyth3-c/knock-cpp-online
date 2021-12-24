@@ -42,6 +42,9 @@ export default {
         }
       }
     },
+    created(){
+        this.charge();
+    },
     methods: {
        async compile() {
          if(this.code == this.buffer)
@@ -63,6 +66,9 @@ export default {
         this.temp = res.data;
         this.output = '-> ' + res.data;   
          }
+      },
+      async charge() {
+        await this.axios(`${this.GLOBAL.API}addon`);
       }
     }
     }
