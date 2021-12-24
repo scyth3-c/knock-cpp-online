@@ -5,8 +5,10 @@ currently there is no color highlighting for key words and the reason for this i
 to compile the c++ code that can be embedded in the notes
 
 
+
 ## app
 
+![ss](https://user-images.githubusercontent.com/52190352/147302115-3cd5bb80-a738-4e80-9a91-75d2e171e29c.png)
 
 
 ### standards included 
@@ -17,4 +19,4 @@ to compile the c++ code that can be embedded in the notes
 
 ## links
 
-[HEROKU](https://knock-cpp.herokuapp.com/)
+[HEROKU app](https://knock-cpp.herokuapp.com/)
