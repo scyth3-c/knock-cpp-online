@@ -7,6 +7,7 @@
             <b-form-select-option value="c++14">c++14</b-form-select-option>
             <b-form-select-option value="c++11">c++11</b-form-select-option>
           </b-form-select>
+          <b-button @click="download" variant="dark" class="ml-3"><b-icon icon="download" variant="white"></b-icon></b-button>
            <div class="row"> 
           <div  class="contencore rounded ml-1 col-md-12 shadow-md mt-2">
             <textarea v-model="code" autofocus required class="codecore mt-2 font-weight-bold" name="code" id="content"  rows="13"></textarea>
@@ -29,6 +30,7 @@
 export default {
     name: 'basecanvas',
     data() {
+
       return {
         standar: 'c++2a',
         code: '',
@@ -69,6 +71,10 @@ export default {
       },
       async charge() {
         await this.axios(`${this.GLOBAL.API}addon`);
+      },
+      async download() {
+
+
       }
     }
     }
