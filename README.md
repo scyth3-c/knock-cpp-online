@@ -16,10 +16,12 @@ _the api is hosted on heroku with the free dynos which means that when reactivat
 
 
 ### standards included 
- - c++2a
- - c++11
- - c++14
- - c++17
+ - C++2a
+ - C++11
+ - C++14
+ - C++17
+
+**( No C++20 )**
 
 
 
