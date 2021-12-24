@@ -12,7 +12,8 @@ _the api is hosted on heroku with the free dynos which means that when reactivat
 
 [**HEROKU APP**](https://knock-cpp.herokuapp.com/)
 
-![ss](https://user-images.githubusercontent.com/52190352/147302115-3cd5bb80-a738-4e80-9a91-75d2e171e29c.png)
+![Captura de pantalla 2021-12-24 013236](https://user-images.githubusercontent.com/52190352/147325151-6d4ba780-892c-4a06-849c-997ab2af972c.png)
+
 
 please compile twice if the service does not detect the file on startup
 ### standards included 
