@@ -12,7 +12,8 @@ _the api is hosted on heroku with the free dynos which means that when reactivat
 
 [**HEROKU APP**](https://knock-cpp.herokuapp.com/)
 
-![Screenshot 2021-12-28 161443](https://user-images.githubusercontent.com/52190352/147607626-b3388cf8-f594-47b4-97b9-fbdb63f78a0f.png)
+
+![Screenshot 2021-12-28 161443](https://user-images.githubusercontent.com/52190352/147608165-a86be4f0-d519-4599-8575-6b4d11451080.png)
 
 
 ### standards included
