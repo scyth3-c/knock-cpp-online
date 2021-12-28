@@ -4,28 +4,31 @@
       class="col-md-12 bg-dark w-100 mt-3 shadow-lg"
       style="min-height: 530px;"
     >
+      <b-container style="display:inline;">
       <b-form-select
-        class="text-center bg-dark text-white col-md-2 font-weight-bold"
+        class="text-center mt-1 bg-dark text-white col-sm-2 font-weight-bold"
         v-model="standar"
       >
-        <b-form-select-option value="c++2a">c++2a</b-form-select-option>
+        <b-form-select-option value="c++11">c++11</b-form-select-option>
         <b-form-select-option value="c++17">c++17</b-form-select-option>
         <b-form-select-option value="c++14">c++14</b-form-select-option>
-        <b-form-select-option value="c++11">c++11</b-form-select-option>
+        <b-form-select-option value="c++2a">c++2a</b-form-select-option>
       </b-form-select>
 
         <b-form-select
-        class="ml-3 text-center bg-dark text-white col-md-2 font-weight-bold"
+        class="ml-3 mt-1 text-center bg-dark text-white col-md-1 font-weight-bold"
         v-model="optimizar"
         >
         <b-form-select-option value="1">O1</b-form-select-option>
         <b-form-select-option value="2">O2</b-form-select-option>
         <b-form-select-option value="3">O3</b-form-select-option>
-      </b-form-select>  
-       
-      <b-button @click="download" variant="dark" class="ml-3"
+      </b-form-select>
+        
+      <b-button @click="getAssembly" variant="dark" class="mt-1 ml-3 btn btn-outline-info">ASM</b-button>
+      <b-button @click="download" variant="dark" class="mt-1 ml-2"
         ><b-icon icon="download" variant="white"></b-icon
       ></b-button>
+      </b-container>
       <div class="row">
         <div class="contencore rounded ml-1 col-md-12 shadow-md mt-2">
           <textarea
@@ -64,7 +67,7 @@ export default {
   name: "basecanvas",
   data() {
     return {
-      standar: "c++2a",
+      standar: "c++11",
       code: "",
       buffer: "1",
       output: "",
@@ -75,6 +78,7 @@ export default {
         min: new Date().getMinutes(),
         sec: new Date().getSeconds(),
       },
+      seed: Math.floor(Math.random()*(89985 - 10)) + 10
     };
   },
   created() {
@@ -98,7 +102,7 @@ export default {
           {
             headers: {
               "Content-Type": "text/plain",
-              title: `temp_file_${(this.time.hour,
+              title: `temp_file_${this.seed}_${(this.time.hour,
               this.time.min,
               this.time.sec)}`,
               standar: this.standar,
@@ -106,29 +110,58 @@ export default {
             },
           }
         );
-        this.temp = res.data;
-        this.output = "> " + res.data;
+        this.temp = res.data.split("/knockapi/src/c++/temp/temp_");
+        this.output = "> " + res.data.split("/knockapi/src/c++/temp/temp_");
+        return res.data;
       }
     },
     async charge() {
       await this.axios(`${this.GLOBAL.API}addon`);
     },
-    download() {
-    
-     this.axios.get(`${this.GLOBAL.API}addon/download`, this.code, {headers: {"Content-Type": "text/plain"}})
+    async download() {
+      
+      if(this.output === "" || this.output === " "){
+       return this.output = "> codigo vacio! (empty)";
+      } 
+        await this.axios.post(`${this.GLOBAL.API}addon/download`, this.code, {headers: {"Content-Type": "text/plain",  title: `temp_file_${this.seed}_${(this.time.hour,
+       this.time.min,
+       this.time.sec)}`}})
      .then(async(res)=>{
-       this.onDownload(res);
+       this.onDownload(res, "main.cpp");
+     }).catch(err=>{
+      console.log(err);
+     })
+     
+    },
+     async getAssembly() {
+     await this.axios.post( `${this.GLOBAL.API}addon/assembly`,
+          this.code,
+          {
+            headers: {
+              "Content-Type": "text/plain",
+              title: `temp_file_${this.seed}_${(this.time.hour,
+              this.time.min,
+              this.time.sec)}`,
+              standar: this.standar,
+              "o": this.optimizar
+            },
+          })
+     .then(async(result)=>{
+   
+         this.onDownload(result,"assembly");
+    
      }).catch(err=>{
       console.log(err);
      })
     },
-    onDownload(file) {
+    onDownload(file, name) {
       const url = window.URL.createObjectURL(new Blob([file.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "main.cpp");
+      link.setAttribute("download", name);
       link.click();
     },
+   
   },
 };
 </script>
