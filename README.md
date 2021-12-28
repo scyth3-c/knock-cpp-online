@@ -16,7 +16,7 @@ _the api is hosted on heroku with the free dynos which means that when reactivat
 
 
 please compile twice if the service does not detect the file on startup
-### standards included 
+### standards included
  - C++2a
  - C++11
  - C++14
@@ -27,5 +27,3 @@ please compile twice if the service does not detect the file on startup
 ## coming soon
 
 - C compile with a switch button
-
-
