@@ -8,14 +8,13 @@ to compile the c++ code that can be embedded in the notes
 
 ## app
 
-_the api is hosted on heroku with the free dynos which means that when reactivated it may have strange behavior or not work well, (I put something that might help)_
+_the api is hosted on heroku with the free dynos which means that when reactivating it, it takes a while to start up._
 
 [**HEROKU APP**](https://knock-cpp.herokuapp.com/)
 
-![Captura de pantalla 2021-12-24 013236](https://user-images.githubusercontent.com/52190352/147325151-6d4ba780-892c-4a06-849c-997ab2af972c.png)
+![Screenshot 2021-12-28 161443](https://user-images.githubusercontent.com/52190352/147607626-b3388cf8-f594-47b4-97b9-fbdb63f78a0f.png)
 
 
-please compile twice if the service does not detect the file on startup
 ### standards included
  - C++2a
  - C++11
