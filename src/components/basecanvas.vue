@@ -31,7 +31,7 @@
       </b-container>
       <div class="row">
         <div class="contencore rounded ml-1 col-md-12 shadow-md mt-2">
-          <textarea
+          <vue-itextarea
             v-model="code"
             autofocus
             required
@@ -39,7 +39,7 @@
             name="code"
             id="content"
             rows="13"
-          ></textarea>
+          ></vue-itextarea>
         </div>
         <b-card
           class="w-100 ml-2 bg-dark mt-2"
