@@ -12,12 +12,15 @@ import {BootstrapVue, IconsPlugin, BootstrapVueIcons} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import vue_itextarea from 'vue-itextarea';
+
 Vue.config.productionTip = false
 Vue.prototype.GLOBAL = global;
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(BootstrapVueIcons)
 Vue.use(VueAxios, axios)
+Vue.component('vue-itextarea', vue_itextarea);
 
 new Vue({
   render: h => h(App),
