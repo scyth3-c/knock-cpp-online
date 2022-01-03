@@ -10,6 +10,7 @@ to compile the c++ code that can be embedded in the notes
 _the api is hosted on heroku with the free dynos which means that when reactivating it, it takes a while to start up._
 
 [**HEROKU APP**](https://knock-cpp.herokuapp.com/)
+[**FIREBASE APP**](https://knock-cpp-online.web.app/)
 
 
 ![Screenshot 2021-12-28 161443](https://user-images.githubusercontent.com/52190352/147608165-a86be4f0-d519-4599-8575-6b4d11451080.png)
