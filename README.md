@@ -27,3 +27,4 @@ to compile the c++ code that can be embedded in the notes
 ## coming soon
 
 - C compile with a switch button
+- assembly arq version
