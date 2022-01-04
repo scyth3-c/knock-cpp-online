@@ -1,13 +1,14 @@
 <template>
   <b-container>
     <b-card
-      class="col-md-12 bg-dark w-100 mt-3 shadow-lg"
+      class="col-md-12 mb-3 bg-dark w-100 mt-2 shadow-lg"
       style="min-height: 530px;"
     >
       <b-container style="display:inline;">
       <b-form-select
         class="text-center mt-1 bg-dark text-white col-sm-2 font-weight-bold"
         v-model="standar"
+        title="el estandar con el que se compilara c++"
       >
         <b-form-select-option value="c++11">c++11</b-form-select-option>
         <b-form-select-option value="c++17">c++17</b-form-select-option>
@@ -18,16 +19,27 @@
         <b-form-select
         class="ml-3 mt-1 text-center bg-dark text-white col-md-1 font-weight-bold"
         v-model="optimizar"
+        title="el nivel de optimizacion a la hora de compilar, esto se vera en el codigo ensamblador"
         >
         <b-form-select-option value="1">O1</b-form-select-option>
         <b-form-select-option value="2">O2</b-form-select-option>
         <b-form-select-option value="3">O3</b-form-select-option>
       </b-form-select>
-
-      <b-button @click="getAssembly" variant="dark" class="mt-1 ml-3 btn btn-outline-info">ASM</b-button>
-      <b-button @click="download" variant="dark" class="mt-1 ml-2"
+        
+      <b-button title="descarga el codigo assembly generado del codigo c++" @click="getAssembly" variant="dark" class="mt-1 ml-3 btn btn-outline-info">ASM</b-button>
+      <b-button title="descarga el codigo escrito" @click="download" variant="dark" class="mt-1 ml-2"
         ><b-icon icon="download" variant="white"></b-icon
       ></b-button>
+      
+          <b-button variant="dark" class="float-right ml-auto" v-b-modal.extra-modal title="muestra el panel de addons extra"> <b-icon variant="white" icon="easel-fill"></b-icon> </b-button>
+          <b-modal id="extra-modal" title="extra">
+            <b-button v-b-modal.notas-modal variant="primary">Notas</b-button>
+            <b-modal id="notas-modal" hide-footer>
+              <notas/>
+            </b-modal>
+          </b-modal>
+      
+
       </b-container>
       <div class="row">
         <div class="contencore rounded ml-1 col-md-12 shadow-md mt-2">
@@ -43,7 +55,7 @@
         </div>
         <b-card
           class="w-100 ml-2 bg-dark mt-2"
-          style="max-height: 130px; min-height: 130px; overflow-y:auto; border:none;"
+          style="max-height: 120px; min-height: 120px; overflow-y:auto; border:none;"
         >
           <b-badge variant="danger" class="text-white"
             >output:
@@ -63,8 +75,14 @@
 </template>
 
 <script>
+
+import notas from './extra/notas.vue'
+
 export default {
   name: "basecanvas",
+  components: {
+    notas
+  },
   data() {
     return {
       standar: "c++11",
@@ -119,10 +137,10 @@ export default {
       await this.axios(`${this.GLOBAL.API}addon`);
     },
     async download() {
-
+      
       if(this.output === "" || this.output === " "){
        return this.output = "> codigo vacio! (empty)";
-      }
+      } 
         await this.axios.post(`${this.GLOBAL.API}addon/download`, this.code, {headers: {"Content-Type": "text/plain",  title: `temp_file_${this.seed}_${(this.time.hour,
        this.time.min,
        this.time.sec)}`}})
@@ -131,7 +149,7 @@ export default {
      }).catch(err=>{
       console.log(err);
      })
-
+     
     },
      async getAssembly() {
      await this.axios.post( `${this.GLOBAL.API}addon/assembly`,
@@ -147,9 +165,9 @@ export default {
             },
           })
      .then(async(result)=>{
-
+   
          this.onDownload(result,"assembly");
-
+    
      }).catch(err=>{
       console.log(err);
      })
@@ -161,7 +179,7 @@ export default {
       link.setAttribute("download", name);
       link.click();
     },
-
+   
   },
 };
 </script>
@@ -188,8 +206,8 @@ export default {
   background: rgb(13, 33, 51);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(13, 33, 51);
-  border-radius: 10px;
+  background: rgb(19, 41, 61);
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(13, 33, 51);
