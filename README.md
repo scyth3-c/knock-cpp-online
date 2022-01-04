@@ -12,13 +12,14 @@ to compile the c++ code that can be embedded in the notes
 - [**HEROKU WEBAPP**](https://knock-cpp.herokuapp.com/) _active only when using_
 
 
+![idle](https://user-images.githubusercontent.com/52190352/148005166-bc0f461e-5af1-4527-b637-907d8437056f.png)
 
-![Screenshot 2021-12-28 161443](https://user-images.githubusercontent.com/52190352/147608165-a86be4f0-d519-4599-8575-6b4d11451080.png)
+
 
 
 ## new changes
 
-- individual notes now available with local id and connected to [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port)
+- **dividual notes now available with local id and connected to** [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port) publuc server!!
 
 ![Screenshot 2022-01-03 214433](https://user-images.githubusercontent.com/52190352/148004747-228819ac-32da-4127-8a47-dbc71f0e2546.png)
 
