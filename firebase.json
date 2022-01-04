@@ -1,0 +1,7 @@
+{
+    "hosting": {
+      "site": "knockcompiler",
+  
+      "public": "dist"
+    }
+  }
