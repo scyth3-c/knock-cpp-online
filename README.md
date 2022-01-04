@@ -16,6 +16,16 @@ to compile the c++ code that can be embedded in the notes
 ![Screenshot 2021-12-28 161443](https://user-images.githubusercontent.com/52190352/147608165-a86be4f0-d519-4599-8575-6b4d11451080.png)
 
 
+## new changes
+
+- individual notes now available with local id and connected to [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port)
+
+![Screenshot 2022-01-03 214433](https://user-images.githubusercontent.com/52190352/148004747-228819ac-32da-4127-8a47-dbc71f0e2546.png)
+
+![Screenshot 2022-01-03 214448](https://user-images.githubusercontent.com/52190352/148004764-3b0e109d-5f3f-43f4-a36c-13f2b0f73b26.png)
+
+
+
 ### standards included
  - C++2a
  - C++11
