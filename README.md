@@ -19,7 +19,7 @@ to compile the c++ code that can be embedded in the notes
 
 ## new changes
 
-- **dividual notes now available with local id and connected to** [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port) publuc server!!
+- **dividual notes now available with local id and connected to** [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port) public server!!
 
 ![Screenshot 2022-01-03 214433](https://user-images.githubusercontent.com/52190352/148004747-228819ac-32da-4127-8a47-dbc71f0e2546.png)
 
