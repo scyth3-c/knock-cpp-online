@@ -8,7 +8,7 @@ to compile the c++ code that can be embedded in the notes
 ## app
 
 
-- [**FIREBASE WEBAPP**](https://knockcompiler.web.app/) _always active_
+- [**FIREBASE WEBAPP**](https://knockcompiler.web.app/) _always active, but renew in june_
 - [**HEROKU WEBAPP**](https://knock-cpp.herokuapp.com/) _active only when using_
 
 
