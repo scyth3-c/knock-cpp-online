@@ -138,7 +138,7 @@ export default {
     },
     async download() {
       
-      if(this.output === "" || this.output === " "){
+      if(this.code === "" || this.code === " "){
        return this.output = "> codigo vacio! (empty)";
       } 
         await this.axios.post(`${this.GLOBAL.API}addon/download`, this.code, {headers: {"Content-Type": "text/plain",  title: `temp_file_${this.seed}_${(this.time.hour,
