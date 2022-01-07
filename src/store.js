@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     //base
-    API: "https://radiant-dusk-88409.herokuapp.com/",
+    API: "",
     paypal: "https://www.paypal.com/paypalme/bohorquezrojas17",
     github: "https://github.com/scyth3-c",
 
