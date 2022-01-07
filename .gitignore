@@ -3,7 +3,7 @@ node_modules
 /dist
 /dist_electron
 README.md
-
+api.json
 
 # local env files
 .env.local
