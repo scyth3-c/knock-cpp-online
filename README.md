@@ -32,19 +32,16 @@ to compile the c++ code that can be embedded in the notes
 - [**FIREBASE WEBAPP**](https://knockcompiler.web.app/) _always active, but renew in june_
 - [**HEROKU WEBAPP**](https://knock-cpp.herokuapp.com/) _active only when using_
 
-
-![idle](https://user-images.githubusercontent.com/52190352/148005166-bc0f461e-5af1-4527-b637-907d8437056f.png)
-
+![Screenshot 2022-01-07 163054](https://user-images.githubusercontent.com/52190352/148610247-b054ed42-7c0a-411a-a46d-e6de186883f1.png)
 
 
 
 ## new changes
 
 - **dividual notes now available with local id and connected to** [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port) public server!!
+![Screenshot 2022-01-07 163130](https://user-images.githubusercontent.com/52190352/148610270-01c6f7af-9376-457f-ab2b-8a3df2c869ed.png)
+![Screenshot 2022-01-07 163259](https://user-images.githubusercontent.com/52190352/148610286-dd1f81e8-f7df-4e2f-a279-81e5d4767af3.png)
 
-![Screenshot 2022-01-03 214433](https://user-images.githubusercontent.com/52190352/148004747-228819ac-32da-4127-8a47-dbc71f0e2546.png)
-
-![Screenshot 2022-01-03 214448](https://user-images.githubusercontent.com/52190352/148004764-3b0e109d-5f3f-43f4-a36c-13f2b0f73b26.png)
 
 
 
