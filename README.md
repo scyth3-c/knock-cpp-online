@@ -1,5 +1,26 @@
+ <div align="center"> 
+   <img src="https://img.shields.io/static/v1?label=update&message=today&color=success">
+   <img src="https://img.shields.io/static/v1?label=version&message=0.1.6&color=green">
+   <img src="https://img.shields.io/static/v1?label=ports&message=electron&color=blue">
+ </div>
+
+
 # knock-cpp-online
-_a small webapp to compile c++ online testing the full version of scyth3-c/knock-api-ts_
+
+<code>
+  <img src="https://i.imgur.com/cac0UeP.png" width="100px">
+</code>
+
+_a small webapp to compile c++ online using  the full version of scyth3-c/knock-api-ts_
+
+
+
+## client tecnologies
+
+   <img src="https://img.shields.io/static/v1?label=Node.js&message=v14.15.4&color=success">
+   <img src="https://img.shields.io/static/v1?label=Vue&message=^2.6.11&color=green">
+   <img src="https://img.shields.io/static/v1?label=Vuex&message=^3.6.2&color=brightgreen">
+
 
 
 currently there is no color highlighting for key words and the reason for this is to integrate the api to [knocknotes](https://github.com/scyth3-c/vue-conponents)
