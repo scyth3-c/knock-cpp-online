@@ -2,13 +2,14 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 
+import * as api from './api.json'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     //base
-    API: "https://radiant-dusk-88409.herokuapp.com/",
+    API: api.API,
     paypal: "https://www.paypal.com/paypalme/bohorquezrojas17",
     github: "https://github.com/scyth3-c",
 
