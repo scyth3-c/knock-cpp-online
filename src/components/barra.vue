@@ -26,8 +26,8 @@ export default {
     name: 'barra',
     data() {
         return {
-            github: this.GLOBAL.github,
-            paypal: this.GLOBAL.paypal
+            github: this.$store.state.github,
+            paypal: this.$store.state.paypal
         }
     }
 }
