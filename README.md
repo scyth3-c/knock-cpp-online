@@ -28,9 +28,9 @@ to compile the c++ code that can be embedded in the notes
 
 ## open app
 
-- <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/FIREBASE-yellow"> </a>
-- <a href="https://knock-cpp.herokuapp.com/"> <img src="https://img.shields.io/badge/HEROKU-blueviolet"> </a>
-- <a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download-success">  </a>
+- <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/FIREBASE HOST-yellow"> </a>
+- <a href="https://knock-cpp.herokuapp.com/"> <img src="https://img.shields.io/badge/HEROKU HOST-blueviolet"> </a>
+- <a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download package-success">  </a>
 
 ![Screenshot 2022-01-07 163054](https://user-images.githubusercontent.com/52190352/148610247-b054ed42-7c0a-411a-a46d-e6de186883f1.png)
 
