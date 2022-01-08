@@ -2,6 +2,7 @@
    <img src="https://img.shields.io/static/v1?label=update&message=Yesterday&color=success">
    <img src="https://img.shields.io/static/v1?label=version&message=0.1.6&color=green">
    <img src="https://img.shields.io/static/v1?label=ports&message=electron&color=blue">
+ <img src="https://img.shields.io/static/v1?label=licence&message=MIT&color=red">
  </div>
 
 
