@@ -26,7 +26,7 @@ _a small webapp to compile c++ online using  the full version of scyth3-c/knock-
 currently there is no color highlighting for key words and the reason for this is to integrate the api to [knocknotes](https://github.com/scyth3-c/vue-conponents)
 to compile the c++ code that can be embedded in the notes
 
-## open app
+## Open app
 
 - <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/FIREBASE HOST-yellow"> </a>
 - <a href="https://knock-cpp.herokuapp.com/"> <img src="https://img.shields.io/badge/HEROKU HOST-blueviolet"> </a>
@@ -36,7 +36,7 @@ to compile the c++ code that can be embedded in the notes
 
 
 
-## new changes
+## new changes <img src="https://img.shields.io/badge/new-red">
 
 - **dividual notes now available with local id and connected to** [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port) public server!!
 ![Screenshot 2022-01-07 163130](https://user-images.githubusercontent.com/52190352/148610270-01c6f7af-9376-457f-ab2b-8a3df2c869ed.png)
