@@ -1,6 +1,6 @@
  <div align="center"> 
-   <img src="https://img.shields.io/static/v1?label=update&message=Yesterday&color=success">
-   <img src="https://img.shields.io/static/v1?label=version&message=0.1.6&color=green">
+   <img src="https://img.shields.io/static/v1?label=update&message=Today&color=success">
+   <img src="https://img.shields.io/static/v1?label=version&message=1.0.0&color=green">
    <img src="https://img.shields.io/static/v1?label=ports&message=electron&color=blue">
  <img src="https://img.shields.io/static/v1?label=licence&message=MIT&color=red">
  </div>
@@ -37,11 +37,11 @@ to compile the c++ code that can be embedded in the notes
 - ![Screenshot 2022-01-08 233917](https://user-images.githubusercontent.com/52190352/148669770-b05f68ce-0b98-4f47-97a8-264bf4a0a6a4.png)
 - ![Screenshot 2022-01-08 233942](https://user-images.githubusercontent.com/52190352/148669775-c0db581f-4f79-48f4-842f-15a9803a2cde.png)
 
+ 
 
+## recent
 
-
-
-
+- HIGHLIGHTS!
 
 ### standards included
  - C++2a
