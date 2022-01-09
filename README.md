@@ -33,15 +33,12 @@ to compile the c++ code that can be embedded in the notes
 - <a href="https://knock-cpp.herokuapp.com/"> <img src="https://img.shields.io/badge/HEROKU HOST-blueviolet"> </a>
 - <a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download package-success">  </a>
 
-![Screenshot 2022-01-07 163054](https://user-images.githubusercontent.com/52190352/148610247-b054ed42-7c0a-411a-a46d-e6de186883f1.png)
+- ![Screenshot 2022-01-08 233842](https://user-images.githubusercontent.com/52190352/148669761-7a07a896-d8c7-482d-8311-90e440d13488.png)
+- ![Screenshot 2022-01-08 233917](https://user-images.githubusercontent.com/52190352/148669770-b05f68ce-0b98-4f47-97a8-264bf4a0a6a4.png)
+- ![Screenshot 2022-01-08 233942](https://user-images.githubusercontent.com/52190352/148669775-c0db581f-4f79-48f4-842f-15a9803a2cde.png)
 
 
 
-## new changes <img src="https://img.shields.io/badge/new-red">
-
-- **dividual notes now available with local id and connected to** [knock-notes](https://github.com/scyth3-c/Vue-Electron-Port) public server!!
-![Screenshot 2022-01-07 163130](https://user-images.githubusercontent.com/52190352/148610270-01c6f7af-9376-457f-ab2b-8a3df2c869ed.png)
-![Screenshot 2022-01-07 163259](https://user-images.githubusercontent.com/52190352/148610286-dd1f81e8-f7df-4e2f-a279-81e5d4767af3.png)
 
 
 
