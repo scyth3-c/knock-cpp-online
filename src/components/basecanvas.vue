@@ -26,7 +26,7 @@
         <b-form-select-option value="2">O2</b-form-select-option>
         <b-form-select-option value="3">O3</b-form-select-option>
       </b-form-select>
-      <b-button title="descarga el codigo assembly generado del codigo c++" @click="getAssembly" style="background: rgba(0,0,0,0);" class="mt-1 ml-3 btn btn-outline-info">ASM</b-button>
+      <b-button title="descarga el codigo assembly generado del codigo c++" @click="getAssembly" style="background: rgba(0,0,0,0);" class=" mt-1 ml-3">ASM</b-button>
       <b-button title="descarga el codigo escrito" @click="download" style="background: rgba(0,0,0,0);" class="mt-1 ml-2"
         ><b-icon icon="download" variant="white"></b-icon
       ></b-button>  
@@ -206,7 +206,7 @@ export default {
   background: rgb(21, 21, 21);
 }
 .default {
-  background: rgb(255, 255, 255);
+  background: rgb(199, 200, 204);
 }
 
 </style>
