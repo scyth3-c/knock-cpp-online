@@ -32,7 +32,7 @@
       ></b-button>  
 
 
-          <b-button style="background: rgba(0,0,0,0);" class="float-right ml-auto" v-b-modal.extra-modal title="muestra el panel de addons extra"> <b-icon variant="white" icon="easel-fill"></b-icon> </b-button>
+          <b-button style="background: rgba(0,0,0,0);" class="mt-1 float-right ml-auto" v-b-modal.extra-modal title="muestra el panel de addons extra"> <b-icon variant="white" icon="easel-fill"></b-icon> </b-button>
           <b-modal id="extra-modal" title="extra">
 
             <b-button v-b-modal.notas-modal variant="primary">Notas</b-button>
