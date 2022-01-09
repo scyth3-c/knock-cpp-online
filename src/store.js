@@ -13,7 +13,14 @@ export default new Vuex.Store({
     github: "https://github.com/scyth3-c",
 
     standar: "c++11",
-    code: "",
+    code: `#include <iostream>
+
+int main() {
+     
+      
+  
+return 0;
+}`,
     buffer: "1",
     output: "",
     temp: "",
@@ -33,7 +40,13 @@ export default new Vuex.Store({
       conten: "",
       author: localStorage.getItem("inited"),
     },
-
+    cmOption: {
+      lineNumbers: true,
+      keyMap: "sublime",
+      mode: 'text/x-csrc',
+      theme: localStorage.getItem('theme') || "dracula",
+    },
+    bytheme: 'dracula',
     //readonly
     time: {
       hour: new Date().getHours(),
@@ -215,7 +228,16 @@ export default new Vuex.Store({
       payload.vm.$bvModal.hide("notas-modal");
       payload.vm.$bvModal.show("notas-modal");
     },
+
+    changeTheme(state,  payload) {
+      state.cmOption.theme = payload.data;
+      state.bytheme = payload.data;
+      payload.vm.$forceUpdate();
+    }
+
+
   },
+
 
   actions: {
     saveme({ commit }, { vm }) {
@@ -226,6 +248,12 @@ export default new Vuex.Store({
   },
 
   getters: {
+    cmOption(state) {
+      return state.cmOption;
+    },
+    theme(state) {
+      return state.cmOption.theme;
+    },
     time(state) {
       return state.time;
     },
