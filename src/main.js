@@ -3,9 +3,6 @@ import App from './App.vue'
 
 import store from './store'
 
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-
 import {BootstrapVue, IconsPlugin, BootstrapVueIcons} from 'bootstrap-vue'
 import VueCodemirror from 'vue-codemirror'
 
@@ -21,8 +18,6 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(BootstrapVueIcons)
 Vue.use(VueCodemirror)
-Vue.use(VueAxios, axios)
-
 
 new Vue({
   store,
