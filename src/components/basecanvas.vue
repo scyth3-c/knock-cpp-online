@@ -44,12 +44,7 @@
             <b-modal id="themes-modal">
               <themes/>
             </b-modal>
-
-
           </b-modal>
-
-
-
       </b-container>
       <div class="row">
         <div class="rounded col-md-12 shadow-md mt-2">
@@ -109,7 +104,6 @@ export default {
       this.$forceUpdate();
     });
   },
-
 
   methods: {
 

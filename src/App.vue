@@ -1,13 +1,9 @@
 <template>
   <div id="app">
-   
     <barra/>
     <Base/>
-
-
   </div>
 </template>
-
 <script>
 
 import barra from './components/barra.vue'

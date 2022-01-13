@@ -1,7 +1,5 @@
 <template>
-    
     <b-card>
-
          <b-form-select
         v-model="cmOption"
         title="el tema del editor"
@@ -10,9 +8,8 @@
         <b-form-select-option value="monokai">monokai</b-form-select-option>
         <b-form-select-option value="yonce">yonce</b-form-select-option>
         <b-form-select-option value="base16-dark">dark</b-form-select-option>
-         <b-form-select-option value="default">light</b-form-select-option>
+        <b-form-select-option value="default">light</b-form-select-option>
       </b-form-select>
-
 
     </b-card>
 
@@ -24,7 +21,7 @@ export default {
     computed: {
         cmOption: {
             get() {
-                return this.$store.state.cmOption.theme;
+               return this.$store.state.cmOption.theme;
             }, set(value) {
                 this.$store.commit('changeTheme',{data: value, vm: this});
             }
