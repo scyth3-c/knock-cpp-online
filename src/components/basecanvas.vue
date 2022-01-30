@@ -30,7 +30,13 @@
       <b-button title="descarga el codigo escrito" @click="download" style="background: rgba(0,0,0,0);" class="mt-1 ml-2"
         ><b-icon icon="download" variant="white"></b-icon
       ></b-button>  
-
+            <b-button style="background: rgba(0,0,0,0);" class="mt-1 float-right ml-1" v-b-modal.flags-modal title="banderas de compilacion para c++">
+            flags
+          </b-button>
+          <b-modal id="flags-modal" title="flags">
+            <b-badge variant="dark" class="mb-1">example:  -Wall -pedantic</b-badge>
+            <b-input v-model="flags"></b-input>
+          </b-modal>
 
           <b-button style="background: rgba(0,0,0,0);" class="mt-1 float-right ml-auto" v-b-modal.extra-modal title="muestra el panel de addons extra"> <b-icon variant="white" icon="easel-fill"></b-icon> </b-button>
           <b-modal id="extra-modal" title="extra">
@@ -142,7 +148,12 @@ export default {
         'seed',
         'cmOption'
      ]),
-      
+       
+       flags: {
+         get() {       return this.$store.state.cxxflags; },
+         set(value) {  this.$store.commit('superUpdate', {type: 'flags', data:value }); }
+       },
+
       standar: {
         get() {       return this.$store.state.standar;   },
         set(value) {  this.$store.commit('superUpdate',   {type: 'standar', data: value}); }

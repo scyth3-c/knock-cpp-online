@@ -25,6 +25,11 @@ return 0;
     output: "",
     temp: "",
     optimizar: 1,
+   
+     // extra flags
+
+     cxxflags: "",
+
 
     // extra: notes
     notes: [],
@@ -79,6 +84,13 @@ return 0;
         case "optimizar":
           state.optimizar = payload.data;
           break;
+        case "flags": 
+          if(payload.data.includes("-")) {
+          state.cxxflags = payload.data;
+          } else {
+            state.cxxflags = "";
+          }
+        break;
       }
     },
 
@@ -124,6 +136,7 @@ return 0;
             state.time.sec)}`,
             standar: state.standar,
             o: state.optimizar,
+            flags: state.cxxflags
           },
         });
         state.temp = res.data.split("/knockapi/src/c++/temp/temp_");
