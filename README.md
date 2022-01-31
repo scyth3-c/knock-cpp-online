@@ -2,7 +2,11 @@
    <img src="https://img.shields.io/static/v1?label=update&message=One Week&color=success">
    <img src="https://img.shields.io/static/v1?label=version&message=1.0.0&color=green">
    <img src="https://img.shields.io/static/v1?label=ports&message=electron&color=blue">
- <img src="https://img.shields.io/static/v1?label=licence&message=MIT&color=red">
+   <img src="https://img.shields.io/static/v1?label=licence&message=MIT&color=red">
+   <img src="https://img.shields.io/static/v1?label=CONTRIBUTIONS&message=ALL WELCOME&color=green">
+  
+   
+  
  </div>
 
 <br/>
