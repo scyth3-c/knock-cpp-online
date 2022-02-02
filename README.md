@@ -40,9 +40,13 @@ to compile the c++ code that can be embedded in the notes
 - <a href="https://knock-cpp.herokuapp.com/"> <img src="https://img.shields.io/badge/HEROKU HOST-blueviolet"> </a> _active only is open_
 - <a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download package-success">  </a>
 
-- ![Screenshot 2022-01-08 233842](https://user-images.githubusercontent.com/52190352/148669761-7a07a896-d8c7-482d-8311-90e440d13488.png)
-- ![Screenshot 2022-01-08 233917](https://user-images.githubusercontent.com/52190352/148669770-b05f68ce-0b98-4f47-97a8-264bf4a0a6a4.png)
-- ![Screenshot 2022-01-08 233942](https://user-images.githubusercontent.com/52190352/148669775-c0db581f-4f79-48f4-842f-15a9803a2cde.png)
+
+![1](https://user-images.githubusercontent.com/52190352/152088973-dd839f1b-8b03-4209-a99c-157326a86df0.png)
+![2](https://user-images.githubusercontent.com/52190352/152088998-bacb9622-95e0-4ab3-b33e-5ff70e56c8b6.png)
+![3](https://user-images.githubusercontent.com/52190352/152089004-eaca947e-3d49-434b-94d1-eedcc5326ceb.png)
+![4](https://user-images.githubusercontent.com/52190352/152089008-e37f99df-e743-43a1-9bd1-95479d852ce9.png)
+
+
 
  
 
