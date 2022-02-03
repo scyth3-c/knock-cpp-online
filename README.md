@@ -48,11 +48,7 @@ to compile the c++ code that can be embedded in the notes
 
 
 
- 
 
-## recent
-
-- HIGHLIGHTS!
 
 ### standards included
  - C++2a
