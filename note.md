@@ -1,0 +1,1 @@
+Hola, la webapp esta creada por diversion y con fines didacticos, soy conciente de las vulnerabilidades que presenta, ire solucionando de poco a poco, pruebala y usala cuento quieras para cualquier cosa la API es cierto que por ahora no es publica pero pienso cambiarla proximamente
