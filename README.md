@@ -21,7 +21,7 @@
 
 # knock-cpp-online
 
-_a compact App multi-platform to compile c++ online!_
+_a compact App multi-platform to compile c++ (web-windows-linux-mac)!_
 
 ## client tecnologies
 
