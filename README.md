@@ -21,7 +21,7 @@
 
 # knock-cpp-online
 
-_a small webapp to compile c++ online using  the full version of scyth3-c/knock-api-ts_
+_a compact App multi-platform to compile c++ online!_
 
 ## client tecnologies
 
