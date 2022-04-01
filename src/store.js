@@ -120,8 +120,6 @@ return 0;
     async compile(state) {
       if (state.code == state.buffer) {
         return (state.output = "> ya compilado, reultado: " + state.temp);
-      } else if (state.code.includes("system(") || state.code.includes("cin") || state.code.includes('<filesystem>') || state.code.includes('"filesystem"') || state.code.includes('std::filesystem') ||state.code.includes('readDir(') || state.code.includes('deleteFile') || state.code.includes('strsafe.h') ) {
-        return (state.output = ">  oye no deberias usar eso aqui");
       } else if (state.code == "" || state.code == " ") {
         return (state.output =
           "> no puedo compilar codigo si no hay codigo, ¿verdad?");
