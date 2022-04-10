@@ -119,12 +119,12 @@ return 0;
 
     async compile(state) {
       if (state.code == state.buffer) {
-        return (state.output = "> ya compilado, reultado: " + state.temp);
+        return (state.output = "> ya compilado, resultado: " + state.temp);
       } else if (state.code == "" || state.code == " ") {
         return (state.output =
           "> no puedo compilar codigo si no hay codigo, ¿verdad?");
       } else {
-        state.output = "compilado...";
+        state.output = "compilando...";
         state.buffer = state.code;
         const res = await axios.post(`${state.API}addon/compile`, state.code, {
           headers: {
