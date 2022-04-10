@@ -137,8 +137,8 @@ return 0;
             flags: state.cxxflags
           },
         });
-        state.temp = res.data.split("/knockapi/src/c++/temp/temp_");
-        state.output = "> " + res.data.split("/knockapi/src/c++/temp/temp_");
+        state.temp = res.data;
+        state.output = "> " + res.data;
         return res.data;
       }
     },
