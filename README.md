@@ -42,7 +42,7 @@ to compile the c++ code that can be embedded in the notes
 
 ## open, run and test the app
 
-- <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/FIREBASE HOST-yellow"> </a> _always active, renew in june_
+- <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/ WEB FIREBASE HOST-blue"> </a> _always active, renew in june_
 - <a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download package-success">  </a>
 
 
