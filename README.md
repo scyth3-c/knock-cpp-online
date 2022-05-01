@@ -43,8 +43,6 @@ the reason for this is to integrate the api to [knocknotes](https://github.com/s
 to compile the c++ code that can be embedded in the notes
 
 ## open, run and test the app
-  
-  https://knockcompiler.netlify.app/
 
 - <a href="https://knockcompiler.netlify.app/"> <img src="https://img.shields.io/badge/ WEB NETLIFY HOST-blue"> </a>
 - <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/ WEB FIREBASE HOST-green"> </a> _always active, renew in june_
