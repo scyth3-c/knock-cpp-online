@@ -39,6 +39,7 @@ the API is host in a free service because  the API has a time delay in activatin
 
 [knock-cpp-API](https://github.com/scyth3-c/knock-cpp-API)
 
+[vote for feature](#vote)
 
 <div align="center">
      <h3>Client Tecnologies</h3>
@@ -82,7 +83,7 @@ the API is host in a free service because  the API has a time delay in activatin
 <strong>assembly</strong>
 
 arch: x86
-
+<p id="vote"></p>
 
 
 ## Posibles Features
