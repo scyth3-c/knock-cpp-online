@@ -82,3 +82,18 @@ the API is host in a free service because  the API has a time delay in activatin
 <strong>assembly</strong>
 
 arch: x86
+
+
+
+## Posibles Features
+
+<strong> you can vote in this file, add X in [] or add the feature directly, or not :) </strong>
+
+- any lib how curl []
+- see a OpenGl GLUT visualizer []
+- map of memory affected []
+- make and cmake []
+- posibility of save source code [X] 
+- a C compiler switch button []
+
+
