@@ -53,11 +53,13 @@ the API is host in a free service because  the API has a time delay in activatin
 
 ## open, run and test the app
 
+_click in the color badges_
+
 <a href="https://knockcompiler.netlify.app/"> <img src="https://img.shields.io/badge/ WEB NETLIFY HOST-blue"> </a>
 <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/ WEB FIREBASE HOST-green"> </a>
 <a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download package-success">  </a>
 
-## App Preview
+## Preview
 
 ![1](https://user-images.githubusercontent.com/52190352/152088973-dd839f1b-8b03-4209-a99c-157326a86df0.png)
 ![2](https://user-images.githubusercontent.com/52190352/152088998-bacb9622-95e0-4ab3-b33e-5ff70e56c8b6.png)
