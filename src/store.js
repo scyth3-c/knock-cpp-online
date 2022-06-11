@@ -25,6 +25,7 @@ return 0;
     output: "",
     temp: "",
     optimizar: 1,
+    inputData: "",
    
      // extra flags
 
@@ -117,13 +118,16 @@ return 0;
       }
     },
 
-    async compile(state) {
+    async compile(state, vm) {
       if (state.code == state.buffer) {
         return (state.output = "> ya compilado, resultado: " + state.temp);
       } else if (state.code == "" || state.code == " ") {
         return (state.output =
           "> no puedo compilar codigo si no hay codigo, ¿verdad?");
-      } else {
+      } else if(state.code.includes("cin") && state.inputData == "" || state.code.includes("getline") && state.inputData == "" || state.code.includes("&ostream") && state.inputData == ""){
+        vm.$bvModal.show("program-input");
+      } 
+      else {
         state.output = "compilando...";
         state.buffer = state.code;
         const res = await axios.post(`${state.API}addon/compile`, state.code, {
@@ -134,7 +138,8 @@ return 0;
             state.time.sec)}`,
             standar: state.standar,
             o: state.optimizar,
-            flags: state.cxxflags
+            flags: state.cxxflags,
+            data: state.inputData
           },
         });
         state.temp = res.data;
@@ -244,10 +249,16 @@ return 0;
       state.cmOption.theme = payload.data;
       state.bytheme = payload.data;
       payload.vm.$forceUpdate();
+    },
+
+    setInputData(state, payload) {
+      state.inputData = payload.data;
     }
 
 
   },
+
+
 
 
   actions: {
@@ -257,6 +268,8 @@ return 0;
       commit("chargeNotes");
     },
   },
+
+
 
   getters: {
     cmOption(state) {
@@ -277,5 +290,5 @@ return 0;
     field(state) {
       return state.field;
     },
-  },
+  }
 });
