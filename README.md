@@ -59,7 +59,7 @@ haz click en el color para abrir la web app
 
 <a href="https://knockcompiler.netlify.app/"> <img src="https://img.shields.io/badge/ WEB UNO-blue"> </a>
 <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/ WEB DOS-green"> </a>
-<a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download-success">  </a>
+<a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/1.1.0/Knock.ELECTRON.1.1.0.exe"> <img src="https://img.shields.io/badge/Download-success">  </a>
 
 ## Preview
 
@@ -72,7 +72,11 @@ haz click en el color para abrir la web app
 <img src="https://user-images.githubusercontent.com/52190352/173207739-85d2551d-1854-4bf4-8049-8213466c37d5.png" width="700px"></img>
 <hr/>
 
+## raw links
 
+https://knockcompiler.web.app/
+https://knockcompiler.netlify.app
+https://github.com/scyth3-c/knock-cpp-online/releases/download/1.1.0/Knock.ELECTRON.1.1.0.exe
 
 ## Technical specifications
 
@@ -97,5 +101,5 @@ arch: x86
 
 ## extra
 
-define the input data is so importan!
+define the input data is so important!
 
