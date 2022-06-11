@@ -64,9 +64,13 @@ haz click en el color para abrir la web app
 ## Preview
 
 <img src="https://user-images.githubusercontent.com/52190352/173207734-b5e6f65d-8397-47c4-94d8-2923eaec7b75.png" width="700px"></img>
+<hr/>
 <img src="https://user-images.githubusercontent.com/52190352/173207736-35ba1c1b-903f-4d5a-bb13-d8187912212a.png" width="700px"></img>
+<hr/>
 <img src="https://user-images.githubusercontent.com/52190352/173207737-67aaa0c7-b21f-42e0-937a-209e50451940.png" width="700px"></img>
+<hr/>
 <img src="https://user-images.githubusercontent.com/52190352/173207739-85d2551d-1854-4bf4-8049-8213466c37d5.png" width="700px"></img>
+<hr/>
 
 
 
