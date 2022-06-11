@@ -30,6 +30,7 @@
       <b-button title="descarga el codigo escrito" @click="download" style="background: rgba(0,0,0,0);" class="mt-1 ml-2"
         ><b-icon icon="download" variant="white"></b-icon
       ></b-button>  
+
             <b-button style="background: rgba(0,0,0,0);" class="mt-1 float-right ml-1" v-b-modal.flags-modal title="banderas de compilacion para c++">
             flags
           </b-button>
@@ -51,6 +52,11 @@
               <themes/>
             </b-modal>
           </b-modal>
+          
+            <b-modal id="program-input">
+              <inputData/>
+            </b-modal>
+
       </b-container>
       <div class="row">
         <div class="rounded col-md-12 shadow-md mt-2">
@@ -72,15 +78,19 @@
           </span>
         </b-card>
       </div>
+      <b-button v-b-modal.program-input variant="primary" class="ml-1 float-right mt-1" >input <b-icon icon="input-cursor-text"></b-icon> </b-button>
       <b-button @click="compile" variant="success" class="ml-1 float-right mt-1">compilar</b-button>
       <b-button class="float-right mx-auto mt-1" variant="danger" @click="reset"><b-icon icon="arrow-counterclockwise"></b-icon></b-button>
     </b-card>
+
   </b-container>
 </template>
 <script>
 
 import notas from './extra/notas.vue'
 import themes from './extra/themes.vue'
+import inputData from './extra/program-input.vue'
+
 import {mapGetters} from 'vuex'
 import { codemirror } from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
@@ -101,6 +111,7 @@ export default {
   components: {
     notas,
     themes,
+    inputData,
     codemirror
   },
 
@@ -118,7 +129,7 @@ export default {
     },
 
     compile() {
-        this.$store.commit('compile');
+        this.$store.commit('compile', this);
     },
     state() {
       this.$store.commit('charge');
