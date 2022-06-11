@@ -51,20 +51,23 @@ the API is host in a free service because  the API has a time delay in activatin
 
 
 
-## open, run and test the app
+## USE WEB APP
 
-_click in the color badges_
+_click in the color!!_
 
-<a href="https://knockcompiler.netlify.app/"> <img src="https://img.shields.io/badge/ WEB NETLIFY HOST-blue"> </a>
-<a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/ WEB FIREBASE HOST-green"> </a>
-<a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download package-success">  </a>
+haz click en el color para abrir la web app
+
+<a href="https://knockcompiler.netlify.app/"> <img src="https://img.shields.io/badge/ WEB UNO-blue"> </a>
+<a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/ WEB DOS-green"> </a>
+<a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/notes/Knock.Compiler.Setup.0.1.6.exe"> <img src="https://img.shields.io/badge/Download-success">  </a>
 
 ## Preview
 
-![1](https://user-images.githubusercontent.com/52190352/152088973-dd839f1b-8b03-4209-a99c-157326a86df0.png)
-![2](https://user-images.githubusercontent.com/52190352/152088998-bacb9622-95e0-4ab3-b33e-5ff70e56c8b6.png)
-![3](https://user-images.githubusercontent.com/52190352/152089004-eaca947e-3d49-434b-94d1-eedcc5326ceb.png)
-![4](https://user-images.githubusercontent.com/52190352/152089008-e37f99df-e743-43a1-9bd1-95479d852ce9.png)
+<img src="https://user-images.githubusercontent.com/52190352/173207734-b5e6f65d-8397-47c4-94d8-2923eaec7b75.png" width="700px"></img>
+<img src="https://user-images.githubusercontent.com/52190352/173207736-35ba1c1b-903f-4d5a-bb13-d8187912212a.png" width="700px"></img>
+<img src="https://user-images.githubusercontent.com/52190352/173207737-67aaa0c7-b21f-42e0-937a-209e50451940.png" width="700px"></img>
+<img src="https://user-images.githubusercontent.com/52190352/173207739-85d2551d-1854-4bf4-8049-8213466c37d5.png" width="700px"></img>
+
 
 
 ## Technical specifications
@@ -88,15 +91,7 @@ arch: x86
 <p id="vote"></p>
 
 
-## Posibles Features
+## extra
 
-<strong> you can vote in this file, add X in [] or add the feature directly, or not :) </strong>
-
-- any lib how curl []
-- see a OpenGl GLUT visualizer []
-- map of memory affected []
-- make and cmake []
-- posibility of save source code [X] 
-- a C compiler switch button []
-
+define the input data is so importan!
 
