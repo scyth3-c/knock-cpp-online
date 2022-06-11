@@ -124,7 +124,7 @@ return 0;
       } else if (state.code == "" || state.code == " ") {
         return (state.output =
           "> no puedo compilar codigo si no hay codigo, ¿verdad?");
-      } else if(state.code.includes("cin") && state.inputData == "" || state.code.includes("getline") && state.inputData == "" || state.code.includes("ostream") && state.inputData == ""){
+      } else if(state.code.includes("cin") && state.inputData == "" || state.code.includes("getline") && state.inputData == "" || state.code.includes("&ostream") && state.inputData == ""){
         vm.$bvModal.show("program-input");
       } 
       else {
