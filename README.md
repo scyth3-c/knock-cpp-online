@@ -39,8 +39,6 @@ the API is host in a free service because  the API has a time delay in activatin
 
 [knock-cpp-API](https://github.com/scyth3-c/knock-cpp-API)
 
-[vote for feature](#vote)
-
 <div align="center">
      <h3>Client Tecnologies</h3>
    <img src="https://img.shields.io/static/v1?label=Node.js&message=v14.15.4&color=success"> 
