@@ -74,9 +74,9 @@ haz click en el color para abrir la web app
 
 ## raw links
 
-https://knockcompiler.web.app/
-https://knockcompiler.netlify.app
-https://github.com/scyth3-c/knock-cpp-online/releases/download/1.1.0/Knock.ELECTRON.1.1.0.exe
+- https://knockcompiler.web.app/
+- https://knockcompiler.netlify.app
+- https://github.com/scyth3-c/knock-cpp-online/releases/download/1.1.0/Knock.ELECTRON.1.1.0.exe
 
 ## Technical specifications
 
