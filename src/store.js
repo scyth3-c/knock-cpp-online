@@ -48,8 +48,11 @@ return 0;
     },
     cmOption: {
       lineNumbers: true,
+      smartIndent: true,
+      indentUnit: 2,
+      styleActiveLine: true,
       keyMap: "sublime",
-      mode: 'text/x-csrc',
+      mode: 'text/x-c++src',
       theme: localStorage.getItem('theme') || "yonce",
     },
     bytheme: 'yonce',
