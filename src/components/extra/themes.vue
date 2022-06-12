@@ -8,7 +8,6 @@
         <b-form-select-option value="monokai">monokai</b-form-select-option>
         <b-form-select-option value="yonce">yonce</b-form-select-option>
         <b-form-select-option value="base16-dark">dark</b-form-select-option>
-        <b-form-select-option value="default">light</b-form-select-option>
       </b-form-select>
 
     </b-card>

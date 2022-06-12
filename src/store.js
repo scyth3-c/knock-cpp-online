@@ -50,9 +50,9 @@ return 0;
       lineNumbers: true,
       keyMap: "sublime",
       mode: 'text/x-csrc',
-      theme: localStorage.getItem('theme') || "dracula",
+      theme: localStorage.getItem('theme') || "yonce",
     },
-    bytheme: 'dracula',
+    bytheme: 'yonce',
     //readonly
     time: {
       hour: new Date().getHours(),

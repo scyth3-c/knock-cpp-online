@@ -1,7 +1,7 @@
 <template>
     
 
-  <b-navbar toggeable="lg" class="navbar-horizontal" type="dark" variant="dark">
+  <b-navbar toggeable="lg" class="navbar-horizontal negro-apagado" type="dark">
     <!-- primera parte de la barra -->
    <b-navbar-nav>
     <b-navbar-brand>
@@ -32,3 +32,10 @@ export default {
     }
 }
 </script>
+
+
+<style scoped>
+.negro-apagado {
+  background-color: #121212;
+}
+</style>
