@@ -6,7 +6,7 @@
     >
       <b-container style="display:inline;">
       <b-form-select
-        class="text-center mt-1 text-white col-sm-2 font-weight-bold"
+        class="text-center mt-1 text-secondary col-sm-2 font-weight-bold"
         v-model="standar"
         style="background: rgba(0,0,0,0);"
         title="el estandar con el que se compilara c++"
@@ -17,7 +17,7 @@
         <b-form-select-option value="c++2a">c++2a</b-form-select-option>
       </b-form-select>
         <b-form-select
-        class="ml-3 mt-1 text-center text-white col-md-1 font-weight-bold"
+        class="ml-3 mt-1 text-center text-secondary col-md-1 font-weight-bold"
         v-model="optimizar"
         style="background: rgba(0,0,0,0);"
         title="el nivel de optimizacion a la hora de compilar, esto se vera en el codigo ensamblador"
