@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-
+import Editor from "./components/editor.vue";
+import Tab from "./components/extra/tabbar.vue";
 
 Vue.use(Vuex);
 
@@ -12,25 +13,65 @@ export default new Vuex.Store({
     paypal: "https://www.paypal.com/paypalme/bohorquezrojas17",
     github: "https://github.com/scyth3-c",
 
+    actualCodeSpace: 0,
     standar: "c++11",
-    code: `#include <iostream>
-
-int main() {
-     
-      
-  
-return 0;
-}`,
     buffer: "1",
     output: "",
     temp: "",
     optimizar: 1,
     inputData: "",
-   
-     // extra flags
+    mode: 0,
+    code_build: "",
 
-     cxxflags: "",
+    headers: "iostream string",
+    templates: [
+      {
+        code: `#include <iostream>
 
+
+int main(int argc, char *argv[])
+{
+
+
+  return 0;
+}        `,
+        files: `#include <iostream>
+
+
+int main(int argc, char *argv[]) {
+
+
+
+  return 0:
+}
+
+      `,
+      },
+
+      {
+        code: `int main(int argc, char *argv[]) {
+
+  //nosotros  nos encargamos de las librerias
+
+  return 0;
+}`,
+
+        files: `class MyClass {
+  private:
+    int foo{};
+
+  public:
+    MyClass(int _foo) : foo(std::move(_foo)) {}
+
+};
+
+`,
+      },
+    ],
+
+    // extra flags
+
+    cxxflags: "",
 
     // extra: notes
     notes: [],
@@ -46,16 +87,37 @@ return 0;
       conten: "",
       author: localStorage.getItem("inited"),
     },
+
+    //editor
+    codeSpaces: [
+      {
+        id: 0,
+        visible: true,
+        code: `#include <iostream>
+
+int main() {
+
+
+        
+  return 0;
+}`,
+        deleted: false,
+      },
+    ],
+
+    saveThis: this,
+    baseCanvasthis: this,
+    ids: 0,
     cmOption: {
       lineNumbers: true,
       smartIndent: true,
       indentUnit: 2,
       styleActiveLine: true,
       keyMap: "sublime",
-      mode: 'text/x-c++src',
-      theme: localStorage.getItem('theme') || "yonce",
+      mode: "text/x-c++src",
+      theme: localStorage.getItem("theme") || "yonce",
     },
-    bytheme: 'yonce',
+    bytheme: "yonce",
     //readonly
     time: {
       hour: new Date().getHours(),
@@ -68,13 +130,18 @@ return 0;
     field: ["nombre"],
   },
   mutations: {
+
+    
+    /**
+     * It's a switch statement that takes a payload and a type, and depending on the type, it assigns
+     * the payload to a variable.
+     * @param state - The state object
+     * @param payload - {
+     */
     superUpdate(state, payload) {
       switch (payload.type) {
         case "standar":
           state.standar = payload.data;
-          break;
-        case "code":
-          state.code = payload.data;
           break;
         case "buffer":
           state.buffer = payload.data;
@@ -88,17 +155,25 @@ return 0;
         case "optimizar":
           state.optimizar = payload.data;
           break;
-        case "flags": 
-          if(payload.data.includes("-")) {
-          state.cxxflags = payload.data;
+        case "flags":
+          if (payload.data.includes("-")) {
+            state.cxxflags = payload.data;
           } else {
             state.cxxflags = "";
           }
-        break;
+          break;
       }
     },
 
-    superNoteUpdate(state, payload) {
+
+
+   /**
+    * It's a function that takes two parameters, state and payload, and then it uses a switch statement
+    * to update the state based on the payload.type.
+    * @param state - the state of the store
+    * @param payload - {type: "nuevaNota", data: "nuevaNota"}
+    */
+     superNoteUpdate(state, payload) {
       switch (payload.type) {
         case "nuevaNota":
           state.nuevaNota = payload.data;
@@ -121,73 +196,48 @@ return 0;
       }
     },
 
-    async compile(state, vm) {
-      if (state.code == state.buffer) {
-        return (state.output = "> ya compilado, resultado: " + state.temp);
-      } else if (state.code == "" || state.code == " ") {
-        return (state.output =
-          "> no puedo compilar codigo si no hay codigo, ¿verdad?");
-      } else if(state.code.includes("cin") && state.inputData == "" || state.code.includes("getline") && state.inputData == "" || state.code.includes("&ostream") && state.inputData == ""){
-        vm.$bvModal.show("program-input");
-      } 
-      else {
-        state.output = "compilando...";
-        state.buffer = state.code;
-        const res = await axios.post(`${state.API}addon/compile`, state.code, {
-          headers: {
-            "Content-Type": "text/plain",
-            title: `temp_file_${state.seed}_${(state.time.hour,
-            state.time.min,
-            state.time.sec)}`,
-            standar: state.standar,
-            o: state.optimizar,
-            flags: state.cxxflags,
-            data: state.inputData
-          },
-        });
-        state.temp = res.data;
-        state.output = "> " + res.data;
-        return res.data;
-      }
+    /**
+     * It sends a POST request to a server with the source code, and the server compiles it and returns
+     * the output.
+     * </code>
+     * @param state - is the vuex state
+     * @param source_code - the code to be compiled
+     * @returns The return value is the response data from the server.
+     */
+    async compileCore(state, source_code) {
+      const res = await axios.post(`${state.API}addon/compile`, source_code, {
+        headers: {
+          "Content-Type": "text/plain",
+          title: `temp_file_${state.seed}_${
+            (state.time.hour, state.time.min, state.time.sec)
+          }`,
+          standar: state.standar,
+          o: state.optimizar,
+          flags: state.cxxflags,
+          data: state.inputData,
+        },
+      });
+      state.temp = res.data;
+      state.output = "> " + res.data;
+      return res.data;
     },
 
-    async charge(state) {
-      await axios(`${state.API}addon`);
-    },
 
-    async download(state) {
-      if (state.code === "" || state.code === " ") {
-        return (state.code = "> codigo vacio! (empty)");
-      }
+    /**
+     * It sends a POST request to the server with the source code, and then the server returns a file
+     * with the assembly code.
+     * </code>
+     * @param state - is the state of the vuex store
+     * @param source_code - the code that the user writes in the editor
+     */
+    async assemblyCore(state, source_code) {
       await axios
-        .post(`${state.API}addon/download`, state.code, {
+        .post(`${state.API}addon/assembly`, source_code, {
           headers: {
             "Content-Type": "text/plain",
-            title: `temp_file_${state.seed}_${(state.time.hour,
-            state.time.min,
-            state.time.sec)}`,
-          },
-        })
-        .then(async (res) => {
-          const url = window.URL.createObjectURL(new Blob([res.data]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", "main.cpp");
-          link.click();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
-    async getAssembly(state) {
-      await axios
-        .post(`${state.API}addon/assembly`, state.code, {
-          headers: {
-            "Content-Type": "text/plain",
-            title: `temp_file_${state.seed}_${(state.time.hour,
-            state.time.min,
-            state.time.sec)}`,
+            title: `temp_file_${state.seed}_${
+              (state.time.hour, state.time.min, state.time.sec)
+            }`,
             standar: state.standar,
             o: state.optimizar,
           },
@@ -204,17 +254,92 @@ return 0;
         });
     },
 
+    /**
+     * The function charge() is an asynchronous function that uses the axios library to make a GET
+     * request to the API endpoint specified in the state object.
+     * @param state - The state object of the Vuex store.
+     */
+    async charge(state) {
+      await axios(`${state.API}addon`);
+    },
+
+
+
+
+    /**
+     * It sends a POST request to the server with the code as the body, and the server returns a file
+     * with the code inside.
+     * </code>
+     * @param state - the state of the vuex store
+     * @returns The code is being returned.
+     */
+    async downloadCore(state, source_code) {
+      await axios
+        .post(`${state.API}addon/download`, source_code, {
+          headers: {
+            "Content-Type": "text/plain",
+            title: `temp_file_${state.seed}_${
+              (state.time.hour, state.time.min, state.time.sec)
+            }`,
+          },
+        })
+        .then(async (res) => {
+          const url = window.URL.createObjectURL(new Blob([res.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "main.cpp");
+          link.click();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+
+
+
+    /**
+     * It sends a POST request to the server with the code, and the server returns a file with the
+     * assembly code.
+     * </code>
+     * @param state - the state of the vuex store
+     */
+
+
+
+   /**
+    * If the state.nombre is not empty, then the notesSeed is set to the state.nombre plus the
+    * state.seed. Then the localStorage is set to the inited value of the notesSeed.
+    * @param state - the state object
+    */
     saveme(state) {
       if (state.nombre != "") {
         const notesSeed = state.nombre + state.seed;
         localStorage.setItem("inited", notesSeed);
       }
     },
+
+
+
+   /**
+    * It's an async function that uses axios to get data from an API and then sets the state of the
+    * notes property to the data returned from the API.
+    * @param state - The state object
+    */
     async chargeNotes(state) {
       const response = await axios.get(`${state.API}notes/recollector`);
       state.notes = response.data;
     },
 
+
+
+
+    /**
+     * It sends a POST request to the server with the data from the state.nuevaNota object.
+     * </code>
+     * @param state - The state object
+     * @param vm - is the Vue instance
+     */
     async sendNote(state, vm) {
       if (state.nuevaNota.nombre != "" && state.nuevaNota.conten != "") {
         try {
@@ -235,6 +360,13 @@ return 0;
       }
     },
 
+
+
+    /**
+     * It gets a note from the database and then shows it in a modal.
+     * @param state - The Vuex state object.
+     * @param payload - {
+     */
     async showNote(state, payload) {
       const nota = await axios.get(`${state.API}notes/show?id=${payload.id}`);
       state.outputNote.nombre = nota.data.nombre;
@@ -242,37 +374,308 @@ return 0;
       payload.vm.$bvModal.show("notas-show");
     },
 
+
+
+
+    /**
+     * I'm trying to delete a note from the database and then refresh the modal that contains the list
+     * of notes.
+     * </code>
+     * @param state - The state object
+     * @param payload - {
+     */
     async deleteNote(state, payload) {
       await axios.delete(`${state.API}notes/delete?id=${payload.id}`);
       payload.vm.$bvModal.hide("notas-modal");
       payload.vm.$bvModal.show("notas-modal");
     },
 
-    changeTheme(state,  payload) {
+
+
+
+   /**
+    * ChangeTheme(state, payload) {
+    *       state.cmOption.theme = payload.data;
+    *       state.bytheme = payload.data;
+    *       payload.vm.();
+    *     }
+    * </code>
+    * @param state - the state object
+    * @param payload - {
+    */
+    changeTheme(state, payload) {
       state.cmOption.theme = payload.data;
       state.bytheme = payload.data;
       payload.vm.$forceUpdate();
     },
 
+
+
+    /**
+     * It takes the state and payload as arguments and sets the state.inputData to the payload.data.
+     * @param state - The state object
+     * @param payload - The data that is passed to the mutation.
+     */
     setInputData(state, payload) {
       state.inputData = payload.data;
+    },
+
+
+
+
+    /**
+     * It takes the id of the tab clicked, replaces the "tab_id" part of the id with an empty string,
+     * then parses the remaining number into an integer. Then it loops through the array of code spaces
+     * and sets all of them to invisible. Then it sets the code space with the index of the number
+     * parsed from the id to visible. Finally, it sets the actualCodeSpace to the index of the code
+     * space that was just set to visible.
+     * @param state - the state of the store
+     * @param payload - {id: "tab_id0", name: "Tab 1"}
+     */
+    setSpace(state, payload) {
+      let num = payload.id.replace("tab_id", "");
+      let it = parseInt(num);
+      state.codeSpaces.map((c) => (c.visible = false));
+      state.codeSpaces[it].visible = !state.codeSpaces[it].visible;
+      state.actualCodeSpace = it;
+    },
+
+
+
+   /**
+    * It adds a new object to the array codeSpaces.
+    * @param state - the state object
+    */
+    addSpaceArray(state) {
+      state.codeSpaces.push({
+        id: state.ids,
+        visible: false,
+        code: state.templates[state.mode].files,
+        deleted: false,
+      });
+    },
+
+
+
+
+
+   /**
+    * It creates a new div element, appends it to the DOM, and then mounts a new Vue component to that
+    * div.
+    * </code>
+    * @param state - the state of the vuex store
+    * @param id - the id of the editor
+    */
+    addSpaceEditor(state, id) {
+      let files = document.querySelector("#files");
+
+      let space_node = document.createElement("div");
+      space_node.id = "file_id" + id;
+      files.appendChild(space_node);
+
+      let editorComp = Vue.extend(Editor);
+       new editorComp({
+        propsData: {
+          ids: `editor:${id}`,
+          options: state.cmOption,
+        },
+      }).$mount("#file_id" + id);
+    },
+
+
+
+
+
+    /**
+     * It creates a new div element, appends it to the file-list div, and then creates a new Vue
+     * component and mounts it to the newly created div.
+     * @param state - the state object
+     * @param id - the id of the tab
+     */
+    addTabSpace(state, id) {
+      let list = document.querySelector("#file-list");
+
+      let tab_node = document.createElement("div");
+      tab_node.id = "tab_id" + id;
+      list.appendChild(tab_node);
+
+      let buttonComp = Vue.extend(Tab);
+       new buttonComp({
+        propsData: {
+          id: "tab_id" + state.ids,
+        },
+      }).$mount("#tab_id" + id);
+    },
+    
+
+
+    /**
+     * It deletes a tab and its corresponding editor.
+     * @param state - the state of the store
+     * @param payload - {
+     */
+    deleteSpace(state, payload) {
+      let id = payload.id;
+      let numero = id.replace("tab_id", "");
+      let id_editor = "editor:" + parseInt(numero);
+
+      let target = document.getElementById(id);
+      let editor = document.getElementById(id_editor);
+
+      if (target) {
+        document.getElementById("file-list").removeChild(target);
+      }
+      if (editor) {
+        document.getElementById("files").removeChild(editor);
+      }
+
+      state.codeSpaces[parseInt(numero)].deleted = true;
+      setTimeout(() => {
+        document.querySelector("#tab_id0").click();
+      }, 20);
+    },
+
+
+
+
+    /**
+     * It changes the mode of the editor, and then creates a new space
+     * @param state - the state object
+     */
+    changeMode(state) {
+      if (state.mode === 1) state.mode = 0;
+      else state.mode = 1;
+      state.codeSpaces[0].code = state.templates[state.mode].code;
+      setTimeout(() => {
+        document.getElementById("newspace-button").click();
+      }, 10);
+    },
+
+    
+    /**
+     * It takes the headers and code from the state and puts them together in a string
+     * @param state - the state of the application
+     */
+    code_builder(state) {
+      
+      let splitHeaders = state.headers.split(" ");
+      let list = "";
+
+      splitHeaders.forEach(function (H) {
+        list += `#include <${H}>\n`;
+      });
+
+      let totalCode = "";
+      totalCode += list;
+
+      state.codeSpaces.forEach(function (C) {
+        if (C.deleted === false && C.id !== 0) {
+          totalCode += C.code;
+        }
+      });
+      totalCode += state.codeSpaces[0].code;
+      state.code_build = totalCode;
     }
+
+
 
 
   },
 
-
-
-
   actions: {
+
+    /**
+     * It compiles the code in the editor
+     * @returns The return is the output of the program.
+     */
+    compile({ state, commit }, { vm }) {
+      let code = state.codeSpaces[state.actualCodeSpace].code;
+      if (code == state.buffer) {
+        return (state.output = "> ya compilado, resultado: " + state.temp);
+      } else if (code == "" || code == " ") {
+        return (state.output =
+          "> no puedo compilar codigo si no hay codigo, ¿verdad?");
+      } else if (
+        (code.includes("cin") && state.inputData == "") ||
+        (code.includes("getline") && state.inputData == "") ||
+        (code.includes("&ostream") && state.inputData == "")
+      ) {
+        vm.$bvModal.show("program-input");
+      } else {
+        //switch class or no
+        if (state.mode === 0) {
+          state.output = "compilando...";
+          state.buffer = code;
+          commit("compileCore", code);
+        } else {
+          commit('code_builder');
+          commit("compileCore", state.code_build);
+        }
+      }
+    },
+
+    /**
+     * It gets the code from the code space and assembles it
+     */
+    getAssembly({state, commit}) {
+
+      let code = state.codeSpaces[state.actualCodeSpace].code;
+
+      if(state.mode === 0) {
+        commit('assemblyCore', code)
+      } else {
+        commit('code_builder');
+        commit('assemblyCore', state.code_build);
+      }
+
+    },
+    
+   /**
+    * It downloads the code from the editor.
+    */
+    download({state, commit}){
+      let code = state.codeSpaces[state.actualCodeSpace].code;
+
+      if(state.mode === 0) {
+        commit('downloadCore', code)
+      } else {
+        commit('code_builder');
+        commit('downloadCore', state.code_build);
+      }
+    },
+
+    
+    /**
+     * I'm trying to close a modal after a user clicks a button.
+     * </code>
+     */
     saveme({ commit }, { vm }) {
       commit("saveme");
       vm.$bvModal.hide("notas-modal");
       commit("chargeNotes");
     },
+
+
+    /**
+     * I'm trying to save the vue instance of the component that called the function.
+     * </code>
+     */
+    newSpace({ commit, state }, { vm }) {
+      state.ids = state.ids + 1;
+      let id = state.ids;
+      commit("addTabSpace", id);
+      commit("addSpaceArray", id);
+      commit("addSpaceEditor", id);
+      state.saveThis = vm;
+    },
   },
 
 
+
+
+  /*
+    getters
+  */
 
   getters: {
     cmOption(state) {
@@ -293,5 +696,11 @@ return 0;
     field(state) {
       return state.field;
     },
-  }
+    codeSpaces(state) {
+      return state.codeSpaces;
+    },
+    mode(state) {
+      return state.mode;
+    },
+  },
 });
