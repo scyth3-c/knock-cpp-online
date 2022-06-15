@@ -22,9 +22,17 @@
 
 <div align="center">
  
- <h1>KNOCK!</h1>
+ <h1>KNOCK 2.0!! </h1>
  
 </div>
+
+## new
+
+- multi-file support, connected or separate sources
+- the multi file works in assembler and download funcs, the code is assembled
+- changes in the icons and modal views
+- change modals theme
+- add the #include function in class mode
 
 
 ## About
