@@ -338,7 +338,7 @@ export default {
 }
 
 .classmode {
-  width: 4%;
+  width: 5%;
   height: 28px;
   border-radius: 4px;
   background: transparent;
