@@ -31,7 +31,11 @@
  
  the knock web compiler
 
-_a compact App multi-platform to compile c++ (web-windows-linux-mac)!_
+_a compact App multi-platform to compile c++_
+
+### next feature
+
+ - **multiple files**
 
 <br/>
 
