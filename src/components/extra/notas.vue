@@ -12,14 +12,19 @@
       <b-badge variant="dark">aqui apareceran tus notas</b-badge>
       <b-card
         class="rounded"
-        style="min-height: 200px; max-height: 200px; overflow:auto; border: none;"
+        style="
+          min-height: 200px;
+          max-height: 200px;
+          overflow: auto;
+          border: none;
+        "
       >
         <b-table hover :items="filterData" :fields="field">
           <template #cell(nombre)="data">
             <button
               class="btn btn-large btn-primary"
               @click="showNote(data.item._id)"
-              style="min-width: 150px;"
+              style="min-width: 150px"
             >
               {{ data.value }}
             </button>
