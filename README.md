@@ -41,9 +41,6 @@
 
 _a compact App multi-platform to compile c++_
 
-### next feature
-
- - **multiple files**
 
 <br/>
 
@@ -99,6 +96,13 @@ haz click en el color para abrir la web app
 - https://knockcompiler.web.app/
 - https://knockcompiler.netlify.app
 - https://github.com/scyth3-c/knock-cpp-online/releases/download/1.1.0/Knock.ELECTRON.1.1.0.exe
+
+
+
+## a litte bit of information
+
+well... i have no idea if i'm going to set up a decent host for this
+
 
 ## Technical specifications
 
