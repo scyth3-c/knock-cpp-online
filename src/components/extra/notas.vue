@@ -2,8 +2,8 @@
   <b-container>
     <b-card v-if="init == false">
       <b-badge variant="danger">Hola! para inicia dime tu nombre</b-badge>
-      <b-input class="mt-2" v-model="nombre"></b-input>
-      <b-button class="btn-sm mt-2" variant="primary" @click="saveme"
+      <b-input title="escribe tu nombre aqui" class="mt-2" v-model="nombre"></b-input>
+      <b-button title="guardar los datos" class="btn-sm mt-2" variant="primary" @click="saveme"
         >guardame</b-button
       >
     </b-card>
@@ -22,6 +22,7 @@
         <b-table hover :items="filterData" :fields="field">
           <template #cell(nombre)="data">
             <button
+            title="cuerpo de nota"
               class="btn btn-large btn-primary"
               @click="showNote(data.item._id)"
               style="min-width: 150px"
@@ -29,6 +30,7 @@
               {{ data.value }}
             </button>
             <b-button
+             title="borrar nota"
               class="btn-sm"
               variant="white"
               @click="deleteNote(data.item._id)"
@@ -39,12 +41,13 @@
       </b-card>
 
       <b-button
+       title="cerrar modal"
         class="btn-sm ml-2"
         @click="$bvModal.hide('notas-modal')"
         variant="secondary"
         >cerrar</b-button
       >
-      <b-button variant="success" class="ml-2 btn-sm" v-b-modal.add-note
+      <b-button title="agregar notas" variant="success" class="ml-2 btn-sm" v-b-modal.add-note
         >agregar</b-button
       >
       <b-modal id="add-note" title="extra" @ok="sendNote">
