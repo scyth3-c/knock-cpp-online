@@ -28,12 +28,15 @@ export default new Vuex.Store({
     templates: [
       {
         code: `#include <iostream>
+
 int main(int argc, char *argv[])
 {
   return 0;
 }        `,
         files: `#include <iostream>
+
 int main(int argc, char *argv[]) {
+
   return 0:
 }
       `,
@@ -41,7 +44,9 @@ int main(int argc, char *argv[]) {
 
       {
         code: `int main(int argc, char *argv[]) {
+
   //nosotros  nos encargamos de las librerias
+  
   return 0;
 }`,
 

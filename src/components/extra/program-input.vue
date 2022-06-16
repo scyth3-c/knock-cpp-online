@@ -7,6 +7,7 @@
       >actual input data: [ {{ setInput }} ]</b-badge
     >
     <b-input
+      title="establece la entrada del programa"
       v-model="setInput"
       class="mt-2"
       placeholder="10 kevin 99"

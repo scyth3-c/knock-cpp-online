@@ -1,7 +1,7 @@
 <template>
   <button :id="id" @click="changeTab" class="ml-2 tabs">
-    <b-icon icon="file-code"></b-icon>
-    <b-icon @click="delspace()" scale="1" variant="white" icon="x"></b-icon>
+    <b-icon title="agrega una tab" icon="file-code"></b-icon>
+    <b-icon title="cierra la tab" @click="delspace()" scale="1" variant="white" icon="x"></b-icon>
   </button>
 </template>
 
