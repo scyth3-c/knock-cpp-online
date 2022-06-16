@@ -22,49 +22,35 @@ export default new Vuex.Store({
     inputData: "",
     mode: 0,
     code_build: "",
+    direct_msg: "",
 
     headers: "iostream string",
     templates: [
       {
         code: `#include <iostream>
-
-
 int main(int argc, char *argv[])
 {
-
-
   return 0;
 }        `,
         files: `#include <iostream>
-
-
 int main(int argc, char *argv[]) {
-
-
-
   return 0:
 }
-
       `,
       },
 
       {
         code: `int main(int argc, char *argv[]) {
-
   //nosotros  nos encargamos de las librerias
-
   return 0;
 }`,
 
         files: `class MyClass {
   private:
     int foo{};
-
   public:
     MyClass(int _foo) : foo(std::move(_foo)) {}
-
 };
-
 `,
       },
     ],
@@ -94,10 +80,7 @@ int main(int argc, char *argv[]) {
         id: 0,
         visible: true,
         code: `#include <iostream>
-
 int main() {
-
-
         
   return 0;
 }`,
@@ -130,8 +113,6 @@ int main() {
     field: ["nombre"],
   },
   mutations: {
-
-    
     /**
      * It's a switch statement that takes a payload and a type, and depending on the type, it assigns
      * the payload to a variable.
@@ -165,15 +146,13 @@ int main() {
       }
     },
 
-
-
-   /**
-    * It's a function that takes two parameters, state and payload, and then it uses a switch statement
-    * to update the state based on the payload.type.
-    * @param state - the state of the store
-    * @param payload - {type: "nuevaNota", data: "nuevaNota"}
-    */
-     superNoteUpdate(state, payload) {
+    /**
+     * It's a function that takes two parameters, state and payload, and then it uses a switch statement
+     * to update the state based on the payload.type.
+     * @param state - the state of the store
+     * @param payload - {type: "nuevaNota", data: "nuevaNota"}
+     */
+    superNoteUpdate(state, payload) {
       switch (payload.type) {
         case "nuevaNota":
           state.nuevaNota = payload.data;
@@ -222,7 +201,6 @@ int main() {
       return res.data;
     },
 
-
     /**
      * It sends a POST request to the server with the source code, and then the server returns a file
      * with the assembly code.
@@ -263,9 +241,6 @@ int main() {
       await axios(`${state.API}addon`);
     },
 
-
-
-
     /**
      * It sends a POST request to the server with the code as the body, and the server returns a file
      * with the code inside.
@@ -295,9 +270,6 @@ int main() {
         });
     },
 
-
-
-
     /**
      * It sends a POST request to the server with the code, and the server returns a file with the
      * assembly code.
@@ -305,13 +277,11 @@ int main() {
      * @param state - the state of the vuex store
      */
 
-
-
-   /**
-    * If the state.nombre is not empty, then the notesSeed is set to the state.nombre plus the
-    * state.seed. Then the localStorage is set to the inited value of the notesSeed.
-    * @param state - the state object
-    */
+    /**
+     * If the state.nombre is not empty, then the notesSeed is set to the state.nombre plus the
+     * state.seed. Then the localStorage is set to the inited value of the notesSeed.
+     * @param state - the state object
+     */
     saveme(state) {
       if (state.nombre != "") {
         const notesSeed = state.nombre + state.seed;
@@ -319,20 +289,15 @@ int main() {
       }
     },
 
-
-
-   /**
-    * It's an async function that uses axios to get data from an API and then sets the state of the
-    * notes property to the data returned from the API.
-    * @param state - The state object
-    */
+    /**
+     * It's an async function that uses axios to get data from an API and then sets the state of the
+     * notes property to the data returned from the API.
+     * @param state - The state object
+     */
     async chargeNotes(state) {
       const response = await axios.get(`${state.API}notes/recollector`);
       state.notes = response.data;
     },
-
-
-
 
     /**
      * It sends a POST request to the server with the data from the state.nuevaNota object.
@@ -360,8 +325,6 @@ int main() {
       }
     },
 
-
-
     /**
      * It gets a note from the database and then shows it in a modal.
      * @param state - The Vuex state object.
@@ -373,9 +336,6 @@ int main() {
       state.outputNote.conten = nota.data.conten;
       payload.vm.$bvModal.show("notas-show");
     },
-
-
-
 
     /**
      * I'm trying to delete a note from the database and then refresh the modal that contains the list
@@ -390,26 +350,21 @@ int main() {
       payload.vm.$bvModal.show("notas-modal");
     },
 
-
-
-
-   /**
-    * ChangeTheme(state, payload) {
-    *       state.cmOption.theme = payload.data;
-    *       state.bytheme = payload.data;
-    *       payload.vm.();
-    *     }
-    * </code>
-    * @param state - the state object
-    * @param payload - {
-    */
+    /**
+     * ChangeTheme(state, payload) {
+     *       state.cmOption.theme = payload.data;
+     *       state.bytheme = payload.data;
+     *       payload.vm.();
+     *     }
+     * </code>
+     * @param state - the state object
+     * @param payload - {
+     */
     changeTheme(state, payload) {
       state.cmOption.theme = payload.data;
       state.bytheme = payload.data;
       payload.vm.$forceUpdate();
     },
-
-
 
     /**
      * It takes the state and payload as arguments and sets the state.inputData to the payload.data.
@@ -419,9 +374,6 @@ int main() {
     setInputData(state, payload) {
       state.inputData = payload.data;
     },
-
-
-
 
     /**
      * It takes the id of the tab clicked, replaces the "tab_id" part of the id with an empty string,
@@ -440,12 +392,10 @@ int main() {
       state.actualCodeSpace = it;
     },
 
-
-
-   /**
-    * It adds a new object to the array codeSpaces.
-    * @param state - the state object
-    */
+    /**
+     * It adds a new object to the array codeSpaces.
+     * @param state - the state object
+     */
     addSpaceArray(state) {
       state.codeSpaces.push({
         id: state.ids,
@@ -455,17 +405,13 @@ int main() {
       });
     },
 
-
-
-
-
-   /**
-    * It creates a new div element, appends it to the DOM, and then mounts a new Vue component to that
-    * div.
-    * </code>
-    * @param state - the state of the vuex store
-    * @param id - the id of the editor
-    */
+    /**
+     * It creates a new div element, appends it to the DOM, and then mounts a new Vue component to that
+     * div.
+     * </code>
+     * @param state - the state of the vuex store
+     * @param id - the id of the editor
+     */
     addSpaceEditor(state, id) {
       let files = document.querySelector("#files");
 
@@ -474,17 +420,13 @@ int main() {
       files.appendChild(space_node);
 
       let editorComp = Vue.extend(Editor);
-       new editorComp({
+      new editorComp({
         propsData: {
           ids: `editor:${id}`,
           options: state.cmOption,
         },
       }).$mount("#file_id" + id);
     },
-
-
-
-
 
     /**
      * It creates a new div element, appends it to the file-list div, and then creates a new Vue
@@ -500,14 +442,12 @@ int main() {
       list.appendChild(tab_node);
 
       let buttonComp = Vue.extend(Tab);
-       new buttonComp({
+      new buttonComp({
         propsData: {
           id: "tab_id" + state.ids,
         },
       }).$mount("#tab_id" + id);
     },
-    
-
 
     /**
      * It deletes a tab and its corresponding editor.
@@ -535,9 +475,6 @@ int main() {
       }, 20);
     },
 
-
-
-
     /**
      * It changes the mode of the editor, and then creates a new space
      * @param state - the state object
@@ -551,13 +488,11 @@ int main() {
       }, 10);
     },
 
-    
     /**
      * It takes the headers and code from the state and puts them together in a string
      * @param state - the state of the application
      */
     code_builder(state) {
-      
       let splitHeaders = state.headers.split(" ");
       let list = "";
 
@@ -575,15 +510,22 @@ int main() {
       });
       totalCode += state.codeSpaces[0].code;
       state.code_build = totalCode;
-    }
+    },
 
-
-
-
+    async sendMsg(state) {
+      let data = {
+        nombre: "mensaje directo",
+        conten: state.direct_msg,
+      };
+      await axios({
+        method: "POST",
+        url: `${state.API}notes/new`,
+        data: data,
+      });
+    },
   },
 
   actions: {
-
     /**
      * It compiles the code in the editor
      * @returns The return is the output of the program.
@@ -608,7 +550,7 @@ int main() {
           state.buffer = code;
           commit("compileCore", code);
         } else {
-          commit('code_builder');
+          commit("code_builder");
           commit("compileCore", state.code_build);
         }
       }
@@ -617,34 +559,31 @@ int main() {
     /**
      * It gets the code from the code space and assembles it
      */
-    getAssembly({state, commit}) {
-
+    getAssembly({ state, commit }) {
       let code = state.codeSpaces[state.actualCodeSpace].code;
 
-      if(state.mode === 0) {
-        commit('assemblyCore', code)
+      if (state.mode === 0) {
+        commit("assemblyCore", code);
       } else {
-        commit('code_builder');
-        commit('assemblyCore', state.code_build);
-      }
-
-    },
-    
-   /**
-    * It downloads the code from the editor.
-    */
-    download({state, commit}){
-      let code = state.codeSpaces[state.actualCodeSpace].code;
-
-      if(state.mode === 0) {
-        commit('downloadCore', code)
-      } else {
-        commit('code_builder');
-        commit('downloadCore', state.code_build);
+        commit("code_builder");
+        commit("assemblyCore", state.code_build);
       }
     },
 
-    
+    /**
+     * It downloads the code from the editor.
+     */
+    download({ state, commit }) {
+      let code = state.codeSpaces[state.actualCodeSpace].code;
+
+      if (state.mode === 0) {
+        commit("downloadCore", code);
+      } else {
+        commit("code_builder");
+        commit("downloadCore", state.code_build);
+      }
+    },
+
     /**
      * I'm trying to close a modal after a user clicks a button.
      * </code>
@@ -654,7 +593,6 @@ int main() {
       vm.$bvModal.hide("notas-modal");
       commit("chargeNotes");
     },
-
 
     /**
      * I'm trying to save the vue instance of the component that called the function.
@@ -669,9 +607,6 @@ int main() {
       state.saveThis = vm;
     },
   },
-
-
-
 
   /*
     getters

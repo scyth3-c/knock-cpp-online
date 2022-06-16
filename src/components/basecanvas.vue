@@ -1,9 +1,6 @@
 <template>
   <b-container>
-    <b-card
-      :class="bytheme"
-      class="dracula col-md-12 mb-3 w-100 mt-2 shadow-lg"
-    >
+    <b-card :class="bytheme" class="yonce col-md-12 mb-3 w-100 mt-2 shadow-lg">
       <b-container style="display: inline">
         <b-form-select
           class="text-center mt-1 text-secondary col-sm-2 font-weight-bold"
@@ -66,12 +63,21 @@
           <b-icon variant="white" icon="puzzle-fill"></b-icon>
         </b-button>
         <b-modal id="extra-modal" title="addons">
-          <b-button v-b-modal.notas-modal variant="dark">Notas</b-button>
+          <b-button
+            v-b-modal.notas-modal
+            title="mostrar panel de  notas"
+            variant="dark"
+            >Notas</b-button
+          >
           <b-modal id="notas-modal" hide-footer>
             <notas />
           </b-modal>
 
-          <b-button class="ml-1" v-b-modal.themes-modal variant="dark"
+          <b-button
+            title="mostrar lista de themas"
+            class="ml-1"
+            v-b-modal.themes-modal
+            variant="dark"
             >themes</b-button
           >
           <b-modal id="themes-modal">
@@ -91,11 +97,25 @@
       <div class="row">
         <div class="rounded col-md-12 shadow-md mt-2">
           <div id="file-list" class="files mb-3">
-            <button @click="changeMode" class="classmode">class</button>
-            <button class="classmode" id="newspace-button" @click="addSpace">
+
+            <button
+              title="cambiar a modo de clases"
+              @click="changeMode"
+              class="classmode"
+            >
+              {{getClassModeName}}
+            </button>
+
+            <button
+              title="añadir un nuevo archivo"
+              class="classmode"
+              id="newspace-button"
+              @click="addSpace"
+            >
               <b-icon variant="white" icon="file-earmark-plus"></b-icon>
             </button>
             <button
+              title="tab home"
               id="tab_id0"
               @click="setSpace({ id: 'tab_id0' })"
               class="tabs"
@@ -103,6 +123,8 @@
               <b-icon icon="house" variant="white"></b-icon>
             </button>
           </div>
+
+          <br v-if="local_widthMatch">
 
           <div id="files">
             <codemirror
@@ -135,22 +157,29 @@
         </b-card>
       </div>
       <b-button
+        title="establer entrada del programa"
         v-b-modal.program-input
         variant="primary"
         class="ml-1 float-right mt-1"
         >entrada <b-icon icon="input-cursor-text"></b-icon>
       </b-button>
       <b-button
+        id="establercer las librerias en el modo clasess"
         v-b-modal.headers
         class="float-right mt-1 ml-2"
         variant="secondary"
         v-if="mode"
         >#include</b-button
       >
-      <b-button @click="compile" variant="success" class="ml-1 float-right mt-1"
+      <b-button
+        title="compilar"
+        @click="compile"
+        variant="success"
+        class="ml-1 float-right mt-1"
         >compilar</b-button
       >
       <b-button
+        title="resetear la salida"
         class="float-right mx-auto mt-1 ml-1"
         variant="danger"
         @click="reset"
@@ -197,9 +226,26 @@ export default {
     });
   },
 
+  mounted() {
+    this.local_widthQuery.addEventListener('change',()=>{
+    this.local_widthMatch = this.local_widthQuery.matches;
+    });
+  },
+
+  data(){
+    const local_widthQuery = matchMedia("(min-width: 300px) and (max-width:  991px )") 
+   return {
+    local_class_mode_name: 'class mode ',
+    local_mode: 'off',
+    local_widthQuery: local_widthQuery,
+    local_widthMatch: local_widthQuery.matches
+   }
+  },
+
   methods: {
     changeMode() {
       this.$store.commit("changeMode");
+      this.local_mode = this.$store.state.mode ? 'on' : 'off';
     },
 
     setSpace(value) {
@@ -298,6 +344,9 @@ export default {
     bytheme() {
       return this.$store.state.bytheme;
     },
+    getClassModeName() {
+      return this.local_widthMatch ? '.h' : this.local_class_mode_name + this.local_mode;
+    }
   },
 };
 </script>
@@ -327,7 +376,7 @@ export default {
   width: 100%;
   height: 28px;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: auto;
 }
 .tabs {
   width: 10%;
@@ -339,7 +388,7 @@ export default {
 }
 
 .classmode {
-  width: 5%;
+  width: 13%;
   height: 28px;
   border-radius: 4px;
   background: transparent;
@@ -347,4 +396,7 @@ export default {
   color: white;
   margin-right: 10px;
 }
+
+
+
 </style>
