@@ -106,23 +106,31 @@ well... i have no idea if i'm going to set up a decent host for this
 
 ## Technical specifications
 
-<strong>standars</strong>
+### default
 
- - C++2a
- - C++11
- - C++14
- - C++17
- 
-<strong>O levels</strong>
+| standar          | O levels       | archs         |
+| :---             |     :---:      |          ---: |
+| c++11            |    O1          |   x86         |
 
-- O1
-- O2
-- O3
+### standars and levels
 
-<strong>assembly</strong>
+| standar          | O levels       |
+| :---             |     :---:      |
+| c++2a            |    O1          |
+| c++11            |    O2          |
+| c++14            |    O3          |
+| c++17            |                |
 
-arch: x86
-<p id="vote"></p>
+
+### actuals archs
+
+| archs            | 
+| :---             | 
+|  x86             |
+
+
+
+
 
 
 ## extra
