@@ -84,13 +84,16 @@
           <b-modal id="themes-modal">
             <themes />
           </b-modal>
-            <b-form-checkbox
+
+            <!-- <b-form-checkbox
              class="ml-1 mt-2"
             id="curlmode"
             v-model="usecurl"
             name="curlmode"
             value="on"
-            unchecked-value="off"> USE libcurl </b-form-checkbox>
+            unchecked-value="off"> USE libcurl </b-form-checkbox> -->
+
+            
         </b-modal>
 
         <b-modal id="program-input">
