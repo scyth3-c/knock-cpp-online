@@ -1,11 +1,11 @@
 <template>
-  <b-container>
-    <b-card :class="bytheme" class="yonce col-md-12 mb-3 w-100 mt-2 shadow-lg">
+  <div class="div-container">
+    <b-card :class="bytheme" class=" mb-3 shadow-lg">
       <b-container style="display: inline">
         <b-form-select
           class="text-center mt-1 text-secondary col-sm-2 font-weight-bold"
           v-model="standar"
-          style="background: rgba(0, 0, 0, 0)"
+          style="background: rgba(0, 0, 0, 0);"
           title="el estandar con el que se compilara c++"
         >
           <b-form-select-option value="c++11">c++11</b-form-select-option>
@@ -14,9 +14,10 @@
           <b-form-select-option value="c++2a">c++2a</b-form-select-option>
         </b-form-select>
         <b-form-select
+         variant="primary"
           class="ml-3 mt-1 text-center text-secondary col-md-1 font-weight-bold"
           v-model="optimizar"
-          style="background: rgba(0, 0, 0, 0)"
+          style="background: rgba(0, 0, 0, 0);"
           title="el nivel de optimizacion a la hora de compilar, esto se vera en el codigo ensamblador"
         >
           <b-form-select-option value="1">O1</b-form-select-option>
@@ -83,6 +84,13 @@
           <b-modal id="themes-modal">
             <themes />
           </b-modal>
+            <b-form-checkbox
+             class="ml-1 mt-2"
+            id="curlmode"
+            v-model="usecurl"
+            name="curlmode"
+            value="on"
+            unchecked-value="off"> USE libcurl </b-form-checkbox>
         </b-modal>
 
         <b-modal id="program-input">
@@ -92,16 +100,18 @@
         <b-modal id="headers">
           <headers />
         </b-modal>
+        
       </b-container>
 
-      <div class="row">
-        <div class="rounded col-md-12 shadow-md mt-2">
+      <div class="row w-100 body-tam" >
+        <div class="rounded col-md-12 shadow-md mt-2 editor-canva">
           <div id="file-list" class="files mb-3">
 
             <button
               title="cambiar a modo de clases"
               @click="changeMode"
               class="classmode"
+               style="border-color:#5bc0de;"
             >
               {{getClassModeName}}
             </button>
@@ -111,10 +121,12 @@
               class="classmode"
               id="newspace-button"
               @click="addSpace"
+              style="border-color:#5bc0de;"
             >
               <b-icon variant="white" icon="file-earmark-plus"></b-icon>
             </button>
             <button
+               style="border-color:#5bc0de;"
               title="tab home"
               id="tab_id0"
               @click="setSpace({ id: 'tab_id0' })"
@@ -136,6 +148,8 @@
             />
           </div>
         </div>
+       
+       <b-modal id="output-modal" hide-footer>
         <b-card
           class="w-100 mt-2"
           style="
@@ -151,15 +165,18 @@
             <b-icon icon="receipt-cutoff" variant="white"></b-icon>
           </b-badge>
           <br />
-          <span class="text-white" style="font-family: monospace">
+          <span class="text-dark" style="font-family: monospace">
             {{ output }}
           </span>
-        </b-card>
+        </b-card> 
+       </b-modal>
+
       </div>
       <b-button
         title="establer entrada del programa"
         v-b-modal.program-input
         variant="primary"
+        style="background: rgba(0, 0, 0, 0)"
         class="ml-1 float-right mt-1"
         >entrada <b-icon icon="input-cursor-text"></b-icon>
       </b-button>
@@ -168,6 +185,7 @@
         v-b-modal.headers
         class="float-right mt-1 ml-2"
         variant="secondary"
+        style="background: rgba(0, 0, 0, 0)"
         v-if="mode"
         >#include</b-button
       >
@@ -175,19 +193,22 @@
         title="compilar"
         @click="compile"
         variant="success"
+        style="background: rgba(0, 0, 0, 0)"
         class="ml-1 float-right mt-1"
+        v-b-modal.output-modal
         >compilar</b-button
       >
       <b-button
         title="resetear la salida"
         class="float-right mx-auto mt-1 ml-1"
+        style="background: rgba(0, 0, 0, 0)"
         variant="danger"
         @click="reset"
       >
         <b-icon icon="arrow-counterclockwise"></b-icon>
       </b-button>
     </b-card>
-  </b-container>
+  </div>
 </template>
 <script>
 import notas from "./extra/notas.vue";
@@ -199,6 +220,7 @@ import headers from "./extra/headers.vue";
 import { mapGetters } from "vuex";
 import { codemirror } from "vue-codemirror";
 import "codemirror/lib/codemirror.css";
+
 
 import "codemirror/theme/dracula.css";
 import "codemirror/theme/yonce.css";
@@ -331,6 +353,14 @@ export default {
         this.$store.commit("superUpdate", { type: "optimizar", data: value });
       },
     },
+    usecurl: {
+      get(){
+        return this.$store.state.usecurl;
+      },
+      set(value) {
+        this.$store.commit("superUpdate",{type: "curl", data: value});
+      }
+    },
 
     ids: {
       get() {
@@ -342,7 +372,7 @@ export default {
     },
 
     bytheme() {
-      return this.$store.state.bytheme;
+      return this.$store.getters.bytheme;
     },
     getClassModeName() {
       return this.local_widthMatch ? '.h' : this.local_class_mode_name + this.local_mode;
@@ -368,7 +398,6 @@ export default {
 .base16-dark {
   background: rgb(21, 21, 21);
 }
-
 .files {
   margin-top: 5px;
   margin-bottom: 50px;
@@ -376,7 +405,6 @@ export default {
   width: 100%;
   height: 28px;
   border-radius: 4px;
-  overflow: auto;
 }
 .tabs {
   width: 10%;
@@ -386,6 +414,7 @@ export default {
   border: 1px solid white;
   color: white;
 }
+
 
 .classmode {
   width: 13%;
@@ -397,6 +426,19 @@ export default {
   margin-right: 10px;
 }
 
+.div-container {
+  margin: 0 auto;
+  max-width: 1800px;
+}
+
+
+.body-tam {
+  height: 510px;
+}
+
+.editor-canva {
+  height: 490px;
+}
 
 
 </style>
