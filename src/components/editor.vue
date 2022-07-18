@@ -1,5 +1,5 @@
 <template>
-  <codemirror :id="ids" v-if="visible" v-model="model" :options="options" />
+  <codemirror class="CodeMirror" :id="ids" v-if="visible" v-model="model" :options="options" />
 </template>
 
 <script>
@@ -51,3 +51,8 @@ export default {
   },
 };
 </script>
+<style>
+.CodeMirror{
+  height: 430px;
+}
+</style>

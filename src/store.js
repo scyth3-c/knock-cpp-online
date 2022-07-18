@@ -25,6 +25,7 @@ export default new Vuex.Store({
     direct_msg: "",
 
     headers: "iostream string",
+    usecurl: "off",
     templates: [
       {
         code: `#include <iostream>
@@ -37,7 +38,7 @@ int main(int argc, char *argv[])
 
 int main(int argc, char *argv[]) {
 
-  return 0:
+  return 0;
 }
       `,
       },
@@ -97,6 +98,9 @@ int main() {
     baseCanvasthis: this,
     ids: 0,
     cmOption: {
+      lineWrapping: true,
+      lineWrapping: true,
+      autofocus: true,
       lineNumbers: true,
       smartIndent: true,
       indentUnit: 2,
@@ -140,6 +144,9 @@ int main() {
           break;
         case "optimizar":
           state.optimizar = payload.data;
+          break;
+        case "curl":
+          state.usecurl = payload.data;
           break;
         case "flags":
           if (payload.data.includes("-")) {
@@ -188,6 +195,7 @@ int main() {
      * @param source_code - the code to be compiled
      * @returns The return value is the response data from the server.
      */
+
     async compileCore(state, source_code) {
       const res = await axios.post(`${state.API}addon/compile`, source_code, {
         headers: {
@@ -199,6 +207,7 @@ int main() {
           o: state.optimizar,
           flags: state.cxxflags,
           data: state.inputData,
+          usecurl: state.usecurl
         },
       });
       state.temp = res.data;
@@ -642,5 +651,8 @@ int main() {
     mode(state) {
       return state.mode;
     },
+    bytheme(state){
+      return state.bytheme;
+    }
   },
 });
