@@ -212,7 +212,6 @@ int main() {
       });
       state.temp = res.data;
       state.output = "> " + res.data;
-      alert(state.usecurl);
       return res.data;
     },
 
