@@ -511,7 +511,7 @@ int main() {
       let list = "";
 
       splitHeaders.forEach(function (H) {
-        list += `#include <${H}>\n`;
+        list += `#include "${H}"\n`;
       });
 
       let totalCode = "";
@@ -565,6 +565,7 @@ int main() {
           commit("compileCore", code);
         } else {
           commit("code_builder");
+          state.output = "compilando...";
           commit("compileCore", state.code_build);
         }
       }
