@@ -25,6 +25,7 @@
           <b-form-select-option value="3">O3</b-form-select-option>
         </b-form-select>
         <b-button
+          :disabled="usecurl == 'on'"
           title="descarga el codigo assembly generado del codigo c++"
           @click="getAssembly"
           style="background: rgba(0, 0, 0, 0)"
@@ -41,6 +42,7 @@
         </b-button>
 
         <b-button
+          :disabled="usecurl == 'on'"
           style="background: rgba(0, 0, 0, 0)"
           class="mt-1 float-right ml-1"
           v-b-modal.flags-modal
@@ -85,14 +87,13 @@
             <themes />
           </b-modal>
 
-            <!-- <b-form-checkbox
+            <b-form-checkbox
              class="ml-1 mt-2"
             id="curlmode"
             v-model="usecurl"
             name="curlmode"
             value="on"
-            unchecked-value="off"> USE libcurl </b-form-checkbox> -->
-
+            unchecked-value="off"> USE libcurl </b-form-checkbox>
             
         </b-modal>
 
@@ -157,7 +158,7 @@
           class="w-100 mt-2"
           style="
             background: rgba(0, 0, 0, 0);
-            max-height: 120px;
+            max-height: 400px;
             min-height: 120px;
             overflow-y: auto;
             border: none;

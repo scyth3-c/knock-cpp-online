@@ -14,7 +14,7 @@ export default new Vuex.Store({
     github: "https://github.com/scyth3-c",
 
     actualCodeSpace: 0,
-    standar: "c++11",
+    standar: "c++17",
     buffer: "1",
     output: "",
     temp: "",
@@ -207,7 +207,7 @@ int main() {
           o: state.optimizar,
           flags: state.cxxflags,
           data: state.inputData,
-          usecurl: state.usecurl
+          curl: state.usecurl
         },
       });
       state.temp = res.data;
