@@ -76,7 +76,7 @@ haz click en el color para abrir la web app
 
 <a href="https://knockcompiler.netlify.app/"> <img src="https://img.shields.io/badge/ WEB UNO-blue"> </a>
 <a href="https://knockcompiler.web.app/"> <img src="https://img.shields.io/badge/ WEB DOS-green"> </a>
-<a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/1.1.0/Knock.ELECTRON.1.1.0.exe"> <img src="https://img.shields.io/badge/Download-success">  </a>
+<a href="https://github.com/scyth3-c/knock-cpp-online/releases/download/2.5/windows-electron-v2.5.0.exe"> <img src="https://img.shields.io/badge/Download-success">  </a>
 
 ## Preview
 
@@ -118,7 +118,7 @@ and here is a screenshot with the note from knocknotes
 
 - https://knockcompiler.web.app/
 - https://knockcompiler.netlify.app
-- https://github.com/scyth3-c/knock-cpp-online/releases/download/1.1.0/Knock.ELECTRON.1.1.0.exe
+- https://github.com/scyth3-c/knock-cpp-online/releases/download/2.5/windows-electron-v2.5.0.exe
 
 
 
