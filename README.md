@@ -22,11 +22,19 @@
 
 <div align="center">
  
- <h1>KNOCK 2.0!! </h1>
+ <h1>KNOCK 2.5 </h1>
  
 </div>
 
 ## new
+
+- support libcurl and use [scyth3-c/curl-http-wrapper](https://github.com/scyth3-c/curl-http-wrapper)
+- change code panel
+- change button theme
+- change output compile mode
+
+
+## previus
 
 - multi-file support, connected or separate sources
 - the multi file works in assembler and download funcs, the code is assembled
@@ -52,9 +60,9 @@ the API is host in a free service because  the API has a time delay in activatin
 
 <div align="center">
      <h3>Client Tecnologies</h3>
-   <img src="https://img.shields.io/static/v1?label=Node.js&message=v14.15.4&color=success"> 
-   <img src="https://img.shields.io/static/v1?label=Vue&message=^2.6.11&color=green">
-   <img src="https://img.shields.io/static/v1?label=Vuex&message=^3.6.2&color=brightgreen">
+   <img src="https://img.shields.io/static/v1?label=Node.js&message=v14.15.4&color=success"/> 
+   <img src="https://img.shields.io/static/v1?label=Vue&message=^2.6.11&color=green"/>
+   <img src="https://img.shields.io/static/v1?label=Vuex&message=^3.6.2&color=brightgreen"/>
 </div>
 
 
@@ -72,24 +80,39 @@ haz click en el color para abrir la web app
 
 ## Preview
 
-![class](https://user-images.githubusercontent.com/52190352/173716340-27082b00-c19b-4439-adc9-d96ecb045795.png)
+![uno](https://user-images.githubusercontent.com/52190352/179639473-83f4fa02-55a3-4e9d-824d-c566846096fd.png)
 
+## how to
+
+### in mode single file just add  &nbsp;  #include	&#60;http/veridic.hpp&#62;  
+ #### and active
+
+  <img src="https://user-images.githubusercontent.com/52190352/179639488-9897fc4f-6980-40d9-9127-3e13c3e6f841.png" widt="500px"/> 
+  
+  <hr/>
+  <br/>
+  <br/>
+
+## example
+### tasty note
  
- <hr/>
-
-![class_main](https://user-images.githubusercontent.com/52190352/173716349-89c57d11-44de-45f5-808e-5af0d99fbcbd.png)
-
-
-<hr/>
-
-![notes](https://user-images.githubusercontent.com/52190352/173716360-470fe255-f43e-4b71-a619-a1b5ccc3f2e1.png)
-
+ how to use http/veridic.hpp with class mode
+  
+  <img src="https://user-images.githubusercontent.com/52190352/179639692-d4ce67bd-475d-47d0-bf3b-26c696ae90a9.png" widt="800px"/>
+  <img src="https://user-images.githubusercontent.com/52190352/179639937-19a9a220-435d-4ea8-832f-32d755c22d30.png" widt="400px"/>
+  <img src="https://user-images.githubusercontent.com/52190352/179640267-26adb1e0-087c-4a86-9c6a-b034b4a7b7c7.png" widt="400px"/>
 
 <hr/>
 
-![input](https://user-images.githubusercontent.com/52190352/173716374-4d24d3af-b9ec-4bf9-b358-fa2d5e548c43.png)
+you can see this note "tomates" in [https://knockcompiler.web.app/](https://knocknotes.web.app/)
+and here is a screenshot with the note from knocknotes
+
+<hr/>
+
+![api](https://user-images.githubusercontent.com/52190352/179642907-5fdbb09e-bb55-4a63-b17f-7603db57a29c.png)
 
 
+<hr/>
 
 ## raw links
 
