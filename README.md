@@ -104,7 +104,7 @@ haz click en el color para abrir la web app
 
 <hr/>
 
-you can see this note "tomates" in [https://knockcompiler.web.app/](https://knocknotes.web.app/)
+you can see this note "tomates" in [KNOCK NOTES](https://knocknotes.web.app/)
 and here is a screenshot with the note from knocknotes
 
 <hr/>
