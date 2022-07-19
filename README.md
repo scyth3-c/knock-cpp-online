@@ -133,7 +133,7 @@ well... i have no idea if i'm going to set up a decent host for this
 
 | standar          | O levels       | archs         |
 | :---             |     :---:      |          ---: |
-| c++11            |    O1          |   x86         |
+| c++17            |    O1          |   x86         |
 
 ### standars and levels
 
