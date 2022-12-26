@@ -39,30 +39,23 @@
         >
           <b-icon icon="file-earmark-arrow-down"></b-icon>
         </b-button>
-
-       
-      
-
-
-        <b-modal id="program-input">
-          <inputData />
-        </b-modal>
-
-        <b-modal id="headers">
-          <headers />
-        </b-modal>
-        
-       
-        
+ 
       </b-container>
 
       </b-modal>
+      <b-modal hide-footer id="program-input">
+          <inputData />
+        </b-modal>
+
+        <b-modal hide-footer id="headers">
+          <headers />
+        </b-modal>
 
       <b-modal hide-footer   id="flags-modal" title="flags">
           <b-badge class="mb-1 bg-transparent text-dark"
             >e.g  &nbsp; -Wall -pedantic</b-badge
           >
-          <b-input placeholder="-some" class="mb-4" v-model="flags"></b-input>
+         <b-input placeholder="-some" class="mb-4" v-model="flags"></b-input>
         </b-modal>
 
       <b-modal hide-footer id="extra-modal" title="addons">
@@ -319,6 +312,7 @@ export default {
 
   computed: {
     ...mapGetters(["time", "seed", "cmOption", "codeSpaces", "mode"]),
+
 
     flags: {
       get() {

@@ -1,10 +1,10 @@
 <template>
-  <b-card>
-    <b-badge variant="dark" class="p-2"
+  <div>
+    <b-badge variant="transparent" class="p-2 text-dark"
       >Write the input required in the code
-    </b-badge>
+    </b-badge> <br>
     <b-badge variant="transparent" class="my-2"
-      >actual input data: [ {{ setInput }} ]</b-badge
+      >actual input data: {{ getIn }}</b-badge
     >
     <b-input
       title="establece la entrada del programa"
@@ -12,7 +12,7 @@
       class="mt-2"
       placeholder="10 kevin 99"
     ></b-input>
-  </b-card>
+  </div>
 </template>
 
 <script>
@@ -20,6 +20,11 @@ export default {
   name: "program-input",
 
   computed: {
+
+    getIn(){
+      return this.setInput.split(" ");
+    },
+
     setInput: {
       get() {
         return this.$store.state.inputData;
