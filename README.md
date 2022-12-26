@@ -13,7 +13,7 @@
 
 <div align="center">  
 <code>
-  <img src="https://i.imgur.com/cac0UeP.png" width="100px">
+  <img src="https://user-images.githubusercontent.com/52190352/209495356-97bc767b-ba87-4614-8baa-38dbe6dfe30f.png" width="150px">
 </code>
 </div>
 
@@ -22,7 +22,8 @@
 
 <div align="center">
  
- <h1>KNOCK 2.5 </h1>
+ <h1>KNOCK 2.5.1 </h1>
+  https://knockcompiler.netlify.app
  
 </div>
 
@@ -80,14 +81,16 @@ haz click en el color para abrir la web app
 
 ## Preview
 
-![uno](https://user-images.githubusercontent.com/52190352/179639473-83f4fa02-55a3-4e9d-824d-c566846096fd.png)
+![one](https://user-images.githubusercontent.com/52190352/209495925-48dab5f3-052e-45a4-8d94-78501d044188.png)
+
 
 ## how to
 
 ### in mode single file just add  &nbsp;  #include	&#60;http/veridic.hpp&#62;  
  #### and active
+ 
 
-  <img src="https://user-images.githubusercontent.com/52190352/179639488-9897fc4f-6980-40d9-9127-3e13c3e6f841.png" widt="500px"/> 
+  <img src="https://user-images.githubusercontent.com/52190352/209495970-ca531fed-c5e4-4660-bd33-d30e49bfba24.png" widt="500px"/> 
   
   <hr/>
   <br/>
@@ -96,7 +99,7 @@ haz click en el color para abrir la web app
 ## example
 ### tasty note
  
- how to use http/veridic.hpp with class mode
+ how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
   
   <img src="https://user-images.githubusercontent.com/52190352/179639692-d4ce67bd-475d-47d0-bf3b-26c696ae90a9.png" widt="800px"/>
   <img src="https://user-images.githubusercontent.com/52190352/179639937-19a9a220-435d-4ea8-832f-32d755c22d30.png" widt="400px"/>
