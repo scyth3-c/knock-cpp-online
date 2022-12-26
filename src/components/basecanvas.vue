@@ -1,11 +1,13 @@
 <template>
   <div class="div-container">
-    <b-card :class="bytheme" class=" mb-3 shadow-lg">
-      <b-container style="display: inline">
+    <b-card :class="bytheme" class=" mb-3 shadow-lg cnbase">
+      
+      <b-modal id="options" hide-footer>
+        <b-container class="d-inline">
         <b-form-select
-          class="text-center mt-1 text-secondary col-sm-2 font-weight-bold"
+          class="text-center mt-1 text-dark col-sm-3 font-weight-bold"
           v-model="standar"
-          style="background: rgba(0, 0, 0, 0);"
+        
           title="el estandar con el que se compilara c++"
         >
           <b-form-select-option value="c++11">c++11</b-form-select-option>
@@ -15,9 +17,8 @@
         </b-form-select>
         <b-form-select
          variant="primary"
-          class="ml-3 mt-1 text-center text-secondary col-md-1 font-weight-bold"
+          class="ml-3 mt-1 text-dark col-sm-2 font-weight-bold"
           v-model="optimizar"
-          style="background: rgba(0, 0, 0, 0);"
           title="el nivel de optimizacion a la hora de compilar, esto se vera en el codigo ensamblador"
         >
           <b-form-select-option value="1">O1</b-form-select-option>
@@ -28,44 +29,43 @@
           :disabled="usecurl == 'on'"
           title="descarga el codigo assembly generado del codigo c++"
           @click="getAssembly"
-          style="background: rgba(0, 0, 0, 0)"
-          class="mt-1 ml-3"
+          class="mt-1 ml-3 bg-transparent text-dark"
           >.asm</b-button
         >
         <b-button
           title="descarga el codigo escrito"
           @click="download"
-          style="background: rgba(0, 0, 0, 0)"
-          class="mt-1 ml-2"
+          class="mt-1 ml-2 bg-transparent text-dark"
         >
-          <b-icon icon="file-earmark-arrow-down" variant="white"></b-icon>
+          <b-icon icon="file-earmark-arrow-down"></b-icon>
         </b-button>
 
-        <b-button
-          :disabled="usecurl == 'on'"
-          style="background: rgba(0, 0, 0, 0)"
-          class="mt-1 float-right ml-1"
-          v-b-modal.flags-modal
-          title="banderas de compilacion para c++"
-        >
-          flags
-        </b-button>
-        <b-modal id="flags-modal" title="flags">
-          <b-badge variant="dark" class="mb-1"
-            >example: -Wall -pedantic</b-badge
-          >
-          <b-input v-model="flags"></b-input>
+       
+      
+
+
+        <b-modal id="program-input">
+          <inputData />
         </b-modal>
 
-        <b-button
-          style="background: rgba(0, 0, 0, 0)"
-          class="mt-1 float-right ml-auto"
-          v-b-modal.extra-modal
-          title="muestra el panel de addons extra"
-        >
-          <b-icon variant="white" icon="puzzle-fill"></b-icon>
-        </b-button>
-        <b-modal id="extra-modal" title="addons">
+        <b-modal id="headers">
+          <headers />
+        </b-modal>
+        
+       
+        
+      </b-container>
+
+      </b-modal>
+
+      <b-modal hide-footer   id="flags-modal" title="flags">
+          <b-badge class="mb-1 bg-transparent text-dark"
+            >e.g  &nbsp; -Wall -pedantic</b-badge
+          >
+          <b-input placeholder="-some" class="mb-4" v-model="flags"></b-input>
+        </b-modal>
+
+      <b-modal hide-footer id="extra-modal" title="addons">
           <b-button
             v-b-modal.notas-modal
             title="mostrar panel de  notas"
@@ -88,56 +88,68 @@
           </b-modal>
 
             <b-form-checkbox
-             class="ml-1 mt-2"
+             class="ml-3 mt-2 p-3 "
             id="curlmode"
             v-model="usecurl"
             name="curlmode"
             value="on"
-            unchecked-value="off"> USE libcurl </b-form-checkbox>
+            unchecked-value="off"> enable libcurl <b-icon icon="cloud"></b-icon>  </b-form-checkbox>
             
         </b-modal>
-
-        <b-modal id="program-input">
-          <inputData />
-        </b-modal>
-
-        <b-modal id="headers">
-          <headers />
-        </b-modal>
-        
-      </b-container>
 
       <div class="row w-100 body-tam" >
         <div class="rounded col-md-12 shadow-md mt-2 editor-canva">
           <div id="file-list" class="files mb-3">
 
+           <button v-b-modal.options class="configs">
+            <b-icon icon="grid-fill"></b-icon>
+           </button>
+
             <button
               title="cambiar a modo de clases"
               @click="changeMode"
-              class="classmode"
-               style="border-color:#5bc0de;"
+              class="classmode mx-1 bt-hover"
+  
             >
               {{getClassModeName}}
             </button>
 
             <button
-              title="añadir un nuevo archivo"
-              class="classmode"
-              id="newspace-button"
-              @click="addSpace"
-              style="border-color:#5bc0de;"
-            >
-              <b-icon variant="white" icon="file-earmark-plus"></b-icon>
-            </button>
-            <button
-               style="border-color:#5bc0de;"
               title="tab home"
               id="tab_id0"
               @click="setSpace({ id: 'tab_id0' })"
-              class="tabs"
+              class="tabs mx-1 bt-hover"
             >
-              <b-icon icon="house" variant="white"></b-icon>
+              <b-icon icon="house" ></b-icon>
             </button>
+
+            <button
+              title="añadir un nuevo archivo"
+              class="classmode bt-hover"
+              id="newspace-button"
+              @click="addSpace"
+            >
+              <b-icon  icon="file-earmark-plus"></b-icon>
+            </button>
+
+            
+        <b-button
+          :disabled="usecurl == 'on'"
+          class="btn-sm float-right ml-1 bg-transparent"
+          v-b-modal.flags-modal
+          title="banderas de compilacion para c++"
+          >
+          flags
+        </b-button> 
+        <b-button
+            class="btn-sm float-right ml-auto bg-transparent"
+            v-b-modal.extra-modal
+           title="muestra el panel de addons extra"
+          >
+            <b-icon variant="white" icon="puzzle-fill"></b-icon>
+        </b-button>
+  
+
           </div>
 
           <br v-if="local_widthMatch">
@@ -159,10 +171,10 @@
           style="
             background: rgba(0, 0, 0, 0);
             max-height: 400px;
-            min-height: 120px;
+            min-height: 160px;
             overflow-y: auto;
             border: none;
-          "
+           "
         >
           <b-badge variant="danger" class="text-white"
             >salida:
@@ -261,7 +273,7 @@ export default {
   data(){
     const local_widthQuery = matchMedia("(min-width: 300px) and (max-width:  991px )") 
    return {
-    local_class_mode_name: 'class mode ',
+    local_class_mode_name: 'POO ',
     local_mode: 'off',
     local_widthQuery: local_widthQuery,
     local_widthMatch: local_widthQuery.matches
@@ -271,7 +283,7 @@ export default {
   methods: {
     changeMode() {
       this.$store.commit("changeMode");
-      this.local_mode = this.$store.state.mode ? 'on' : 'off';
+      this.local_mode = this.$store.state.mode ? 'On' : 'Off';
     },
 
     setSpace(value) {
@@ -386,6 +398,12 @@ export default {
 </script>
 
 <style scoped>
+
+.cnbase {
+  min-height: 100vh;
+ 
+}
+
 .dracula {
   background: rgb(40, 42, 54);
   min-height: 530px;
@@ -407,8 +425,10 @@ export default {
   margin-bottom: 50px;
   margin-left: 20px;
   width: 100%;
-  height: 28px;
+  min-height: 28px;
+  max-height: 65px;
   border-radius: 4px;
+  overflow-y: scroll;
 }
 .tabs {
   width: 10%;
@@ -427,8 +447,18 @@ export default {
   background: transparent;
   border: 1px solid white;
   color: white;
+}
+
+.configs {
+  width: 10%;
+  height: 28px;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid white;
+  color: rgb(255, 255, 255);
   margin-right: 10px;
 }
+
 
 .div-container {
   margin: 0 auto;
@@ -437,12 +467,20 @@ export default {
 
 
 .body-tam {
-  height: 510px;
+  height: 550px;
+  margin-bottom: 10px;
 }
 
 .editor-canva {
   height: 490px;
 }
 
+.bt-hover{
+  border-color:#839192;
+}
+.bt-hover:hover{
+  background: #A5D6A7;
+  color: black;
+}
 
 </style>

@@ -30,13 +30,17 @@ export default new Vuex.Store({
       {
         code: `#include <iostream>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+
+  std::cout << "hola mundo";
+
   return 0;
 }        `,
         files: `#include <iostream>
 
 int main(int argc, char *argv[]) {
+
+  std::cout << "hola mundo ";
 
   return 0;
 }
@@ -87,7 +91,9 @@ int main(int argc, char *argv[]) {
         visible: true,
         code: `#include <iostream>
 int main() {
-        
+    
+ std::cout << "hola mundo";
+
   return 0;
 }`,
         deleted: false,
