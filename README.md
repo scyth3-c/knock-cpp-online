@@ -12,9 +12,7 @@
 <br/>
 
 <div align="center">  
-<code>
   <img src="https://user-images.githubusercontent.com/52190352/209495356-97bc767b-ba87-4614-8baa-38dbe6dfe30f.png" width="150px">
-</code>
 </div>
 
 <br/>
