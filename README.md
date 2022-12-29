@@ -99,7 +99,7 @@ haz click en el color para abrir la web app
  
  how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
   
-  <img src="https://user-images.githubusercontent.com/52190352/179639692-d4ce67bd-475d-47d0-bf3b-26c696ae90a9.png" widt="800px"/>
+  <img src="https://user-images.githubusercontent.com/52190352/209978151-caea31e2-e2e9-42b3-984c-83ada762e3ce.png" widt="800px"/>
   <img src="https://user-images.githubusercontent.com/52190352/179639937-19a9a220-435d-4ea8-832f-32d755c22d30.png" widt="400px"/>
   <img src="https://user-images.githubusercontent.com/52190352/179640267-26adb1e0-087c-4a86-9c6a-b034b4a7b7c7.png" widt="400px"/>
 
