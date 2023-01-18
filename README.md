@@ -21,7 +21,6 @@
 <div align="center">
  
  <h1>KNOCK 2.5.1 </h1>
- TEMPORARILY OUT OF SERVICE <br/>
   https://knockcompiler.netlify.app
  
 </div>
