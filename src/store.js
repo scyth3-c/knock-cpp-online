@@ -23,6 +23,8 @@ export default new Vuex.Store({
     mode: 0,
     code_build: "",
     direct_msg: "",
+    share_id: "",
+    share:{ buffer: "" },
 
     headers: "iostream string",
     usecurl: "off",
@@ -577,6 +579,34 @@ int main() {
       }
     },
 
+     async share({state,commit}){
+      
+      let code = state.codeSpaces[state.actualCodeSpace].code;
+
+      if (state.mode === 0) {
+        let query = await axios({
+          method: "POST",
+          url: `${state.API}notes/new`,
+          data: {nombre: state.identity, conten: code, author: state.identity },
+        });
+        state.share_id = query.data
+      } else {
+        commit("code_builder");
+        let data = await axios({
+          method: "POST",
+          url: `${state.API}notes/new`,
+          data: {nombre: "share", conten: state.code_build, author: state.identity },
+        });
+        state.share_id = data.data
+      }
+
+     }, 
+
+     async extract_notecode({state,commit}, id){
+      const nota = await axios.get(`${state.API}notes/show?id=${id}`);
+        state.codeSpaces[0].code = nota.data.conten
+     },
+
     /**
      * It gets the code from the code space and assembles it
      */
@@ -634,6 +664,7 @@ int main() {
   */
 
   getters: {
+
     cmOption(state) {
       return state.cmOption;
     },

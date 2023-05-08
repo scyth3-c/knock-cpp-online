@@ -39,10 +39,15 @@
         >
           <b-icon icon="file-earmark-arrow-down"></b-icon>
         </b-button>
- 
-      </b-container>
+          
+        <b-button v-b-modal.share-link title="share" @click="share" class="mt-1 ml-1 bg-transparent text-primary">
+          <b-icon icon="share-fill"></b-icon>
+        </b-button>
+
+      </b-container>  
 
       </b-modal>
+      
       <b-modal hide-footer id="program-input">
           <inputData />
         </b-modal>
@@ -51,7 +56,13 @@
           <headers />
         </b-modal>
 
-      <b-modal hide-footer   id="flags-modal" title="flags">
+      <b-modal title="Compartir" id="share-link" hide-footer>
+         <b-icon icon="share-fill" class="text-primary" ></b-icon> 
+
+         <span class="text-dark font-weight-bolder ml-2 mb-"> Comparte este codigo usando este enlace</span> <br/> <br/>
+         <a :href="shared_path()">{{shared_path()}}</a> <b-icon scale="1.3" class="ml-1 hovery"  @click="copy(shared_path())"  icon="files"></b-icon>      </b-modal>
+      
+        <b-modal hide-footer   id="flags-modal" title="flags">
           <b-badge class="mb-1 bg-transparent text-dark"
             >e.g  &nbsp; -Wall -pedantic</b-badge
           >
@@ -256,11 +267,19 @@ export default {
       this.$forceUpdate();
     });
   },
-
+  beforeMount(){
+    const url = window.location.href;
+    const params = new URL(url).searchParams;
+    const Search_Query = params.get('sq');
+    if(Search_Query){
+      this.$store.dispatch("extract_notecode", Search_Query)
+    }
+  },
   mounted() {
     this.local_widthQuery.addEventListener('change',()=>{
     this.local_widthMatch = this.local_widthQuery.matches;
     });
+    
   },
 
   data(){
@@ -274,6 +293,15 @@ export default {
   },
 
   methods: {
+
+    copy(value) {
+      navigator.clipboard.writeText(value);
+    },
+
+    shared_path(){
+      return window.location.origin + "?sq=" + this.share_id
+    },
+
     changeMode() {
       this.$store.commit("changeMode");
       this.local_mode = this.$store.state.mode ? 'On' : 'Off';
@@ -301,6 +329,9 @@ export default {
     download() {
       this.$store.dispatch("download");
     },
+     share(){
+      this.$store.dispatch("share");
+     },
 
     getAssembly() {
       this.$store.dispatch("getAssembly");
@@ -313,7 +344,14 @@ export default {
   computed: {
     ...mapGetters(["time", "seed", "cmOption", "codeSpaces", "mode"]),
 
-
+    share_id:{
+      get(){
+       return this.$store.state.share_id
+      },
+      set(value){
+        this.$store.state.share_id = value
+      }
+    },
     flags: {
       get() {
         return this.$store.state.cxxflags;
@@ -475,6 +513,13 @@ export default {
 .bt-hover:hover{
   background: #A5D6A7;
   color: black;
+}
+
+.hovery{
+color: #A5D6A7;
+}
+.hovery:hover{
+color:#839192;
 }
 
 </style>
