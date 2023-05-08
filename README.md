@@ -27,20 +27,21 @@
 
 ## new
 
+- share you code with friends
+- time out guard 
+- API cleaned
+
+## previus
+
 - support libcurl and use [scyth3-c/curl-http-wrapper](https://github.com/scyth3-c/curl-http-wrapper)
 - change code panel
 - change button theme
 - change output compile mode
-
-
-## previus
-
 - multi-file support, connected or separate sources
 - the multi file works in assembler and download funcs, the code is assembled
 - changes in the icons and modal views
 - change modals theme
 - add the #include function in class mode
-
 
 ## About
  
@@ -79,13 +80,26 @@ haz click en el color para abrir la web app
 
 ## Preview
 
+share you code, ready to compile
+
+![share](https://user-images.githubusercontent.com/52190352/236729138-83a07d13-125c-4a02-b268-03d5a53b2c57.png)
+
+<hr/>
+
+
+
 ![one](https://user-images.githubusercontent.com/52190352/209495925-48dab5f3-052e-45a4-8d94-78501d044188.png)
 
 
 ## how to
 
-### in mode single file just add  &nbsp;  #include	&#60;http/veridic.hpp&#62;  
- #### and active
+### Share
+
+![link](https://user-images.githubusercontent.com/52190352/236729379-d27c7e53-4dea-42c9-b5cd-bac67c81d442.png)
+
+
+### HTTP
+in mode single file just add  &nbsp;  #include	&#60;http/veridic.hpp&#62; and active
  
 
   <img src="https://user-images.githubusercontent.com/52190352/209495970-ca531fed-c5e4-4660-bd33-d30e49bfba24.png" widt="500px"/> 
