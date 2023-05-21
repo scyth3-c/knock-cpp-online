@@ -8,6 +8,11 @@
       <li><b-icon icon="twitter"></b-icon> scyth3_c</li>
     </ul>
 
+    <b-modal hide-footer hide-header id="mensaje_enviado">
+      <p style="cursor:pointer" @click="$bvModal.hide('mensaje_enviado')">X</p>
+    <strong>  Tu mensaje fue enviado, Muchas Gracias</strong> <b-icon variant="warning" icon="emoji-smile"></b-icon>
+    </b-modal>
+
     <b-card no-body class="col-md-4 float-center mx-auto footer-vw">
       <b-badge style="background: rgba(0, 0, 0, 0)" variant="dark" class="p-2"
         >enviame algun mensaje:</b-badge
@@ -16,6 +21,7 @@
         title="escribe el mensaje aqui"
         v-model="model"
         placeholder="¡Hola!, ¿Cómo Estás?"
+        class="font-weigth-bolder"
       ></b-input>
       <b-button
         title="enviar mensaje"
@@ -37,6 +43,8 @@ export default {
   methods: {
     sendMsg() {
       store.commit("sendMsg");
+      this.model = ""
+      this.$bvModal.show("mensaje_enviado")
     },
   },
   computed: {

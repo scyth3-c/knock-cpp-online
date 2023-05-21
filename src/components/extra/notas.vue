@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <b-card v-if="init == false">
-      <b-badge variant="danger">Hola! para inicia dime tu nombre</b-badge>
+      <b-badge variant="dark" class="p-2 w-100">Hola! dime tu nombre y vuelve a entrar</b-badge>
       <b-input title="escribe tu nombre aqui" class="mt-2" v-model="nombre"></b-input>
       <b-button title="guardar los datos" class="btn-sm mt-2" variant="primary" @click="saveme"
         >guardame</b-button

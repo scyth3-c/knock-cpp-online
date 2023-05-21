@@ -2,10 +2,11 @@
   <div class="div-container">
     <b-card :class="bytheme" class=" mb-3 shadow-lg cnbase">
       
-      <b-modal id="options" hide-footer>
+      <b-modal hide-header id="options" hide-footer v-if="visibles.options">
+        <p style="cursor:pointer" @click="$bvModal.hide('options')">X</p>
         <b-container class="d-inline">
         <b-form-select
-          class="text-center mt-1 text-dark col-sm-3 font-weight-bold"
+          class="text-center mt-1 text-dark col-sm-3 font-weight-bold noneshine"
           v-model="standar"
         
           title="el estandar con el que se compilara c++"
@@ -17,7 +18,7 @@
         </b-form-select>
         <b-form-select
          variant="primary"
-          class="ml-3 mt-1 text-dark col-sm-2 font-weight-bold"
+          class="ml-3 mt-1 text-dark col-sm-2 font-weight-bold noneshine"
           v-model="optimizar"
           title="el nivel de optimizacion a la hora de compilar, esto se vera en el codigo ensamblador"
         >
@@ -43,7 +44,9 @@
       </b-container>
 
       </b-modal>
-      <b-modal hide-footer id="program-input">
+      
+      <b-modal hide-header hide-footer id="program-input">
+        <p style="cursor:pointer" @click="$bvModal.hide('program-input')">X</p>
           <inputData />
         </b-modal>
 
@@ -51,42 +54,76 @@
           <headers />
         </b-modal>
 
-      <b-modal hide-footer   id="flags-modal" title="flags">
+      <b-modal title="Compartir" id="share-link" hide-footer hide-header>
+        <p style="cursor:pointer" @click="$bvModal.hide('share-link')">X</p>
+       <b-container fluid>
+        <b-icon icon="share-fill" class="text-primary" ></b-icon> 
+
+         <span class="text-dark font-weight-bolder ml-2"> Comparte este codigo usando este enlace</span> <br/> <br/>
+            
+          <b-button class="btn-outline-dark bg-transparent w-100">
+            <a :href="shared_path()">{{shared_path()}}</a> 
+          </b-button>
+          <b-icon scale="1.7" class="text-dark mx-auto float-center mt-3 w-100"  @click="copy(shared_path())"  icon="files"></b-icon>
+       </b-container>  
+        
+      </b-modal>
+      
+        <b-modal hide-footer  hide-header  id="flags-modal">
+          <p style="cursor:pointer" @click="$bvModal.hide('flags-modal')">X</p>
           <b-badge class="mb-1 bg-transparent text-dark"
             >e.g  &nbsp; -Wall -pedantic</b-badge
           >
          <b-input placeholder="-some" class="mb-4" v-model="flags"></b-input>
         </b-modal>
 
-      <b-modal hide-footer id="extra-modal" title="addons">
+      <b-modal hide-footer id="extra-modal" title="complementos">
+
+          <b-button
+            title="colaboracion"
+            variant="dark"  
+            class="mx-2"
+            v-b-modal.colab
+          >
+            <b-icon icon="thunder" variant="primary"></b-icon>  
+            Colaboracion
+          </b-button>
+
           <b-button
             v-b-modal.notas-modal
             title="mostrar panel de  notas"
             variant="dark"
             >Notas</b-button
           >
-          <b-modal id="notas-modal" hide-footer>
+          <b-modal id="notas-modal" hide-header hide-footer>
+            <p style="cursor:pointer" @click="$bvModal.hide('notas-modal')">X</p>
             <notas />
-          </b-modal>
+          </b-modal>        
+          
+          <colaborate/>
+
 
           <b-button
             title="mostrar lista de themas"
             class="ml-1"
             v-b-modal.themes-modal
             variant="dark"
-            >themes</b-button
+            >Temas</b-button
           >
-          <b-modal id="themes-modal">
+          <b-modal hide-backdrop hide-header hide-footer id="themes-modal">
+            <p style="cursor:pointer" @click="$bvModal.hide('themes-modal')">X</p>
             <themes />
+            <p class="mx-auto float-center mt-3">selecciona tu tema favorito, no lo perderas al recargar</p>
           </b-modal>
 
-            <b-form-checkbox
-             class="ml-3 mt-2 p-3 "
+            <b-form-checkbox 
+            v-if="visibles.libcurl"
+             class="ml-3 mt-2 p-3 font-weight-bolder"
             id="curlmode"
             v-model="usecurl"
             name="curlmode"
             value="on"
-            unchecked-value="off"> enable libcurl <b-icon icon="cloud"></b-icon>  </b-form-checkbox>
+            unchecked-value="off"> Usar libcurl (http) <b-icon icon="cloud"></b-icon>  </b-form-checkbox>
             
         </b-modal>
 
@@ -98,7 +135,10 @@
             <b-icon icon="grid-fill"></b-icon>
            </button>
 
+           <b-badge  v-if="visibles.colab" class="text-white" variant="transparent">Modo colaboracion <b-icon icon="emoji-smile" variant="white"></b-icon></b-badge>
+
             <button
+            v-if="visibles.poo"
               title="cambiar a modo de clases"
               @click="changeMode"
               class="classmode mx-1 bt-hover"
@@ -108,6 +148,7 @@
             </button>
 
             <button
+            v-if="visibles.tabs"
               title="tab home"
               id="tab_id0"
               @click="setSpace({ id: 'tab_id0' })"
@@ -117,6 +158,7 @@
             </button>
 
             <button
+            v-if="visibles.tabs"
               title="añadir un nuevo archivo"
               class="classmode bt-hover"
               id="newspace-button"
@@ -132,7 +174,7 @@
           v-b-modal.flags-modal
           title="banderas de compilacion para c++"
           >
-          flags
+          Banderas
         </b-button> 
         <b-button
             class="btn-sm float-right ml-auto bg-transparent"
@@ -158,9 +200,10 @@
           </div>
         </div>
        
-       <b-modal id="output-modal" hide-footer>
+       <b-modal size="lg" id="output-modal" hide-footer hide-header>
+        <p style="cursor:pointer" @click="$bvModal.hide('output-modal')">X</p>
         <b-card
-          class="w-100 mt-2"
+          class="w-100"
           style="
             background: rgba(0, 0, 0, 0);
             max-height: 400px;
@@ -169,18 +212,14 @@
             border: none;
            "
         >
-          <b-badge variant="danger" class="text-white"
-            >salida:
-            <b-icon icon="receipt-cutoff" variant="white"></b-icon>
-          </b-badge>
-          <br />
-          <span class="text-dark" style="font-family: monospace">
-            {{ output }}
-          </span>
+          <pre class="text-dark" style="font-family: monospace">{{ output }}</pre>
+        
         </b-card> 
        </b-modal>
 
       </div>
+
+
       <b-button
         title="establer entrada del programa"
         v-b-modal.program-input
@@ -225,6 +264,7 @@ import themes from "./extra/themes.vue";
 import inputData from "./extra/program-input.vue";
 import Editor from "./editor.vue";
 import headers from "./extra/headers.vue";
+import colaborate from "./extra/colabVue.vue"
 
 import { mapGetters } from "vuex";
 import { codemirror } from "vue-codemirror";
@@ -244,6 +284,7 @@ export default {
   name: "basecanvas",
   components: {
     notas,
+    colaborate,
     themes,
     inputData,
     codemirror,
@@ -275,6 +316,7 @@ export default {
     this.local_widthQuery.addEventListener('change',()=>{
     this.local_widthMatch = this.local_widthQuery.matches;
     });
+    this.$store.commit("setColabUrl")
   },
 
   data(){
@@ -322,10 +364,13 @@ export default {
     reset() {
       this.$store.state.output = "";
     },
+    shared_path(){
+      return window.location.origin + "?sq=" + this.share_id
+    },
   },
 
   computed: {
-    ...mapGetters(["time", "seed", "cmOption", "codeSpaces", "mode"]),
+    ...mapGetters(["time", "seed", "cmOption", "codeSpaces", "mode", "visibles"]),
 
 
     flags: {
@@ -406,6 +451,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 
 .cnbase {
   min-height: 100vh;
@@ -491,4 +538,40 @@ export default {
   color: black;
 }
 
+.hovery{
+color: #272927;
+}
+.hovery:hover{
+color:#171818;
+}
+
 </style>
+
+
+<style>
+input:focus, select:focus, select, input.form-control:focus {
+
+  outline:none !important;
+
+  outline-width: 0 !important;
+
+  box-shadow: none;
+
+  -moz-box-shadow: none;
+
+  -webkit-box-shadow: none;
+
+}
+pre {
+  white-space: pre-wrap;
+  margin-left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.noneshine {
+  outline: none;
+  box-shadow: none !important;
+}
+
+</style>  

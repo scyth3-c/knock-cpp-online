@@ -1,11 +1,10 @@
 <template>
   <div>
-    <b-badge variant="transparent" class="p-2 text-dark"
-      >Write the input required in the code
-    </b-badge> <br>
-    <b-badge variant="transparent" class="my-2"
-      >actual input data: {{ getIn }}</b-badge
-    >
+    <b-badge variant="transparent" class="p-2 text-dark w-100"
+      >Escribe la entrada del usuario al programa
+    </b-badge>
+     <b-input disabled class="w-100 text-dark" placeholder="entrada del usuario" title="entrada del usuario al programa" v-model="getIn">
+     </b-input>
     <b-input
       title="establece la entrada del programa"
       v-model="setInput"
@@ -36,3 +35,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+input:focus, select:focus, select, input.form-control:focus {
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+</style>

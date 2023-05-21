@@ -23,9 +23,25 @@ export default new Vuex.Store({
     mode: 0,
     code_build: "",
     direct_msg: "",
+    share_id: "",
+    share:{ 
+          buffer: "", 
+          codespace: ""
+        },
 
     headers: "iostream string",
     usecurl: "off",
+    visibles: {
+      options: JSON.parse(localStorage.getItem("v.options")) == undefined ? true : JSON.parse(localStorage.getItem("v.options")) ,
+      addons: JSON.parse(localStorage.getItem("v.addons")) == undefined ? true : JSON.parse(localStorage.getItem("v.addons")),
+      poo: JSON.parse(localStorage.getItem("v.poo")) == undefined ? true : JSON.parse(localStorage.getItem("v.poo")),
+      tabs:  JSON.parse(localStorage.getItem("v.tabs")) == undefined ? true : JSON.parse(localStorage.getItem("v.tabs")),
+      libcurl: JSON.parse(localStorage.getItem("v.libcurl"))== undefined ? true : JSON.parse(localStorage.getItem("v.libcurl")),
+      colab: JSON.parse(localStorage.getItem("v.colab"))== undefined ? false : JSON.parse(localStorage.getItem("v.colab")),
+      codespace: localStorage.getItem("v.codespace") == undefined ? "null" : localStorage.getItem("v.codespace")
+    },
+
+
     isSocketActive: false,
     visibles: {
       options: JSON.parse(localStorage.getItem("v.options")) == undefined ? true : JSON.parse(localStorage.getItem("v.options")) ,
@@ -555,33 +571,6 @@ int main() {
         data: data,
       });
     },
-
-    useVisible(state, payload){
-      let target_state = payload.target.split(".")[1] || payload.target
-      localStorage.setItem(payload.target, payload.value)
-      state.visibles[target_state] = payload.value
-    },
-
-    setColabUrl(state){
-      if( state.visibles.colab && state.visibles.codespace != "null" && !window.location.origin.includes(state.visibles.codespace)){
-        let url = new URL(window.location.href);
-        url.searchParams.set('codespace', state.visibles.codespace.toString());
-        window.history.replaceState({}, '', url.toString());
-      }
-    },
-
-   async deleteCodeSpace(state){
-      await axios.delete(`${state.API}codespace/delete?id=${state.visibles.codespace}`);
-    },
-
-    async codeServerUpdate(state){
-      if(state.visibles.codespace != "null" && state.isSocketActive) {
-        await axios.put(`${state.API}codespace/update?id=${state.visibles.codespace}`, { 
-          code: state.codeSpaces[state.actualCodeSpace].code
-        } );
-      }
-    },  
-
   },
 
   actions: {
@@ -616,54 +605,6 @@ int main() {
       }
     },
 
-    codeUpdate({state, commit}, enviroment){
-      if(state.isSocketActive && state.visibles.codespace != "null") {
-        commit('codeServerUpdate');
-        enviroment.$socketio.emit(`UpdateCodeSpace`, {id: state.visibles.codespace})
-      }
-    },
-
-    socketOn({state, dispatch}, enviroment){
-      if(!state.isSocketActive && state.visibles.codespace != "null"){
-          enviroment.$socketio.on('GenUpdate',(args)=>{
-            console.log(args.id)
-            if(args.id == state.visibles.codespace){
-              state.isSocketActive = true
-              dispatch('extract_codespace')
-            }
-          });
-      }
-    },
-    
-    setColab({commit}, value){
-      commit('useVisible', { target: "v.libcurl", value: value  })
-      commit('useVisible', { target: "v.tabs", value: value  })
-      commit('useVisible', { target: "v.poo", value: value  })
-      commit('useVisible', { target: "v.colab", value: !value  })
-    },
-
-    async visibles_to_colab({state, dispatch, commit}, value) {
-       
-        dispatch("setColab", value)
-
-        let codeBase = state.codeSpaces[state.actualCodeSpace].code;
-        let query = await axios({
-          method: "POST",
-          url: `${state.API}codespace/new`,
-          data: { code: codeBase, codespace: state.identity, time: new Date().getDate().toString()},
-        });
-
-        localStorage.setItem("v.codespace", String(query?.data || undefined) )
-        state.visibles.codespace = String(query?.data)
-        state.share.codespace = window.location.origin + "?codespace="+query.data
-        commit('setColabUrl')
-    },
-
-    async extract_codespace({state, commit}, id){
-      const nota = await axios.get(`${state.API}codespace/extract?id=${id}`);
-        state.codeSpaces[0].code = nota.data.conten
-     },
-
      async share({state,commit}){
       
       let code = state.codeSpaces[state.actualCodeSpace].code;
@@ -691,6 +632,8 @@ int main() {
       const nota = await axios.get(`${state.API}notes/show?id=${id}`);
         state.codeSpaces[0].code = nota.data.conten
      },
+
+
 
     /**
      * It gets the code from the code space and assembles it
@@ -775,6 +718,9 @@ int main() {
     },
     bytheme(state){
       return state.bytheme;
+    },
+    visibles(state){
+      return state.visibles
     }
   },
 });
