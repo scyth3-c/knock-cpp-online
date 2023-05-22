@@ -31,18 +31,8 @@ export default new Vuex.Store({
 
     headers: "iostream string",
     usecurl: "off",
-    visibles: {
-      options: JSON.parse(localStorage.getItem("v.options")) == undefined ? true : JSON.parse(localStorage.getItem("v.options")) ,
-      addons: JSON.parse(localStorage.getItem("v.addons")) == undefined ? true : JSON.parse(localStorage.getItem("v.addons")),
-      poo: JSON.parse(localStorage.getItem("v.poo")) == undefined ? true : JSON.parse(localStorage.getItem("v.poo")),
-      tabs:  JSON.parse(localStorage.getItem("v.tabs")) == undefined ? true : JSON.parse(localStorage.getItem("v.tabs")),
-      libcurl: JSON.parse(localStorage.getItem("v.libcurl"))== undefined ? true : JSON.parse(localStorage.getItem("v.libcurl")),
-      colab: JSON.parse(localStorage.getItem("v.colab"))== undefined ? false : JSON.parse(localStorage.getItem("v.colab")),
-      codespace: localStorage.getItem("v.codespace") == undefined ? "null" : localStorage.getItem("v.codespace")
-    },
-
-
     isSocketActive: false,
+    isHost: JSON.parse(localStorage.getItem("o.isHost")) == undefined ? false : JSON.parse(localStorage.getItem("o.isHost")), 
     visibles: {
       options: JSON.parse(localStorage.getItem("v.options")) == undefined ? true : JSON.parse(localStorage.getItem("v.options")) ,
       addons: JSON.parse(localStorage.getItem("v.addons")) == undefined ? true : JSON.parse(localStorage.getItem("v.addons")),
@@ -53,6 +43,15 @@ export default new Vuex.Store({
       codespace: localStorage.getItem("v.codespace") == undefined ? "null" : localStorage.getItem("v.codespace")
     },
 
+    visibles: {
+      options: JSON.parse(localStorage.getItem("v.options")) == undefined ? true : JSON.parse(localStorage.getItem("v.options")) ,
+      addons: JSON.parse(localStorage.getItem("v.addons")) == undefined ? true : JSON.parse(localStorage.getItem("v.addons")),
+      poo: JSON.parse(localStorage.getItem("v.poo")) == undefined ? true : JSON.parse(localStorage.getItem("v.poo")),
+      tabs:  JSON.parse(localStorage.getItem("v.tabs")) == undefined ? true : JSON.parse(localStorage.getItem("v.tabs")),
+      libcurl: JSON.parse(localStorage.getItem("v.libcurl"))== undefined ? true : JSON.parse(localStorage.getItem("v.libcurl")),
+      colab: JSON.parse(localStorage.getItem("v.colab"))== undefined ? false : JSON.parse(localStorage.getItem("v.colab")),
+      codespace: localStorage.getItem("v.codespace") == undefined ? "null" : localStorage.getItem("v.codespace")
+    },
 
     templates: [
       {
@@ -154,6 +153,9 @@ int main() {
 
     noteSeed: Math.random() * 100 + new Date().getSeconds(),
     field: ["nombre"],
+    isInputValid: true,
+    timer: null,
+    emisor:  false,
   },
   mutations: {
     /**
@@ -571,6 +573,32 @@ int main() {
         data: data,
       });
     },
+
+    useVisible(state, payload){
+      let target_state = payload.target.split(".")[1] || payload.target
+      localStorage.setItem(payload.target, payload.value)
+      state.visibles[target_state] = payload.value
+    },
+
+    setColabUrl(state){
+      if( state.visibles.colab && state.visibles.codespace != "null" && !window.location.origin.includes(state.visibles.codespace)){
+        let url = new URL(window.location.href);
+        url.searchParams.set('codespace', state.visibles.codespace.toString());
+        window.history.replaceState({}, '', url.toString());
+      }
+    },
+
+    clearUrl(state){
+      let urlObj = new URL(window.location.href);
+      urlObj.search = '';
+      urlObj.hash = '';
+      window.location.replace(urlObj.toString())
+    },
+
+   async deleteCodeSpace(state){
+      await axios.delete(`${state.API}codespace/delete?id=${state.visibles.codespace}`);
+    }, 
+
   },
 
   actions: {
@@ -605,6 +633,72 @@ int main() {
       }
     },
 
+   async internal_colab_clock({state,commit}, enviroment){
+      clearTimeout(state.timer);
+
+      state.timer = setTimeout(async () => {
+          let codebase = state.codeSpaces[state.actualCodeSpace].code
+          await axios.put(`${state.API}codespace/update?id=${state.visibles.codespace}`, { 
+            code: codebase
+          });
+
+          enviroment.$socketio.emit('UpdateCodeSpace', state.visibles.codespace)   
+        }, 500);
+    },
+
+    async socketOn({state, dispatch}, enviroment){
+      if(state.visibles.colab && state.visibles.codespace != "null"){
+          enviroment.$socketio.on('actualizacion_base', async (args)=>{
+             if(args == state.visibles.codespace){
+              dispatch("extract_codespace", args)
+             }
+          });
+      }
+    },
+    
+    setColab({commit}, value){
+      commit('useVisible', { target: "v.libcurl", value: value  })
+      commit('useVisible', { target: "v.tabs", value: value  })
+      commit('useVisible', { target: "v.poo", value: value  })
+      commit('useVisible', { target: "v.colab", value: !value  })
+    },
+
+    async visibles_to_colab({state, dispatch, commit}, value) {
+       
+        dispatch("setColab", value)
+
+        if(state.emisor){return}
+
+        let codeBase = state.codeSpaces[state.actualCodeSpace].code;
+        let query = await axios({
+          method: "POST",
+          url: `${state.API}codespace/new`,
+          data: { code: codeBase, codespace: state.identity, time: new Date().getDate().toString()},
+        });
+
+        localStorage.setItem("o.isHost", true)
+        localStorage.setItem("v.codespace", String(query?.data || undefined) )
+        state.visibles.codespace = String(query?.data)
+        state.share.codespace = window.location.origin + "?codespace="+query.data
+        commit('setColabUrl')
+    },
+
+    toColabClient({state}, codespace){
+      localStorage.setItem("v.codespace", codespace)
+      state.visibles.codespace = codespace
+      state.visibles.colab = true
+    },
+
+    async extract_codespace({state, commit}, id){
+      const code = await axios.get(`${state.API}codespace/extract?id=${id}`);
+      console.log(code.data)
+      if(code?.data != undefined) {
+        state.codeSpaces[0].code = code?.data.code
+      } else{
+        return;
+      }
+     },
+
      async share({state,commit}){
       
       let code = state.codeSpaces[state.actualCodeSpace].code;
@@ -632,8 +726,6 @@ int main() {
       const nota = await axios.get(`${state.API}notes/show?id=${id}`);
         state.codeSpaces[0].code = nota.data.conten
      },
-
-
 
     /**
      * It gets the code from the code space and assembles it

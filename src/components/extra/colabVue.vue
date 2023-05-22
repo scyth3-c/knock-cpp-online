@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
     name: 'colabVue',
     methods:{
@@ -53,8 +52,10 @@ export default {
         desactivar(){
             localStorage.removeItem("v.codespace")
             this.$store.dispatch('setColab', true)
+            this.$store.commit('clearUrl')
             this.close()
             this.$store.commit('deleteCodeSpace')
+            this.$store.state.isHost = false;
         },
     },
     computed:{

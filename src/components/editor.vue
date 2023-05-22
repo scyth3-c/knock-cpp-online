@@ -1,5 +1,5 @@
 <template>
-  <codemirror class="CodeMirror" :id="ids" v-if="visible" v-model="model" :options="options" />
+  <codemirror  class="CodeMirror" :id="ids" v-if="visible" v-model="model" :options="options" />
 </template>
 
 <script>
@@ -14,6 +14,7 @@ import "codemirror/theme/base16-dark.css";
 import "codemirror/mode/clike/clike.js";
 import "codemirror/keymap/sublime.js";
 
+import { mapState } from 'vuex';
 import store from "@/store";
 
 export default {

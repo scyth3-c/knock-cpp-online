@@ -21,7 +21,7 @@ export default {
   computed: {
 
     getIn(){
-      return this.setInput.split(" ");
+      return `[\"${this.setInput.split(" ").join("\"],[\"")}"]`;
     },
 
     setInput: {

@@ -297,7 +297,10 @@ export default {
     this.$root.$on("Theme", () => {
       this.$forceUpdate();
     });
+
   },
+
+
   beforeMount(){
     const url = window.location.href;
     const params = new URL(url).searchParams;
@@ -306,17 +309,32 @@ export default {
       this.$store.dispatch("extract_notecode", Search_Query)
     }
     const codespace = params.get('codespace');
-    if(this.$store.state.visibles.colab && codespace){
+
+    if(this.$store.state.visibles.colab && codespace && this.$store.state.isHost == false){
+      this.$store.dispatch('setColab', false)
+      this.$store.dispatch("extract_codespace", codespace)
+      this.$store.dispatch('toColabClient', codespace)
+      this.$store.dispatch('socketOn', this)
+    }
+
+    if(codespace && this.$store.state.visibles.codespace == "null" && this.$store.state.isHost == false){
+    
       this.$store.dispatch('setColab', false)
       this.$store.dispatch("extract_codespace", codespace)
       this.$store.dispatch('socketOn', this)
     }
+
+    if(this.$store.state.isHost){
+      this.$store.dispatch('socketOn', this)
+    }
+
   },
   mounted() {
     this.local_widthQuery.addEventListener('change',()=>{
     this.local_widthMatch = this.local_widthQuery.matches;
     });
     this.$store.commit("setColabUrl")
+
   },
 
   data(){
@@ -369,9 +387,24 @@ export default {
     },
   },
 
+  watch:{
+    'read_model':{
+      handler(newValue, oldValue) {
+        if(this.$store.state.visibles.colab && this.$store.state.visibles.codespace != "null"){
+            this.$store.dispatch('internal_colab_clock', this)
+        }
+      },
+    },
+    deep: true,
+  },
+
+
   computed: {
     ...mapGetters(["time", "seed", "cmOption", "codeSpaces", "mode", "visibles"]),
 
+    read_model() {
+      return this.$store.getters.codeSpaces[0].code;
+    },
 
     flags: {
       get() {

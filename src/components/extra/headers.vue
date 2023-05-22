@@ -19,7 +19,7 @@ export default {
   computed: {
 
     getIn(){
-      return this.headers.split(" ");
+      return `[\"${this.headers.split(" ").join("\"],[\"")}]`;
     },
 
     headers: {
