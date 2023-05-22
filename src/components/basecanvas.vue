@@ -239,6 +239,7 @@ import "codemirror/theme/base16-dark.css";
 import "codemirror/mode/clike/clike.js";
 import "codemirror/keymap/sublime.js";
 
+
 export default {
   name: "basecanvas",
   components: {
@@ -256,7 +257,20 @@ export default {
       this.$forceUpdate();
     });
   },
-
+  beforeMount(){
+    const url = window.location.href;
+    const params = new URL(url).searchParams;
+    const Search_Query = params.get('sq');
+    if(Search_Query){
+      this.$store.dispatch("extract_notecode", Search_Query)
+    }
+    const codespace = params.get('codespace');
+    if(this.$store.state.visibles.colab && codespace){
+      this.$store.dispatch('setColab', false)
+      this.$store.dispatch("extract_codespace", codespace)
+      this.$store.dispatch('socketOn', this)
+    }
+  },
   mounted() {
     this.local_widthQuery.addEventListener('change',()=>{
     this.local_widthMatch = this.local_widthQuery.matches;
@@ -269,7 +283,7 @@ export default {
     local_class_mode_name: 'POO ',
     local_mode: 'off',
     local_widthQuery: local_widthQuery,
-    local_widthMatch: local_widthQuery.matches
+    local_widthMatch: local_widthQuery.matches,
    }
   },
 

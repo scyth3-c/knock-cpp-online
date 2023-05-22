@@ -11,7 +11,17 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'es6-promise/auto'
 
+import { io } from "socket.io-client";
+
+const socket = io('http://localhost:3001',{
+  reconnectionDelay: 10000
+})
+
+
 Vue.config.productionTip = false
+
+Vue.prototype.$socketio = socket;
+
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(BootstrapVueIcons)
