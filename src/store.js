@@ -633,6 +633,7 @@ int main() {
       }
     },
 
+<<<<<<< HEAD
    async internal_colab_clock({state,commit}, enviroment){
       clearTimeout(state.timer);
 
@@ -699,6 +700,8 @@ int main() {
       }
      },
 
+=======
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
      async share({state,commit}){
       
       let code = state.codeSpaces[state.actualCodeSpace].code;
@@ -784,6 +787,7 @@ int main() {
   */
 
   getters: {
+
     cmOption(state) {
       return state.cmOption;
     },

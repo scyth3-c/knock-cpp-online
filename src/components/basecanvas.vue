@@ -40,13 +40,21 @@
         >
           <b-icon icon="file-earmark-arrow-down"></b-icon>
         </b-button>
- 
-      </b-container>
+          
+        <b-button v-b-modal.share-link title="share" @click="share" class="mt-1 ml-1 bg-transparent text-primary">
+          <b-icon icon="share-fill"></b-icon>
+        </b-button>
+
+      </b-container>  
 
       </b-modal>
       
+<<<<<<< HEAD
       <b-modal hide-header hide-footer id="program-input">
         <p style="cursor:pointer" @click="$bvModal.hide('program-input')">X</p>
+=======
+      <b-modal hide-footer id="program-input">
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
           <inputData />
         </b-modal>
 
@@ -54,6 +62,7 @@
           <headers />
         </b-modal>
 
+<<<<<<< HEAD
       <b-modal title="Compartir" id="share-link" hide-footer hide-header>
         <p style="cursor:pointer" @click="$bvModal.hide('share-link')">X</p>
        <b-container fluid>
@@ -71,6 +80,15 @@
       
         <b-modal hide-footer  hide-header  id="flags-modal">
           <p style="cursor:pointer" @click="$bvModal.hide('flags-modal')">X</p>
+=======
+      <b-modal title="Compartir" id="share-link" hide-footer>
+         <b-icon icon="share-fill" class="text-primary" ></b-icon> 
+
+         <span class="text-dark font-weight-bolder ml-2 mb-"> Comparte este codigo usando este enlace</span> <br/> <br/>
+         <a :href="shared_path()">{{shared_path()}}</a> <b-icon scale="1.3" class="ml-1 hovery"  @click="copy(shared_path())"  icon="files"></b-icon>      </b-modal>
+      
+        <b-modal hide-footer   id="flags-modal" title="flags">
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
           <b-badge class="mb-1 bg-transparent text-dark"
             >e.g  &nbsp; -Wall -pedantic</b-badge
           >
@@ -299,8 +317,11 @@ export default {
     });
 
   },
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
   beforeMount(){
     const url = window.location.href;
     const params = new URL(url).searchParams;
@@ -308,6 +329,7 @@ export default {
     if(Search_Query){
       this.$store.dispatch("extract_notecode", Search_Query)
     }
+<<<<<<< HEAD
     const codespace = params.get('codespace');
 
     if(this.$store.state.visibles.colab && codespace && this.$store.state.isHost == false){
@@ -328,13 +350,19 @@ export default {
       this.$store.dispatch('socketOn', this)
     }
 
+=======
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
   },
   mounted() {
     this.local_widthQuery.addEventListener('change',()=>{
     this.local_widthMatch = this.local_widthQuery.matches;
     });
+<<<<<<< HEAD
     this.$store.commit("setColabUrl")
 
+=======
+    
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
   },
 
   data(){
@@ -348,6 +376,15 @@ export default {
   },
 
   methods: {
+
+    copy(value) {
+      navigator.clipboard.writeText(value);
+    },
+
+    shared_path(){
+      return window.location.origin + "?sq=" + this.share_id
+    },
+
     changeMode() {
       this.$store.commit("changeMode");
       this.local_mode = this.$store.state.mode ? 'On' : 'Off';
@@ -375,6 +412,9 @@ export default {
     download() {
       this.$store.dispatch("download");
     },
+     share(){
+      this.$store.dispatch("share");
+     },
 
     getAssembly() {
       this.$store.dispatch("getAssembly");
@@ -398,6 +438,7 @@ export default {
     deep: true,
   },
 
+<<<<<<< HEAD
 
   computed: {
     ...mapGetters(["time", "seed", "cmOption", "codeSpaces", "mode", "visibles"]),
@@ -406,6 +447,16 @@ export default {
       return this.$store.getters.codeSpaces[0].code;
     },
 
+=======
+    share_id:{
+      get(){
+       return this.$store.state.share_id
+      },
+      set(value){
+        this.$store.state.share_id = value
+      }
+    },
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
     flags: {
       get() {
         return this.$store.state.cxxflags;
@@ -572,6 +623,7 @@ export default {
 }
 
 .hovery{
+<<<<<<< HEAD
 color: #272927;
 }
 .hovery:hover{
@@ -608,3 +660,12 @@ pre {
 }
 
 </style>  
+=======
+color: #A5D6A7;
+}
+.hovery:hover{
+color:#839192;
+}
+
+</style>
+>>>>>>> 42a6373dfe0b96835938772736c39a5376c5d6de
