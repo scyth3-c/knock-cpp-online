@@ -3,7 +3,7 @@
     <b-badge variant="transparent" class="p-2 text-dark w-100"
       >Escribe la entrada del usuario al programa
     </b-badge>
-     <b-input disabled class="w-100 text-dark" placeholder="entrada del usuario" title="entrada del usuario al programa" v-model="getIn">
+     <b-input disabled class="w-100 text-dark mb-1" placeholder="entrada del usuario" title="entrada del usuario al programa" v-model="getIn">
      </b-input>
     <b-input
       title="establece la entrada del programa"
