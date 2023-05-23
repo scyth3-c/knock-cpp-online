@@ -1,5 +1,5 @@
  <div align="center"> 
-   <img src="https://img.shields.io/static/v1?label=version&message=2.6&color=green">
+   <img src="https://img.shields.io/static/v1?label=version&message=2.7&color=green">
    <img src="https://img.shields.io/static/v1?label=ports&message=electron&color=blue">
    <img src="https://img.shields.io/static/v1?label=licence&message=MIT&color=red">
    <img src="https://img.shields.io/static/v1?label=CONTRIBUTIONS&message=ALL WELCOME&color=green">
