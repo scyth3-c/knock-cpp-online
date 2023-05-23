@@ -13,7 +13,7 @@ import 'es6-promise/auto'
 
 import { io } from "socket.io-client";
 
-const socket = io('http://localhost:3001',{
+const socket = io('https://lobster-app-tadp5.ondigitalocean.app',{
   reconnectionDelay: 10000
 })
 
