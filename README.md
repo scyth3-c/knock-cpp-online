@@ -17,7 +17,7 @@
 <div align="center">
  
  <h1>KNOCK 2.5.1 </h1>
-  https://knockcompiler.netlify.app
+   https://kcompiler.com/
  
 </div>
 
@@ -124,6 +124,7 @@ how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
 
 ## raw links
 
+- https://kcompiler.com/
 - https://knockcompiler.web.app/
 - https://knockcompiler.netlify.app
 - https://github.com/scyth3-c/knock-cpp-online/releases/download/2.5/windows-electron-v2.5.0.exe
