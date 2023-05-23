@@ -357,10 +357,6 @@ export default {
       navigator.clipboard.writeText(value);
     },
 
-    shared_path(){
-      return window.location.origin + "?sq=" + this.share_id
-    },
-
     changeMode() {
       this.$store.commit("changeMode");
       this.local_mode = this.$store.state.mode ? 'On' : 'Off';
@@ -399,7 +395,7 @@ export default {
       this.$store.state.output = "";
     },
     shared_path(){
-      return window.location.origin + "?sq=" + this.share_id
+      return window.location.origin + "?sq=" + this.$store.state.share_id
     },
   },
 

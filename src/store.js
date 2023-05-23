@@ -710,6 +710,7 @@ int main() {
           data: {nombre: state.identity, conten: code, author: state.identity },
         });
         state.share_id = query.data
+        console.log(query.data)
       } else {
         commit("code_builder");
         let data = await axios({
