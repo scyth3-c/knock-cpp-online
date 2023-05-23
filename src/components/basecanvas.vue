@@ -314,24 +314,21 @@ export default {
     }
     const codespace = params.get('codespace');
 
-    if(this.$store.state.visibles.colab && codespace && this.$store.state.isHost == false){
+
+    if(this.$store.state.visibles.colab && codespace){  
+      this.$store.state.visibles.codespace = codespace
       this.$store.dispatch('setColab', false)
       this.$store.dispatch("extract_codespace", codespace)
       this.$store.dispatch('toColabClient', codespace)
       this.$store.dispatch('socketOn', this)
     }
 
-    if(codespace && this.$store.state.visibles.codespace == "null" && this.$store.state.isHost == false){
-    
+    if(codespace && this.$store.state.visibles.codespace == "null"){
+      this.$store.state.visibles.codespace = codespace
       this.$store.dispatch('setColab', false)
       this.$store.dispatch("extract_codespace", codespace)
       this.$store.dispatch('socketOn', this)
     }
-
-    if(this.$store.state.isHost){
-      this.$store.dispatch('socketOn', this)
-    }
-
   },
   mounted() {
     this.local_widthQuery.addEventListener('change',()=>{
