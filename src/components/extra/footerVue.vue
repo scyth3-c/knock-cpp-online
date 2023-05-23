@@ -2,8 +2,7 @@
   <b-card class="w-100 footer-vw" type="dark">
     <hr class="bg-dark" />
     <ul class="float-left mt-3 footer-list">
-      <li><b-icon icon="code"></b-icon> Kevin Bohorquez</li>
-      <br />
+      <li><b-icon icon="code"></b-icon> Kevin Bohorquez <br></li>
       <li><b-icon icon="github"></b-icon> scyth3-c</li>
       <li><b-icon icon="twitter"></b-icon> scyth3_c</li>
     </ul>
