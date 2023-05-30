@@ -46,9 +46,14 @@
 
 ## info
 
-| API|
+| API| 
 | -----  |
 | [scyth3-c/knock-cpp-API](https://github.com/scyth3-c/knock-cpp-API) |
+
+| http/veridic| 
+| -----  |
+| [scyth3-c/curl-http-wrapper](https://github.com/scyth3-c/curl-http-wrapper) |
+
 <hr/>
 
 <br/>
@@ -57,22 +62,22 @@
 
 | share and collaborate |
 | -----                 |
-| ![image](https://github.com/scyth3-c/knock-cpp-online/assets/52190352/e9bead79-2f01-4c8b-8ce0-4292938920b9) |
-| ![colab2](https://github.com/scyth3-c/knock-cpp-online/assets/52190352/f5f300d7-d959-4265-8481-90c78b916f28)|
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/e9bead79-2f01-4c8b-8ce0-4292938920b9" width="500px" /> |
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/f5f300d7-d959-4265-8481-90c78b916f28" width="500px" /> |
 
 
 
 | Share you code, ready to compile|
 | -----                           |
-| ![share](https://user-images.githubusercontent.com/52190352/236729138-83a07d13-125c-4a02-b268-03d5a53b2c57.png)|
+| <img src="https://user-images.githubusercontent.com/52190352/236729138-83a07d13-125c-4a02-b268-03d5a53b2c57.png" width="500px" />|
 
 <hr/>
 
 
 | HTTP Request |
 | -----                           |
-| ![image](https://github.com/scyth3-c/knock-cpp-online/assets/52190352/477752a3-9cbc-402c-8789-f464958cadc4) |
- |
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/477752a3-9cbc-402c-8789-f464958cadc4" width="500px" /> |
+ 
 
 
 # How to
@@ -80,8 +85,7 @@
 
 | Share |
 | ----- |
-|![link](https://github.com/scyth3-c/knock-cpp-online/assets/52190352/60d032b9-f86c-4226-98ae-784c085bd242)|
-
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/60d032b9-f86c-4226-98ae-784c085bd242" width="500px" />|
 
 <hr/>
 
@@ -89,7 +93,7 @@ in mode single file just add  &nbsp;  #include	&#60;http/veridic.hpp&#62; and ac
 
 | Active http Request  |
 | -----                |
-|<img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/d0ad8352-ec79-44b1-a222-1c5cb5efa993" widt="500px"/>|
+|<img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/d0ad8352-ec79-44b1-a222-1c5cb5efa993" width="500px"/>|
 
 
   <hr/>
@@ -101,23 +105,24 @@ in mode single file just add  &nbsp;  #include	&#60;http/veridic.hpp&#62; and ac
 how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
 | HTTP class example|
 | -----             |
-| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/0ae991c4-efa7-4230-9c05-3086a9a2b4ce" widt="800px"/>|
-
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/044d6954-c8ab-4745-9231-df80d1a09a7f" width="800px"/>|
 
 | use class |
 | -----     |
-| <img src="https://user-images.githubusercontent.com/52190352/179639937-19a9a220-435d-4ea8-832f-32d755c22d30.png" widt="400px"/> |
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/41da875e-8a6c-46f8-81bd-ba25bbb68b59" width="800px"/> |
 
 
 | headers |
 | -----   |
-| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/abb7cb90-3542-40f4-b5af-e53f43ee1389" widt="400px"/>|
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/b909b00c-39df-4568-9490-043bfc000743" width="400px"/>|
+
+
 
 <hr/>
 
-| Share you code, ready to compile|
+| Result of class |
 | -----                           |
-| ![api](https://user-images.githubusercontent.com/52190352/179642907-5fdbb09e-bb55-4a63-b17f-7603db57a29c.png)|
+| ![api](https://github.com/scyth3-c/knock-cpp-online/assets/52190352/2cbe5b61-47a6-4fd9-b791-e6ac83cd3df2)|
 
 
 <hr/>
