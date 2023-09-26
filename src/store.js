@@ -175,6 +175,7 @@ int main() {
   return 0;
 }`,
         deleted: false,
+        class: "tr-custom"
       },
     ],
 
@@ -191,7 +192,7 @@ int main() {
       styleActiveLine: true,
       keyMap: "sublime",
       mode: "text/x-c++src",
-      theme: localStorage.getItem("theme") || "yonce",
+      theme: "yonce"
     },
     bytheme: "yonce",
     //readonly

@@ -363,10 +363,10 @@ export default {
   background: rgb(39, 40, 34);
 }
 .yonce {
-  background: rgb(28, 28, 28);
+  background: rgb(1,4,9);
 }
 .base16-dark {
-  background: rgb(21, 21, 21);
+  background: rgb(7, 6, 14);
 }
 .files {
   margin-top: 5px;
@@ -414,11 +414,14 @@ export default {
   height: 490px;
 }
 .bt-hover{
-  border-color:#839192;
+  border-color:#c6c7c0;
 }
 .bt-hover:hover{
-  background: #A5D6A7;
+  background: #48C9B0;
   color: black;
+  transition: 300ms;
+  transform: scale(1.01);
+  border: none;
 }
 .hovery{
 color: #272927;

@@ -55,5 +55,10 @@ export default {
 <style>
 .CodeMirror{
   height: 470px;
+  background: transparent!important;  
+}
+.CodeMirror-scroll, .CodeMirror-sizer, .CodeMirror-gutter, .CodeMirror-gutters, .CodeMirror-linenumber  {
+  background: transparent !important;
+  color: white !important
 }
 </style>
