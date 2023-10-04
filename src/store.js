@@ -194,7 +194,7 @@ int main() {
       mode: "text/x-c++src",
       theme: "yonce"
     },
-    bytheme: "yonce",
+    bytheme: "base16-dark",
     //readonly
     time: {
       hour: new Date().getHours(),

@@ -1,6 +1,8 @@
 <template>
-  <div class="div-container">
-    <b-card :class="bytheme" class=" mb-3 shadow-lg cnbase">
+
+  <div class="div-container h-auto" >
+
+    <b-card  :class="bytheme"  class=" mb-3 shadow-lg cnbase">
       
       <!-- panel de opciones  -->
       <b-modal hide-header id="options" hide-footer v-if="visibles.options">
@@ -34,7 +36,7 @@
 
       <!-- barra de control principal -->
       <div class="row w-100 body-tam" >
-        <div class="rounded col-md-12 shadow-md mt-2 editor-canva">
+        <div class="rounded col-md-12 shadow-md mt-2">
           <div id="file-list" class="files mb-3">
 
            <button v-b-modal.options class="configs">
@@ -95,17 +97,75 @@
 
           <br v-if="local_widthMatch">
 
-          <div id="files">
-            <codemirror
-              :style="codeSpaces[0].class"
-              :id="codeSpaces[0].id"
-              v-if="codeSpaces[0].visible"
-              v-model="codeSpaces[0].code"
-              :options="cmOption"
-            />
+          <div class="row c-editor">
+
+            <div id="files" class="col-md-6 ">
+              <codemirror
+                :id="codeSpaces[0].id"
+                v-if="codeSpaces[0].visible"
+                v-model="codeSpaces[0].code"
+                :options="cmOption"
+              />
+            </div>
+
+            <div class="col-md-6 asm" disabled="true">
+                <h2>hola</h2>
+            </div>
+
+      
           </div>
         </div>
-      
+        
+  <div class="col mx-auto float-right botones">
+          <!-- definir entrada de usuario  -->
+    <b-button
+    title="establer entrada del programa"
+    v-b-modal.program-input
+    variant="primary"
+    style="background: rgba(0, 0, 0, 0)"
+    class="ml-1 float-right mt-1"
+    >entrada <b-icon icon="input-cursor-text"></b-icon>
+  </b-button>
+
+  <!-- entrada de linrerias -->
+  <b-button
+    id="establercer las librerias en el modo clasess"
+    v-b-modal.headers
+    class="float-right mt-1 ml-2"
+    variant="secondary"
+    style="background: rgba(0, 0, 0, 0)"
+    v-if="mode"
+    >#include</b-button
+  >
+
+  <!-- boton de compilar el codigo -->
+  <b-button
+    title="compilar"
+    @click="compile"
+    variant="success"
+    style="background: rgba(0, 0, 0, 0)"
+    class="ml-1 float-right mt-1"
+    v-b-modal.output-modal
+    >compilar</b-button
+  >
+
+  <!-- reiniciar resultado de salida  -->
+  <b-button
+    title="resetear la salida"
+    class="float-right mx-auto mt-1 ml-1"
+    style="background: rgba(0, 0, 0, 0)"
+    variant="danger"
+    @click="reset"
+  >
+    <b-icon icon="arrow-counterclockwise"></b-icon>
+  </b-button>
+  
+
+  </div>
+
+
+
+    
         <!-- resultado de salida -->
        <b-modal size="lg" id="output-modal" hide-footer hide-header>
         <p style="cursor:pointer" @click="$bvModal.hide('output-modal')">X</p>
@@ -122,50 +182,10 @@
           <pre class="text-dark" style="font-family: monospace">{{ output }}</pre>
         </b-card> 
        </b-modal>
+
       </div>
 
-      <!-- definir entrada de usuario  -->
-      <b-button
-        title="establer entrada del programa"
-        v-b-modal.program-input
-        variant="primary"
-        style="background: rgba(0, 0, 0, 0)"
-        class="ml-1 float-right mt-1"
-        >entrada <b-icon icon="input-cursor-text"></b-icon>
-      </b-button>
-
-      <!-- entrada de linrerias -->
-      <b-button
-        id="establercer las librerias en el modo clasess"
-        v-b-modal.headers
-        class="float-right mt-1 ml-2"
-        variant="secondary"
-        style="background: rgba(0, 0, 0, 0)"
-        v-if="mode"
-        >#include</b-button
-      >
-
-      <!-- boton de compilar el codigo -->
-      <b-button
-        title="compilar"
-        @click="compile"
-        variant="success"
-        style="background: rgba(0, 0, 0, 0)"
-        class="ml-1 float-right mt-1"
-        v-b-modal.output-modal
-        >compilar</b-button
-      >
-
-      <!-- reiniciar resultado de salida  -->
-      <b-button
-        title="resetear la salida"
-        class="float-right mx-auto mt-1 ml-1"
-        style="background: rgba(0, 0, 0, 0)"
-        variant="danger"
-        @click="reset"
-      >
-        <b-icon icon="arrow-counterclockwise"></b-icon>
-      </b-button>
+    
     </b-card>
   </div>
 </template>
@@ -352,8 +372,8 @@ export default {
 <style scoped>
 
 .cnbase {
-  min-height: 100vh;
- 
+  height: 100vh;
+  overflow: auto;
 }
 .dracula {
   background: rgb(40, 42, 54);
@@ -363,7 +383,7 @@ export default {
   background: rgb(39, 40, 34);
 }
 .yonce {
-  background: rgb(1,4,9);
+  background-color: rgb(23,23,23);
 }
 .base16-dark {
   background: rgb(7, 6, 14);
@@ -374,9 +394,7 @@ export default {
   margin-left: 20px;
   width: 100%;
   min-height: 28px;
-  max-height: 65px;
   border-radius: 4px;
-  overflow-y: scroll;
 }.tabs {
   width: 10%;
   height: 28px;
@@ -404,14 +422,10 @@ export default {
 }
 .div-container {
   margin: 0 auto;
-  max-width: 1800px;
 }
 .body-tam {
   height: 550px;
   margin-bottom: 10px;
-}
-.editor-canva {
-  height: 490px;
 }
 .bt-hover{
   border-color:#c6c7c0;
@@ -450,4 +464,21 @@ pre {
   outline: none;
   box-shadow: none !important;
 }
+
+.asm{
+  background: red;
+  width: 100%;
+  min-height: 28px;
+  border-radius: 4px;
+}
+.c-editor {
+  background: blue;
+  min-height: 50vh;
+}
+
+.botones {
+  position: absolute;
+  z-index: 10;
+}
+
 </style>  

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <Base/>
-      <br>
-    <footerVue/>
+
+        <Base class="h-auto"/>
+        <footerVue/>
+
   </div>
 </template>
 <script>
@@ -28,7 +29,7 @@ export default {
 
 </script>
 
-<style>
+<!-- <style>
 ::-webkit-scrollbar {
   width: 10px;
   border: none;
@@ -42,5 +43,6 @@ export default {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #121212;
-}
+} -->
+
     </style>

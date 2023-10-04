@@ -54,8 +54,8 @@ export default {
 </script>
 <style>
 .CodeMirror{
-  height: 470px;
-  background: transparent!important;  
+  height: auto;
+  background: transparent!important; 
 }
 .CodeMirror-scroll, .CodeMirror-sizer, .CodeMirror-gutter, .CodeMirror-gutters, .CodeMirror-linenumber  {
   background: transparent !important;
