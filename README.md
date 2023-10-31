@@ -146,13 +146,13 @@ how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
 
 | standar          | O levels       | archs         |
 | :---             |     :---:      |          ---: |
-| c++17            |    O1          |   x86         |
+| c++17            |    O3          |   x64         |
 
 ### standars and O levels
 
 | standar          | O levels       |
 | :---             |     :---:      |
-| c++2a            |    O1          |
+| c++2a / 20       |    O1          |
 | c++11            |    O2          |
 | c++14            |    O3          |
 | c++17            |                |
@@ -162,4 +162,4 @@ how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
 
 | archs            | 
 | :---             | 
-|  x86             |
+|  x64             |
