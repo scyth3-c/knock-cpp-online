@@ -48,6 +48,7 @@
             v-model="usecurl"
             name="curlmode"
             value="on"
+             @change="panelAsm"
             unchecked-value="off">
              Usar libcurl (http) <b-icon icon="cloud"></b-icon>  
             </b-form-checkbox>
@@ -79,7 +80,9 @@ export default {
     computed:{
         ...mapState( 'base', ["visibles"]),
     usecurl: {
-      get(){return this.$store.state.compile.usecurl; },
+      get(){
+        return this.$store.state.compile.usecurl;
+        },
       set(value) {
         localStorage.setItem("usecurl", value)
         this.$store.state.compile.usecurl = value;

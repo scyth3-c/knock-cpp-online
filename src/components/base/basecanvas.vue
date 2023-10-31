@@ -262,6 +262,9 @@ export default {
       this.extract_codespace(codespace)
       this.socketOn(this)
     }
+
+      this.$store.commit("codespaces/interPanelAsm",! this.$store.state.compile.usecurl);
+
   },
   mounted() {
     this.local_widthQuery.addEventListener('change',()=>{

@@ -18,7 +18,10 @@ const state = () => ({
     globalTimer: null,
     fastGlobalTimer: null,
     emisor: false,
-    asmPanel: true,
+    asmPanel:
+        ! localStorage.getItem("asmPanel")
+        ? true
+        : JSON.parse(localStorage.getItem("asmPanel")),
 
     share: {
         buffer: "",
@@ -281,8 +284,10 @@ const mutations = {
             env.$store.dispatch('compile/reagentAssembly',env);
     },
 
-    interPanelAsm(state){
-        state.asmPanel =!state.asmPanel;
+    interPanelAsm(state, val = !state.asmPanel){
+
+        state.asmPanel = val;
+
         state.codeSpaces.forEach((item)=>{
             item.visibleAsm = state.asmPanel;
         });
@@ -326,7 +331,6 @@ const actions = {
         if (state.visibles.colab && state.visibles.codespace !== "null") {
             enviroment.$socketio.on("actualizacion_base", async (args) => {
                 if (args === state.visibles.codespace) {
-                    console.log("args: ", args);
                     const code = await axios.get(
                         `${state.API}codespace/findone?id=${args}`
                     );

@@ -19,7 +19,7 @@ import 'es6-promise/auto'
 
 import { io } from "socket.io-client";
 
-const socket = io('https://lobster-app-tadp5.ondigitalocean.app',{
+const socket = io('https://api-kcompiler-moi-2blrb.ondigitalocean.app',{
   reconnectionDelay: 10000
 })
 

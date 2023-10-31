@@ -127,17 +127,19 @@ const state = () => ({
 
                     const removeCommandRegex = /Error: Command failed: (.+)([\s\S]+)/;
                     const tempFileRegex = /\/knockapi\/src\/c\+\+\/temp\/temp_file/g;
+                    const uid = /\/[0-9a-f-]+/g
                     const cppFileRegex = /(\w+)\.cpp/g;
+
 
                     const { actualCodeSpace, codeSpaces } = state.codespaces;
                     const codeSpace = codeSpaces[actualCodeSpace];
 
                     codeSpace.asm = raw
                         .replace(removeCommandRegex, '$2')
-                        .replace(tempFileRegex, '.')
-                        .replace(cppFileRegex, '.');
+                        .replace(tempFileRegex, '')
+                        .replace(uid, '')
+                        .replace(cppFileRegex, "");
                 }
-
 
                }
         }
