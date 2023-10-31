@@ -1,26 +1,41 @@
 <template>
   <div id="app">
-    <Base/>
-      <br>
-    <footerVue/>
+    <barra/>
+        <Base/>
   </div>
 </template>
 <script>
-import Base from './components/basecanvas.vue'
-import footerVue from './components/extra/footerVue.vue'
+import Base from './components/base/basecanvas.vue'
+import barra from "@/components/base/barra.vue";
 export default {
   name: 'App',
   components: {
     Base,
-    footerVue
+    barra
+  },
+
+  metaInfo() {
+    return {
+      title: 'kcompiler | online c++ ☀️', // Agrega un título SEO si lo deseas
+      meta: [
+        {
+          name: 'description',
+          content: 'compilador web para c++ gratis y facil de usar, modo proyecto, clases y estandares hasta c++20, colaboracion remota y entrada de usuario.',
+        },
+      ],
+    };
   },
   mounted(){
     document.body.addEventListener("scroll", this.eBehavior, { passive: true }); 
   },
   methods: {
-    eBehavior(e){ 
-      window.requestAnimationFrame(function() {
-      // No hay código dentro de la función de callback
+    eBehavior(){
+      window.requestAnimationFrame(() => {
+
+        const scrollY = window.scrollY;
+        const newScrollY = scrollY + 1;
+
+        window.scrollBy(0, newScrollY - scrollY);
       });
      }
   }
@@ -29,18 +44,5 @@ export default {
 </script>
 
 <style>
-::-webkit-scrollbar {
-  width: 10px;
-  border: none;
-}
-::-webkit-scrollbar-track {
-  background: rgb(28,28,28);
-}
-::-webkit-scrollbar-thumb {
-  background: #121212;
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #121212;
-}
-    </style>
+@import "@/assets/app.base.css";
+</style>

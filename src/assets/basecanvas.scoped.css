@@ -1,0 +1,62 @@
+.files {
+    margin-top: 5px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+    width: 100%;
+    min-height: 28px;
+    border-radius: 4px;
+}
+.tabs {
+     width: 10%;
+     height: 28px;
+     border-radius: 4px;
+     background: transparent;
+     border: 1px solid white;
+     color: white;
+ }
+.classmode {
+    width: 13%;
+    height: 28px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+.configs {
+    width: 10%;
+    height: 28px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid white;
+    color: rgb(255, 255, 255);
+    margin-right: 10px;
+}
+.configs:hover{
+    background: #48C9B0;
+    border: none;
+}
+
+.div-container {
+    margin: 0 auto;
+}
+.body-tam {
+    height: 550px;
+    margin-bottom: 5px;
+}
+.bt-hover{
+    border-color:#c6c7c0;
+}
+.bt-hover:hover{
+    background: #48C9B0;
+    color: white;
+    transition: 300ms;
+    transform: scale(1.01);
+    border: none;
+    font-weight: bolder;
+}
+.hovery{
+    color: #272927;
+}
+.hovery:hover{
+    color:#171818;
+}

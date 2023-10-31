@@ -6,54 +6,58 @@
 import { codemirror } from "vue-codemirror";
 import "codemirror/lib/codemirror.css";
 
-import "codemirror/theme/dracula.css";
+import "codemirror/theme/moxer.css";
 import "codemirror/theme/yonce.css";
 import "codemirror/theme/monokai.css";
 import "codemirror/theme/base16-dark.css";
+import "codemirror/theme/zenburn.css";
+import "codemirror/theme/ayu-mirage.css";
 
 import "codemirror/mode/clike/clike.js";
 import "codemirror/keymap/sublime.js";
 
-import { mapState } from 'vuex';
-import store from "@/store";
-
 export default {
   name: "editor",
-  props: ["ids", "options"],
+  props: ["ids", "options", "codeSpaces","type"],
   components: {
     codemirror,
   },
 
   computed: {
+
     visible: {
       get() {
         let rp = this.ids.replace("editor:", "");
         let it = parseInt(rp);
-        return store.getters.codeSpaces[it].visible;
+        return this.codeSpaces[it].visible;
       },
       set(value) {
         let rp = this.ids.replace("editor:", "");
         let it = parseInt(rp);
-        store.state.codeSpaces[it].visible = value;
+        this.codeSpaces[it].visible = value;
       },
     },
     model: {
       get() {
         let rp = this.ids.replace("editor:", "");
         let it = parseInt(rp);
-        return store.getters.codeSpaces[it].code;
+
+        return this.type === "code" ? this.codeSpaces[it].code : this.codeSpaces[it].asm;
       },
       set(value) {
         let rp = this.ids.replace("editor:", "");
         let it = parseInt(rp);
-        store.state.codeSpaces[it].code = value;
+
+        if (this.type === "code")
+          this.codeSpaces[it].code = value;
+        else
+          this.codeSpaces[it].asm = value
+
       },
     },
   },
 };
 </script>
 <style>
-.CodeMirror{
-  height: 470px;
-}
+@import "@/assets/general.v1.css";
 </style>

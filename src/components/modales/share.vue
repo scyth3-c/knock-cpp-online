@@ -19,7 +19,7 @@ export default {
       navigator.clipboard.writeText(value);
     },
     shared_path(){
-      return window.location.origin + "?sq=" + this.$store.state.share_id
+      return window.location.origin + "?sq=" + this.$store.state.codespaces.share_id
     },
     }
 }

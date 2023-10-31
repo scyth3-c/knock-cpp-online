@@ -26,10 +26,10 @@ export default {
 
     setInput: {
       get() {
-        return this.$store.state.inputData;
+        return this.$store.state.compile.compile.inputData;
       },
       set(value) {
-        this.$store.commit("setInputData", { data: value });
+        return this.$store.state.compile.compile.inputData = value;
       },
     },
   },
@@ -37,11 +37,5 @@ export default {
 </script>
 
 <style scoped>
-input:focus, select:focus, select, input.form-control:focus {
-  outline:none !important;
-  outline-width: 0 !important;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-}
+@import "@/assets/general.v1.css";
 </style>

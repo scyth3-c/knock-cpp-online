@@ -1,0 +1,40 @@
+
+input:focus, select:focus, select, input.form-control:focus {
+    outline: none 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+pre {
+    white-space: pre-wrap;
+    margin: 0;
+    padding: 0;
+}
+.noneshine {
+    outline: none;
+    box-shadow: none !important;
+}
+
+.asm{
+    width: 100%;
+    min-height: 28px;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+}
+.c-editor {
+    min-height: 50vh;
+    max-height: 80vh;
+}
+
+.botones {
+    position: sticky;
+    z-index: 10;
+}
+.smglass {
+    background-color: transparent !important;
+}
+.act-btn:hover {
+    border-color: white !important;
+    box-shadow: 0 0 4px white;
+}
