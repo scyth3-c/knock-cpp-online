@@ -38,36 +38,34 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
     name: 'colabVue',
     methods:{
         close(){
             this.$bvModal.hide("colab")
-            this.$bvModal.hide("extra-modal")
+            this.$bvModal.hide("modales-modal")
         },
         activar() {
-            this.$store.dispatch('visibles_to_colab', false)
+            this.$store.dispatch('codespaces/visibles_to_colab', false)
             this.close()
         },
         desactivar(){
             localStorage.removeItem("v.codespace")
-            this.$store.dispatch('setColab', true)
-            this.$store.commit('clearUrl')
+            this.$store.dispatch('codespaces/setColab', true)
+            this.$store.commit('codespaces/clearUrl')
             this.close()
-            this.$store.commit('deleteCodeSpace')
-            this.$store.state.isHost = false;
+            this.$store.commit('codespaces/deleteCodeSpace')
+            this.$store.state.base.isHost = false;
         },
     },
-    computed:{
-       visibles:{
-        get(){ return this.$store.state.visibles }
-       }
+    computed: {
+      ...mapState('codespaces', ["visibles"])
     }
 }
 </script>
 
 <style scoped>
-.texty{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+@import "@/assets/general.v1.css";
 </style>

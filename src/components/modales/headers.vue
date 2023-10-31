@@ -13,8 +13,10 @@
 </template>
 
 <script>
-import store from "@/store";
 export default {
+  props: [
+      "ctx"
+  ],
   name: "headers",
   computed: {
 
@@ -24,10 +26,10 @@ export default {
 
     headers: {
       get() {
-        return store.state.headers;
+        return this.ctx.compile.headers;
       },
       set(value) {
-        store.state.headers = value;
+        this.ctx.compile.headers = value;
       },
     },
   },

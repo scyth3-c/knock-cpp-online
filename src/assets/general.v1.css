@@ -1,0 +1,82 @@
+.CodeMirror{
+    height: auto !important;
+    background: transparent !important;
+}
+.CodeMirror-scroll, .CodeMirror-sizer, .CodeMirror-gutter, .CodeMirror-gutters, .CodeMirror-linenumber  {
+    background: transparent !important;
+    color: white !important;
+}
+
+.apagado {
+    background-color: transparent;
+    max-height: 30px;
+}
+.fstyle{
+    font-family: monospace;
+}
+
+.texty{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* program input */
+input:focus, select:focus, select, input.form-control:focus {
+    outline: none 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+
+/* TABS */
+.tabs {
+    width: 10%;
+    height: 28px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid #A5D6A7 ;
+    color: white;
+    margin-bottom:10px;
+}
+
+.tabs:hover{
+    background-color:#A5D6A7;
+    transition: 0.5s;
+    color: black;
+}
+
+/* NOTas */
+.outln {transition: 200ms; }
+.outln:hover{
+    background: transparent !important;
+    color: #171818;
+    box-shadow: 0 0 0 1px black;
+    transition: 200ms;
+}
+.inpfs {font-family: monospace;}
+
+.outwb{
+    background: #121212 !important;
+    color: white !important;
+    transition: 200ms;
+    font-family: monospace;
+}
+.outwb:hover{
+    background: transparent !important;
+    color: #121212 !important;
+    transition: 200ms;
+}
+.outfill {
+    background: transparent !important;
+    color: black !important;
+    font-family: monospace;
+    border: none;
+}
+.inpbt {
+    border: none !important;
+    border-bottom: 1px solid #c6c7c0 !important;
+    border-radius: 0 !important;
+}
+.inpbt:focus{
+    border-bottom-color: black !important;
+}

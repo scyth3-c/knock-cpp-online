@@ -1,0 +1,8 @@
+{
+  "compile": {
+    "base_code": "int main(int argc, char *argv[]) {\n\n\n  return 0;\n}        ",
+    "base_for_files": "int main(int argc, char *argv[]) {\n\n  return 0;\n}\n      ",
+    "poo_base": "int main(int argc, char *argv[]) {\n\n  //nosotros  nos encargamos de las librerias\n  \n  return 0;\n}",
+    "poo_file": "class MyClass {\n  private:\n    int foo{};\n  public:\n    MyClass(int _foo) : foo(std::move(_foo)) {}\n};\n"
+  }
+}

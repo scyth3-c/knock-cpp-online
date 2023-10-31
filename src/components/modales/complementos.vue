@@ -1,19 +1,22 @@
 <template>
     <div>
-        <b-button
+      <b-button title="asm inspector"  class="mx-1 outwb" @click="panelAsm">
+        panel asm <b-icon icon="eye-slash-fill"></b-icon>
+      </b-button>
+
+      <b-button
             title="colaboracion"
-            variant="dark"  
-            class="mx-2"
+            class="mx-1 outwb"
             v-b-modal.colab
           >
-          <b-icon icon="thunder" variant="primary"></b-icon>  
+          <b-icon  variant="primary"></b-icon>
             Colaboracion
           </b-button>
 
           <b-button
             v-b-modal.notas-modal
-            title="mostrar panel de  notas"
-            variant="dark"
+            title="mostrar panel de notas"
+            class="outwb"
             >Notas</b-button >
 
           <b-modal id="notas-modal" hide-header hide-footer>
@@ -25,18 +28,20 @@
 
           <b-button
             title="mostrar lista de themas"
-            class="ml-1"
+            class="mx-1 outwb"
             v-b-modal.themes-modal
-            variant="dark"
-            >Temas</b-button
+            >Temas Fuente</b-button
           >
           <b-modal hide-backdrop hide-header hide-footer id="themes-modal">
             <p style="cursor:pointer" @click="$bvModal.hide('themes-modal')">X</p>
             <themes />
-            <p class="mx-auto float-center mt-3">selecciona tu tema favorito, no lo perderas al recargar</p>
+            <b-badge class="mx-auto float-center mt-3 bg-transparent text-dark">selecciona tu tema para la fuente del codigo favorito, no lo perderas al recargar</b-badge>
           </b-modal>
 
-         <b-form-checkbox 
+      <b-button @click="restCache" class="btn-sm outwb m-1 p-2">reset cache <b-icon icon="archive-fill">  </b-icon> </b-button>
+
+         <b-form-checkbox
+             method="any"
             v-if="visibles.libcurl"
              class="ml-3 mt-2 p-3 font-weight-bolder"
             id="curlmode"
@@ -55,21 +60,35 @@
 import notas from "./notas.vue";
 import themes from "./themes.vue";
 import colaborate from "./colabVue.vue"
-import { mapGetters } from 'vuex';
+import {mapState} from 'vuex';
 
 export default {
     name: 'complementosVue',
     components:{
-        notas,
-        themes,
-        colaborate
+        notas, themes, colaborate
+    },
+    methods:{
+      restCache() {
+        localStorage.clear();
+        sessionStorage.clear();
+      },
+      panelAsm(){
+        this.$store.commit('codespaces/interPanelAsm');
+      }
     },
     computed:{
-        ...mapGetters(["visibles"]),
+        ...mapState( 'base', ["visibles"]),
     usecurl: {
-      get(){return this.$store.state.usecurl; },
-      set(value) {this.$store.commit("superUpdate",{type: "curl", data: value});}
+      get(){return this.$store.state.compile.usecurl; },
+      set(value) {
+        localStorage.setItem("usecurl", value)
+        this.$store.state.compile.usecurl = value;
+      }
      },
   }
 }
 </script>
+
+<style>
+@import "@/assets/general.v1.css";
+</style>
