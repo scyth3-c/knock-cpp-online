@@ -8,7 +8,7 @@
 <br/>
 
 <div align="center">  
-  <img src="https://user-images.githubusercontent.com/52190352/209495356-97bc767b-ba87-4614-8baa-38dbe6dfe30f.png" width="150px">
+  <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/06e2e492-940d-4b62-bdb3-79a2c654ba3b.png" width="150px">
 </div>
 
 <br/>
@@ -16,21 +16,29 @@
 
 <div align="center">
  
- <h1>KNOCK 2.5.1 </h1>
+ <h1> kcompiler 3.0</h1>
    https://kcompiler.com/
- 
 </div>
 
 # Features
 
 ## new
+ - assembly inspector
+ - auto save
+ - all files tabs project auto save
+ - all files tabs realtime assembly
+ - persistence in all tabs files
+ - persistence in font themes
+ - fix bugs
+ - more velocity
+ - change code panel behavior
+ - change to kcompiler API V2
+
+## previus
 
 - collaborative spaces
 - general visual changes
 - api socket support
-
-## previus
-
 - share you code with friends
 - timeout guard 
 - API cleaned
@@ -60,44 +68,42 @@
 
 # Preview
 
-| share and collaborate |
+| assembly guide |
 | -----                 |
-| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/e9bead79-2f01-4c8b-8ce0-4292938920b9" width="500px" /> |
-| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/f5f300d7-d959-4265-8481-90c78b916f28" width="500px" /> |
+| ![base](https://github.com/scyth3-c/knock-cpp-online/assets/52190352/2be8e6cd-5b88-4c72-a7e5-3eb02bad77cd)|
 
+<br>
+
+| personal notes system |
+| -----                 |
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/a0a864a1-8e74-4da0-8583-d15a4cda1d1f" width="500px"  />|
+
+
+<br>
 
 
 | Share you code, ready to compile|
 | -----                           |
-| <img src="https://user-images.githubusercontent.com/52190352/236729138-83a07d13-125c-4a02-b268-03d5a53b2c57.png" width="500px" />|
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/44dfb06a-e3a2-4e85-af33-32f674cd2172.png" width="500px" />|
 
 <hr/>
 
 
 | HTTP Request |
 | -----                           |
-| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/477752a3-9cbc-402c-8789-f464958cadc4" width="500px" /> |
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/728dd19c-af3b-49c3-909c-8125642b56b8.png" /> |
  
-
-
-# How to
-
-
-| Share |
-| ----- |
-| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/60d032b9-f86c-4226-98ae-784c085bd242" width="500px" />|
 
 <hr/>
 
 in mode single file just add  &nbsp;  #include	&#60;http/veridic.hpp&#62; and active
 
-| Active http Request  |
+| Use panel options|
 | -----                |
-|<img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/d0ad8352-ec79-44b1-a222-1c5cb5efa993" width="500px"/>|
+|<img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/29e5448c-6be5-47ed-88a9-1de2d731d560.png"/>|
 
 
   <hr/>
-  <br/>
   <br/>
 
 # example
@@ -114,8 +120,7 @@ how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
 
 | headers |
 | -----   |
-| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/b909b00c-39df-4568-9490-043bfc000743" width="400px"/>|
-
+| <img src="https://github.com/scyth3-c/knock-cpp-online/assets/52190352/83ad6785-c425-4935-980b-40d8243a5cf7" width="400px"/>|
 
 
 <hr/>
