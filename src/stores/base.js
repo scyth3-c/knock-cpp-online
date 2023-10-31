@@ -1,7 +1,7 @@
 
 const  state = () => ({
     //base
-    API: "https://api-kcompiler-moi-2blrb.ondigitalocean.app/api/v2/",
+    API: "https://api.kcompiler.com/api/v2/",
     paypal: "https://www.paypal.com/paypalme/bohorquezrojas17",
     github: "https://github.com/scyth3-c",
 
