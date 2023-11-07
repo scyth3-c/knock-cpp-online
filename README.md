@@ -1,5 +1,4 @@
  <div align="center"> 
-   <img src="https://img.shields.io/static/v1?label=version&message=2.7&color=green">
    <img src="https://img.shields.io/static/v1?label=ports&message=electron&color=blue">
    <img src="https://img.shields.io/static/v1?label=licence&message=MIT&color=red">
    <img src="https://img.shields.io/static/v1?label=CONTRIBUTIONS&message=ALL WELCOME&color=green">
@@ -132,34 +131,16 @@ how to use http/veridic.hpp with class mode  (gui of anterior version, v.2.5.0)
 
 <hr/>
 
-## raw links
-
-- https://kcompiler.com/
-- https://knockcompiler.web.app/
-- https://knockcompiler.netlify.app
-- https://github.com/scyth3-c/knock-cpp-online/releases/download/2.5/windows-electron-v2.5.0.exe
-
 
 ## Technical specifications
 
-### default compile
 
-| standar          | O levels       | archs         |
-| :---             |     :---:      |          ---: |
-| c++17            |    O3          |   x64         |
+### Available standards and optimization levels
 
-### standars and O levels
+| standar          |   level        | default |  
+| :---             |     :---:      |   ----: |
+| c++2a / 20       |    O1          |  C++17  |
+| c++11            |    O2          |  03     |
+| c++14            |    O3          |         |
+| c++17            |                |         |
 
-| standar          | O levels       |
-| :---             |     :---:      |
-| c++2a / 20       |    O1          |
-| c++11            |    O2          |
-| c++14            |    O3          |
-| c++17            |                |
-
-
-### actuals architecture
-
-| archs            | 
-| :---             | 
-|  x64             |
